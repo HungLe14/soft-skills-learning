@@ -1,0 +1,88 @@
+.navbar {
+  width: 100%;
+  height: 8rem;
+  background-color: #1d232a;
+  padding: 2rem 4rem;
+}
+
+.navbar .nav-list {
+  height: 100%;
+  display: flex;
+  gap: 3rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-list .item {
+  list-style: none;
+}
+
+.item > a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.2rem;
+}
+
+.item > a:hover {
+  color: #04adbf;
+}
+
+.item:last-child {
+  margin-left: auto;
+  display: flex;
+  gap: 3rem;
+}
+
+.input-group,
+.button-group {
+  position: relative;
+}
+
+.input-group .search-icon {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 1.4rem;
+  left: 1rem;
+}
+
+.input-group .search-input {
+  width: 29rem;
+  height: 4.8rem;
+  padding: 2rem 4rem;
+  border-radius: 0.8rem;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+}
+
+.button-group .btn-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+
+  position: absolute;
+}
+
+.btn-icon.signup {
+  color: #fff;
+  top: 1.5rem;
+  right: 2rem;
+}
+
+.btn {
+  width: 18rem;
+  height: 4.8rem;
+  border-radius: 0.8rem;
+  border: none;
+  font-size: 2.2rem;
+}
+
+.btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.btn-signup {
+  background-color: #04adbf;
+  color: #fff;
+}
