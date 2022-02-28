@@ -144,7 +144,7 @@
 .row1 {
   position: absolute;
   top: 0;
-  right: -8rem;
+  right: -6rem;
 }
 
 .row2 {
@@ -204,9 +204,35 @@
   font-size: 1.5rem;
 }
 
-.Roadmap_part {
-  text-align: center;
+.Roadmap {
   width: 100%;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.Roadmap_part {
+  margin: 0 2rem;
+  text-align: center;
+}
+
+.Roadmap_part_img > img {
+  width: 30rem;
+  height: 30rem;
+  border: 2px solid #df822c;
+  border-radius: 10px;
+  position: relative;
+}
+
+.number-step {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.6rem;
+  color: #fff;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  position: absolute;
+  top: -1.5rem;
+  left: 14.5rem;
 }
 
 .Roadmap_part_content p {
@@ -292,9 +318,14 @@
   color: var(--primary-color);
 }
 
+.social-list {
+  display: flex;
+  gap: 2rem;
+}
+
 .footer-img {
-  width: 6.7rem;
-  height: 4.9rem;
+  width: 4rem;
+  height: 4rem;
 }
 
 .footer-links {
