@@ -24,7 +24,7 @@
 }
 
 .item > a:hover {
-  color: #04adbf;
+  color: var(--primary-color);
 }
 
 .item:last-child {
@@ -69,6 +69,12 @@
   right: 2rem;
 }
 
+.btn-icon.course {
+  color: #fff;
+  top: 1.5rem;
+  right: 0.3rem;
+}
+
 .btn1 {
   width: 18rem;
   height: 4.8rem;
@@ -83,17 +89,29 @@
 }
 
 .btn-signup {
-  background-color: #04adbf;
+  background-color: var(--primary-color);
   color: #fff;
 }
 
-.Welcome,
+.Welcome {
+  padding: 2rem 0;
+}
+
+.welcome-wrapper {
+  overflow: hidden;
+  padding-bottom: 30rem;
+}
+
 .Intro {
   padding: 2rem 4rem;
 }
 
+.welcome-detail {
+  margin-left: 2.5rem;
+}
+
 .Welcome_title {
-  color: #04adbf;
+  color: var(--primary-color);
   font-size: 5rem;
 }
 
@@ -104,13 +122,13 @@
 
 .Welcome_Content {
   font-size: 1.5rem;
-  color: #04adbf;
+  color: var(--primary-color);
   font-weight: bold;
 }
 
 .Welcome_login,
 .btn-icon.signup.Welcome_login {
-  color: #04adbf;
+  color: var(--primary-color);
   background-color: #fff;
 }
 .Welcome_img {
@@ -119,8 +137,38 @@
   border-radius: 1.5rem;
 }
 
-.padding_left {
-  padding-left: 10rem;
+.welcome-image-list {
+  position: relative;
+}
+
+.row1 {
+  position: absolute;
+  top: 0;
+  right: -8rem;
+}
+
+.row2 {
+  position: absolute;
+  top: 12rem;
+  right: -2rem;
+}
+
+.row3 {
+  position: absolute;
+  top: 24rem;
+  right: -8rem;
+}
+
+.row4 {
+  position: absolute;
+  top: 36rem;
+  right: -10rem;
+}
+
+.row5 {
+  position: absolute;
+  top: 48rem;
+  right: -8rem;
 }
 
 .Intro,
@@ -163,11 +211,11 @@
 
 .Roadmap_part_content p {
   font-size: 1.5rem;
-  color: #04adbf;
+  color: var(--primary-color);
 }
 .Roadmap_part_title p {
   font-size: 2rem;
-  color: #04adbf;
+  color: var(--primary-color);
 }
 .Roadmap_title p {
   font-size: 2.5rem;
@@ -222,7 +270,61 @@
 .Courses {
   padding: 0 10rem;
 }
-.row {
+
+.footer {
+  padding: 2rem 3rem 10rem 3rem;
+}
+
+.footer-des {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.footer-logo {
+  font-size: 5rem;
+  color: var(--primary-color);
+}
+
+.footer-des-detail {
+  font-size: 2.6rem;
+  color: var(--primary-color);
+}
+
+.footer-img {
+  width: 6.7rem;
+  height: 4.9rem;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 12rem;
+  row-gap: 3.4rem;
+}
+
+.links {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+a.links:hover {
+  text-decoration: none;
+  color: #000;
+  opacity: 0.85;
+}
+
+.footer-main-links {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.footer-link {
+  font-size: 2rem;
+}
+
+.row-0 {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
