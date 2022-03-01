@@ -1,0 +1,72 @@
+.sidebar {
+  background-color: #15191c;
+  height: 100vh;
+}
+
+.sidebar .logo-img {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.sidebar__navmenu {
+  margin-top: 4rem;
+}
+
+.navmenu {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.navmenu-item .item {
+  height: 5rem;
+  padding-left: 3rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.navmenu-item .item:hover {
+  cursor: pointer;
+}
+
+.navmenu-item .item:hover .navmenu-icon,
+.navmenu-item .item:hover .navmenu-link {
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+}
+
+.navmenu-item .item::before {
+  content: "";
+  display: block;
+  background-color: #fff;
+  width: 0.1rem;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+.navmenu-item .item:hover::before {
+  width: 0.8rem;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+.item .navmenu-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #95999c;
+}
+
+.item > .navmenu-link {
+  text-decoration: none;
+  color: #95999c;
+  font-size: 2rem;
+}
+
+.main-dashboard {
+  background-color: #1d232a;
+}
