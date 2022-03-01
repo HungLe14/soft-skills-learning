@@ -33,12 +33,12 @@
   gap: 3rem;
 }
 
-.input-group,
+.input-nav-group,
 .button-group {
   position: relative;
 }
 
-.input-group .search-icon {
+.input-nav-group .search-icon {
   width: 2rem;
   height: 2rem;
   position: absolute;
@@ -46,7 +46,7 @@
   left: 1rem;
 }
 
-.input-group .search-input {
+.input-nav-group .search-input {
   width: 29rem;
   height: 4.8rem;
   padding: 2rem 4rem;
@@ -56,7 +56,36 @@
   font-size: 2rem;
 }
 
+.user-group {
+  width: 19rem;
+  height: 4.8rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
 
+.user-group:hover .user-img,
+.user-group:hover .user-name,
+.user-group:hover .user-icon {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out;
+}
+
+.user-group .user-name {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #95999c;
+}
+
+.user-group .user-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: #fff;
+}
 
 .button-group .btn-icon {
   width: 1.8rem;
@@ -68,6 +97,12 @@
   color: #fff;
   top: 1.6rem;
   right: 2rem;
+}
+
+.btn-icon.signout {
+  color: #fff;
+  top: 1.6rem;
+  right: -1.8rem;
 }
 
 .btn-icon.course {
@@ -87,13 +122,23 @@
   font-size: 2.2rem;
 }
 
-.btn1:hover {
-  text-decoration: none;
-  opacity: 0.8;
+.button-group:hover {
   cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-group:hover > a.btn1 {
+  text-decoration: none;
+  color: #fff;
 }
 
 .btn-signup {
   background-color: var(--primary-color);
+  color: #fff;
+}
+
+.btn-signout {
+  background-color: none;
   color: #fff;
 }
