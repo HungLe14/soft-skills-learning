@@ -1,6 +1,10 @@
 .sidebar {
   background-color: #15191c;
-  min-height: 100vh;
+  min-height: 100%;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
 
 .sidebar .logo-img {
@@ -83,14 +87,16 @@
   font-size: 2rem;
 }
 
+.main-dashboard {
+  margin-left: 32.5rem;
+  margin-top: 8rem;
+  background-color: #1d232a;
+}
+
 .main-dashboard .navbar1 {
   padding-bottom: 5rem;
   padding-top: 5rem;
   border-bottom: 5px solid #15191c;
-}
-
-.main-dashboard {
-  background-color: #1d232a;
 }
 
 .dashboard-content {

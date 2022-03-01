@@ -3,6 +3,11 @@
   height: 8rem;
   background-color: #1d232a;
   padding: 2rem 4rem;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-shadow: 0 2px 10px 2px #15191c;
 }
 
 .navbar1 .nav-list {
