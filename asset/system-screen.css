@@ -93,3 +93,9 @@
   margin-top: 8rem;
   background-color: #1d232a;
 }
+
+.main-dashboard .navbar1 {
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+  border-bottom: 5px solid #15191c;
+}
