@@ -89,7 +89,8 @@
 
 .main-dashboard {
   min-height: 100vh;
-  margin-left: 32.5rem;
+  margin-left: 17%;
+  /* margin-left: 32.5rem; */
   margin-top: 8rem;
   background-color: #1d232a;
 }
