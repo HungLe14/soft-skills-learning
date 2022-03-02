@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./asset/global.css" />
+    <link rel="stylesheet" href="/asset/navbar.css" />
+    <link rel="stylesheet" href="./asset/system-screen.css" />
+    <link rel="stylesheet" href="./asset/acount-setting.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="row">
+      <aside class="sidebar col-2">
+        <div class="logo-img">
+          <img src="./img/Logo.png" class="img-fluid" />
+        </div>
+        <div class="sidebar__navmenu">
+          <ul class="navmenu">
+            <li class="navmenu-item">
+              <div class="item-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navmenu-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                  />
+                </svg>
+                <span class="navmenu-link">Trang chủ </span>
+              </div>
+            </li>
+            <li class="navmenu-item">
+              <div class="item-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navmenu-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"
+                  />
+                </svg>
+                <span class="navmenu-link">Khóa học</span>
+              </div>
+            </li>
+            <li class="navmenu-item">
+              <div class="item-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navmenu-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
+                </svg>
+                <span class="navmenu-link">Giáo viên</span>
+              </div>
+            </li>
+            <li class="navmenu-item">
+              <div class="item-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navmenu-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span class="navmenu-link">Học sinh</span>
+              </div>
+            </li>
+            <li class="navmenu-item">
+              <div class="item-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navmenu-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="navmenu-link">Hỗ trợ</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- NAVBAR FOR USER -->
+      <nav class="navbar1">
+        <ul class="nav-list">
+          <li class="item">
+            <div class="input-nav-group">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="search-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <input
+                class="search-input"
+                type="text"
+                placeholder="Tìm kiếm khóa học"
+              />
+            </div>
+            <div class="user-group">
+              <div><img class="user-img" src="./img/user.png" /></div>
+              <span class="user-name">Juniorx</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="user-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+            <div class="button-group">
+              <a href="signin-screen.html" class="btn1 btn-signout"
+                >Đăng xuất</a
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="btn-icon signout"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <main class="main-dashboard col-10 p-0"></main>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <script>
+    const menus = document.querySelectorAll(".item-wrapper");
+    for (const menu of menus) {
+      menu.addEventListener("click", () => {
+        const tab = document.querySelector(".active");
+        if (tab) {
+          tab.classList.remove("active");
+        }
+        menu.classList.add("active");
+      });
+    }
+  </script>
+</html>
