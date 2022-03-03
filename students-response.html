@@ -335,7 +335,6 @@
     // click to delete row checked
     function deleteRow() {
       const selectAll = document.querySelector(".select-all");
-      console.log(selectAll.checked);
       if (selectAll.checked) {
         document.querySelectorAll("table tbody tr").forEach(function (e) {
           e.remove();
