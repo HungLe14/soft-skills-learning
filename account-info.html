@@ -257,23 +257,30 @@
             </div>
             <div class="col-8">
               <form class="setting-details">
-                <p class="detail-header">Thiết lập tài khoản</p>
-                <div class="text-input">
-                  <label for="name">Tên hiển thị</label>
-                  <input id="name" name="name" type="text" />
-                </div>
-                <div class="text-input">
-                  <label for="cur-pw">Mật khẩu hiện tại</label>
-                  <input id="cur-pw" name="cur-pw" type="password" />
+                <p class="detail-header">Thông tin cá nhân</p>
+                <div class="double-input">
+                  <div class="text-input">
+                    <label for="first-name">Họ</label>
+                    <input id="first-name" name="first-name" type="text" />
+                  </div>
+                  <div class="text-input">
+                    <label for="last-name">Tên</label>
+                    <input id="last-name" name="last-name" type="text" />
+                  </div>
                 </div>
                 <div class="double-input">
                   <div class="text-input">
-                    <label for="new-pw">Mật khẩu mới</label>
-                    <input id="new-pw" name="new-pw" type="password" />
+                    <label for="mail">Email</label>
+                    <input id="mail" name="mail" type="email" />
                   </div>
                   <div class="text-input">
-                    <label for="renew-pw">Xác nhận mật khẩu mới</label>
-                    <input id="renew-pw" name="renew-pw" type="password" />
+                    <label for="phone">Số điện thoại</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="text"
+                      maxlength="10"
+                    />
                   </div>
                 </div>
                 <div class="button-control">
