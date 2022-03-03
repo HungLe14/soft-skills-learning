@@ -224,6 +224,42 @@
                 </svg>
                 <span>Thêm ảnh mô tả</span>
               </div>
+              <div class="button-control">
+                <button type="submit" class="button-node confirm">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  Tạo khóa học
+                </button>
+                <button type="button" class="button-node cancel">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  Hủy
+                </button>
+              </div>
             </div>
           </form>
         </div>
@@ -264,7 +300,6 @@
       let inputFile = document.querySelector(
         `#img-course-des-input-${countPic}`
       );
-      console.log(inputFile);
 
       if (inputFile) {
         console.log(inputFile);
@@ -275,19 +310,8 @@
       }
     };
 
-    // const wrappers = document.querySelectorAll(".picture-des");
-    // if (wrappers) {
-    //   for (const wrapper of wrappers) {
-    //     console.log(wrapper.children);
-    //     wrapper.children[1].onchange = () => {
-    //       wrapper.children[0].textContent = this.files[0].name;
-    //     };
-    //   }
-    // }
-
     document.querySelector(".add-pic").addEventListener("click", () => {
       countPic++;
-      updateFile();
       document.querySelector(".ver-input").insertAdjacentHTML(
         "beforeend",
         `<div class="hor-input">
@@ -320,15 +344,7 @@
         </div>`
       );
 
-      // var up = document.getElementById("GFG_UP");
-      // var down = document.getElementById("GFG_DOWN");
-      // up.innerHTML = "Click on the button select the child node.";
-
-      // function GFG_Fun() {
-      //   parent = document.getElementById("parent");
-      //   children = parent.children[0];
-      //   down.innerHTML = "Text of child node is - '" + children.innerHTML + "'";
-      // }
+      updateFile();
     });
   </script>
 </html>
