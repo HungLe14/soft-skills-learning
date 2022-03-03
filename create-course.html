@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./asset/global.css" />
+    <link rel="stylesheet" href="/asset/navbar.css" />
+    <link rel="stylesheet" href="./asset/system-screen.css" />
+    <link rel="stylesheet" href="./asset/create-course.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="row">
+      <aside class="sidebar col-2">
+        <div class="logo-img">
+          <img src="./img/Logo.png" class="img-fluid" />
+        </div>
+        <div class="sidebar__navmenu">
+          <ul class="navmenu">
+            <li class="navmenu-item">
+              <div class="item-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navmenu-icon"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+                  />
+                </svg>
+                <span class="navmenu-link">Khóa học</span>
+              </div>
+            </li>
+            <li class="navmenu-item">
+              <div class="item-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navmenu-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <span class="navmenu-link">Tạo khóa học</span>
+              </div>
+            </li>
+            <li class="navmenu-item">
+              <div class="item-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navmenu-icon"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+                  />
+                </svg>
+                <span class="navmenu-link">Diễn đàn câu hỏi</span>
+              </div>
+            </li>
+            <li class="navmenu-item">
+              <div class="item-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navmenu-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                  />
+                </svg>
+                <span class="navmenu-link">Phản hồi từ học sinh</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- NAVBAR FOR USER -->
+      <nav class="navbar1">
+        <ul class="nav-list">
+          <li class="item">
+            <div class="input-nav-group">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="search-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <input
+                class="search-input"
+                type="text"
+                placeholder="Tìm kiếm khóa học"
+              />
+            </div>
+            <div class="user-group">
+              <div><img class="user-img" src="./img/user.png" /></div>
+              <span class="user-name">Juniorx</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="user-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+            <div class="button-group">
+              <a href="signin-screen.html" class="btn1 btn-signout"
+                >Đăng xuất</a
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="btn-icon signout"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <main class="main-dashboard col-10 p-0">
+        <div class="dashboard-wrapper">
+          <p class="dashboard-header">Tạo khóa học</p>
+          <form>
+            <div class="dashboard-container">
+              <div class="hor-input">
+                <label for="name-course">Tên khóa học:</label>
+                <input type="text" id="name-course" name="name-course" />
+              </div>
+              <div class="hor-input">
+                <label>Ảnh đại diện khóa học:</label>
+                <div class="input-file-wrapper">
+                  <label class="img-course-label" for="img-course"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="file-icon"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    Chọn tệp</label
+                  >
+                  <input
+                    type="file"
+                    id="img-course"
+                    name="img-course"
+                    accept=".jpg,.jpeg,.png"
+                  />
+                </div>
+              </div>
+              <div class="ver-input">
+                <label for="des-course">Mô tả:</label>
+                <textarea
+                  rows="3"
+                  placeholder="Viết tóm tắt nội dung khóa học"
+                  id="des-course"
+                  name="des-course"
+                ></textarea>
+              </div>
+              <div class="add-pic">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>Thêm ảnh mô tả</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <script>
+    let countPic = 0;
+
+    const menus = document.querySelectorAll(".item-wrapper");
+    for (const menu of menus) {
+      menu.addEventListener("click", () => {
+        const tab = document.querySelector(".active");
+        if (tab) {
+          tab.classList.remove("active");
+        }
+        menu.classList.add("active");
+      });
+    }
+
+    document.querySelector("#img-course").onchange = function () {
+      document.querySelector(".img-course-label").textContent =
+        this.files[0].name;
+    };
+
+    const updateFile = () => {
+      let inputFile = document.querySelector(
+        `#img-course-des-input-${countPic}`
+      );
+      console.log(inputFile);
+
+      if (inputFile) {
+        console.log(inputFile);
+        inputFile.onchange = function () {
+          document.querySelector(`.img-course-des-${countPic}`).textContent =
+            this.files[0].name;
+        };
+      }
+    };
+
+    // const wrappers = document.querySelectorAll(".picture-des");
+    // if (wrappers) {
+    //   for (const wrapper of wrappers) {
+    //     console.log(wrapper.children);
+    //     wrapper.children[1].onchange = () => {
+    //       wrapper.children[0].textContent = this.files[0].name;
+    //     };
+    //   }
+    // }
+
+    document.querySelector(".add-pic").addEventListener("click", () => {
+      countPic++;
+      updateFile();
+      document.querySelector(".ver-input").insertAdjacentHTML(
+        "beforeend",
+        `<div class="hor-input">
+          <label>Ảnh mô tả:</label>
+          <div class="input-file-wrapper picture-des">
+            <label class="img-course-des-${countPic}" for="img-course-des-input-${countPic}">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="file-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              Chọn tệp
+            </label>
+            <input
+              type="file"
+              id="img-course-des-input-${countPic}"
+              name="img-course"
+              accept=".jpg,.jpeg,.png"
+            />
+          </div>
+        </div>`
+      );
+
+      // var up = document.getElementById("GFG_UP");
+      // var down = document.getElementById("GFG_DOWN");
+      // up.innerHTML = "Click on the button select the child node.";
+
+      // function GFG_Fun() {
+      //   parent = document.getElementById("parent");
+      //   children = parent.children[0];
+      //   down.innerHTML = "Text of child node is - '" + children.innerHTML + "'";
+      // }
+    });
+  </script>
+</html>
