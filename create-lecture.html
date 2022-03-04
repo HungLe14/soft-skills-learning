@@ -281,12 +281,7 @@
                         </svg>
                         Chọn tệp</label
                       >
-                      <input
-                        type="file"
-                        id="img-course"
-                        name="img-course"
-                        accept=".jpg,.jpeg,.png"
-                      />
+                      <input type="file" id="img-course" name="img-course" />
                     </div>
                   </div>
                   <div class="button-control">
@@ -370,6 +365,8 @@
     let countPic = 0;
     let countLecture = 0;
     let countWeek = 0;
+    let weekNum = 0;
+
     //add class active
     const menus = document.querySelectorAll(".item-wrapper");
     for (const menu of menus) {
@@ -402,6 +399,15 @@
         };
       }
     };
+
+    // update UI query
+    const weeks = document.querySelectorAll(".week");
+    for (const week of weeks) {
+      week.addEventListener("click", (e) => {
+        let weekNum = e.target.innerHTML;
+        console.log(weekNum);
+      });
+    }
 
     // click to add picture
     document.querySelector(".add-pic").addEventListener("click", () => {
@@ -445,8 +451,9 @@
     // click to add practice
     document.querySelector(".add-practice").addEventListener("click", () => {
       countLecture++;
-      document.querySelector(".list-practice").insertAdjacentHTML(
-        "beforeend",
+      const practiceWrap = document.querySelector(`.count-${weekNum}`);
+      practiceWrap.insertAdjacentHTML(
+        "beforeend", 
         `<li class="practice">
                       <div class="practice-wrapper">
                         <a href="#" class="practice-name practice-active"
@@ -499,9 +506,26 @@
           "beforeend",
           `
         <p class="week">Tuần ${countWeek}</p>
-        <ul class="list-practice"></ul>
+        <ul class="list-practice count-${weekNum + 1}"></ul>
       `
         );
+    });
+
+    // observer changing in form-menu node
+    const mutationObs = new MutationObserver(() => {
+      const weeks = document.querySelectorAll(".week");
+      console.log(weeks);
+      for (const week of weeks) {
+        week.addEventListener("click", (e) => {
+          weekNum = +e.target.innerHTML.match(/\d/)[0];
+          countLecture = 0;
+          console.log(weekNum);
+        });
+      }
+    });
+
+    mutationObs.observe(document.querySelector(".form-menu"), {
+      childList: true,
     });
   </script>
 </html>
