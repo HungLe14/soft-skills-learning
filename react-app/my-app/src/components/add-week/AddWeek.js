@@ -1,10 +1,10 @@
 import React from "react";
-import classes from "./AddTest.module.css";
+import classes from "./AddWeek.module.css";
 
-export const AddTest = (props) => {
+export const AddWeek = (props) => {
   return (
     <div>
-      <div className={classes["add-test"]} onClick={props.onClick}>
+      <div className={classes["add-week"]} onClick={props.onClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -18,7 +18,7 @@ export const AddTest = (props) => {
             d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-        <span>Thêm bài kiểm tra</span>
+        <span>Thêm tuần</span>
       </div>
     </div>
   );

@@ -1,10 +1,13 @@
 import "./App.css";
-import { AddPractice } from "./components/add-practice/AddPractice";
+import { DashBoard } from "./components/DashBoard/DashBoard";
+import { Form } from "./components/form/Form";
 
 function App() {
   return (
     <div className="App">
-      <AddPractice></AddPractice>
+      <DashBoard>
+        <Form />
+      </DashBoard>
     </div>
   );
 }

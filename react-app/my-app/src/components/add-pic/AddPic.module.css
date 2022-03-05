@@ -1,22 +1,22 @@
-.add-test {
-  width: auto;
+.add-pic {
+  width: 30%;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
-.add-test:hover {
+.add-pic:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.add-test > svg {
+.add-pic > svg {
   width: 3rem;
   height: 3rem;
   color: #0480dc;
 }
 
-.add-test > span {
+.add-pic > span {
   font-size: 2.4rem;
   color: #0480dc;
 }

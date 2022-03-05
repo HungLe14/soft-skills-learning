@@ -1,0 +1,28 @@
+.practice {
+  font-size: 2.4rem;
+}
+
+.practice-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.practice-name {
+  color: #000;
+  font-size: 2.4rem;
+}
+
+.practice-active {
+  text-decoration: underline #000 2px;
+}
+
+.practice-wrapper > svg {
+  color: #bc2552;
+  width: 2rem;
+  height: 2rem;
+}
+
+.practice-wrapper > svg:hover {
+  cursor: pointer;
+}

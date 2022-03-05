@@ -1,0 +1,9 @@
+.dashboard-container {
+  padding: 4rem 6rem;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}

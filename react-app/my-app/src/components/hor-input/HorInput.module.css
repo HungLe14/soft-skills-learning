@@ -1,0 +1,59 @@
+.hor-input {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hor-input > label {
+  font-size: 2.4rem;
+}
+
+.hor-input > input[type="text"] {
+  padding: 1rem;
+  width: 50%;
+  outline: none;
+  border-radius: 10px;
+  font-size: 2.4rem;
+}
+
+.hor-input .input-file-wrapper > input[type="file"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.hor-input .input-file-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  width: auto;
+  height: 4rem;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.hor-input .input-file-wrapper:hover,
+.hor-input .input-file-wrapper > label,
+.hor-input .input-file-wrapper > label > svg {
+  cursor: pointer;
+}
+
+.input-file-wrapper .file-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #fff;
+}
+
+.input-file-wrapper > label {
+  display: block;
+  margin: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
