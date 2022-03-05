@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./asset/global.css" />
+  <link rel="stylesheet" href="/asset/navbar.css" />
+  <link rel="stylesheet" href="/asset/system-screen.css" />
+  <link rel="stylesheet" href="./asset/make-report.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+  <title>Document</title>
+  <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script>
+
+</head>
+
+<body>
+  <!-- NAVBAR FOR USER -->
+  <nav class="navbar1">
+    <ul class="nav-list">
+      <li class="item">
+        <div class="input-nav-group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input class="search-input" type="text" placeholder="Tìm kiếm khóa học" />
+        </div>
+        <a href="./account-info.html">
+          <div class="user-group">
+            <div><img class="user-img" src="./img/user.png" /></div>
+            <span class="user-name">Juniorx</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="user-icon" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </a>
+        <div class="button-group">
+          <a href="signin-screen.html" class="btn1 btn-signout">Đăng xuất</a>
+          <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon signout" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+
+  <div class="row bg report">
+    <div class="col-6">
+      <div class="help">
+        <span>Rất vui lòng được hỗ trợ bạn</span>
+        <form>
+          <div class="form-group row">
+            <label for="form-couse-name" class="col-2 col-form-label">Tên Khóa Học</label>
+            <div class="col-9">
+              <input type="text" class="form-control" id="form-couse-name" placeholder="Tên Khóa Học">
+            </div>
+          </div>
+          <div class="form-group row change-m1">
+            <label for="form-couse-title" class="col-2 col-form-label">Tiêu Đề</label>
+            <div class="col-9">
+              <input type="password" class="form-control" id="form-couse-title" placeholder="Tiêu Đề">
+            </div>
+          </div>
+          <div class="form-group row change-m2">
+            <label for="form-couse-comment" class="col-2 col-form-label">Nội Dung</label>
+            <div class="col-9">
+              <textarea id="form-couse-comment"></textarea>
+            </div>
+          </div>
+          <div class="form-group row change-m2">
+            <div class="col-2"></div>
+            <div class="col-9">
+              <input type="submit" class="submit">
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <div class="col-6 text-center">
+      <div class="help">
+        <span>THÔNG TIN LIÊN HỆ KHÁC</span>
+        <div class="info mt-5">
+          Tổng đài tư vấn, hỗ trợ khách hàng (7h30 đến 22h): 094.84.83.85.6 hoặc 0389.16.21.10
+        </div>
+        <div class="phone mt-5">
+          Tổng đài khiếu nại: 094.84.83.85.6
+        </div>
+        <div class="mail mt-5">
+          Email: binhnnse04190@gmail.com
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
+</body>
+<script>
+  const menus = document.querySelectorAll(".item-wrapper");
+  for (const menu of menus) {
+    menu.addEventListener("click", () => {
+      const tab = document.querySelector(".active");
+      if (tab) {
+        tab.classList.remove("active");
+      }
+      menu.classList.add("active");
+    });
+  }
+</script>
+
+
+</html>

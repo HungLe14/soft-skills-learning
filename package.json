@@ -1,0 +1,23 @@
+{
+  "name": "soft-skills-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liyongxing1410/soft-skills-learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liyongxing1410/soft-skills-learning/issues"
+  },
+  "homepage": "https://github.com/liyongxing1410/soft-skills-learning#readme",
+  "dependencies": {
+    "@ckeditor/ckeditor5-alignment": "^32.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^32.0.0"
+  }
+}
