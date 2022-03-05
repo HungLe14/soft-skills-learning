@@ -1,13 +1,13 @@
 import React from "react";
 import classes from "./Practice.module.css";
 
-export const Practice = (props) => {
+export const Test = (props) => {
   return (
     <div>
       <li className={classes["practice"]}>
         <div className={classes["practice-wrapper"]}>
           <a href="#" className={classes["practice-name"]}>
-            Bài {props.practice + 1}
+            Bài kiểm tra {props.test + 1}
           </a>
           <svg
             xmlns="http://www.w3.org/2000/svg"

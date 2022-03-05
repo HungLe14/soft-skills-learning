@@ -4,6 +4,7 @@
 }
 
 .form-menu {
+  padding-right: 3rem;
   width: 40%;
   display: flex;
   flex-direction: column;

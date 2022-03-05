@@ -8,7 +8,7 @@ export const Week = (props) => {
         props.onClick(e.target.textContent);
       }}
     >
-      <p className={classes["week"]}>Tuần 1</p>
+      <p className={classes["week"]}>Tuần {props.week + 1}</p>
     </div>
   );
 };

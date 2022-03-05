@@ -36,12 +36,17 @@ const rootReducer = {
   },
 
   addPractice(state) {
-    state.weekArr[state.currentWeek].push({
-      week: {
-        ...state.weekArr[state.currentWeek].week,
-        numberOfTest: state.weekArr[state.currentWeek].week.numberOfPractice++,
-      },
+    const practiceArr = state.weekArr[state.currentWeek - 1].week;
+    practiceArr.totalTest++;
+    practiceArr.practice.push({
+      practiceNumber: state.weekArr[state.currentWeek - 1].week.totalPractice,
+      description: "",
     });
+
+    state.weekArr[state.currentWeek - 1].week = {
+      ...state.weekArr[state.currentWeek - 1].week,
+      numberOfPractice: state.weekArr[state.currentWeek - 1].week.totalPractice,
+    };
   },
 
   changeCurrentWeek(state, action) {
