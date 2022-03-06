@@ -6,9 +6,17 @@ export const Practice = (props) => {
     <div>
       <li className={classes["practice"]}>
         <div className={classes["practice-wrapper"]}>
-          <a href="#" className={classes["practice-name"]}>
+          <span
+            className={classes["practice-name"]}
+            onClick={() => {
+              props.onClick({
+                practice: props.practice,
+                week: props.week + 1,
+              });
+            }}
+          >
             Bài {props.practice}
-          </a>
+          </span>
           <svg
             onClick={() => {
               props.onDelete(props.practice);

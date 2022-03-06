@@ -4,6 +4,7 @@ const initState = {
   weekArr: [],
   numberOfWeek: 0,
   currentWeek: 0,
+  currentPractice: 0,
 };
 
 const rootReducer = {
@@ -19,6 +20,7 @@ const rootReducer = {
       },
     });
     state.currentWeek = state.weekArr.length;
+    state.currentPractice = 0;
   },
 
   addTest(state) {
@@ -58,6 +60,9 @@ const rootReducer = {
       ...state.weekArr[state.currentWeek - 1].week,
       numberOfPractice: state.weekArr[state.currentWeek - 1].week.totalPractice,
     };
+
+    state.currentPractice =
+      state.weekArr[state.currentWeek - 1].week.practice.length;
   },
 
   deletePractice(state, action) {
@@ -71,6 +76,20 @@ const rootReducer = {
 
   changeCurrentWeek(state, action) {
     state.currentWeek = action.payload;
+    state.currentPractice = 1;
+  },
+
+  changeCurrentPractice(state, action) {
+    state.currentPractice = action.payload.practice;
+    state.currentWeek = action.payload.week;
+  },
+
+  changeInput(state, action) {
+    const practiceArr = state.weekArr[state.currentWeek - 1].week.practice;
+    practiceArr[state.currentPractice - 1] = {
+      ...practiceArr[state.currentPractice - 1],
+      description: action.payload,
+    };
   },
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AddPic } from "../add-pic/AddPic";
 import { AddPractice } from "../add-practice/AddPractice";
 import { AddTest } from "../add-test/AddTest";
@@ -44,9 +44,14 @@ export const Form = (props) => {
   };
 
   // change current week
-  const changeWeekHandler = (string) => {
-    const payload = string.match(/\d/);
-    dispatch(practiceAction.changeCurrentWeek(payload[0]));
+  const changeWeekHandler = (weekNum) => {
+    // const payload = string.match(/\d/);
+    dispatch(practiceAction.changeCurrentWeek(weekNum));
+  };
+
+  // change current practice
+  const changePracticeHandler = (practiceNum) => {
+    dispatch(practiceAction.changeCurrentPractice(practiceNum));
   };
 
   return (
@@ -65,8 +70,10 @@ export const Form = (props) => {
                           return (
                             <Practice
                               key={index}
+                              week={indexWeek}
                               practice={practice.practiceNumber}
                               onDelete={deletePracticeHandler}
+                              onClick={changePracticeHandler}
                             />
                           );
                         }
