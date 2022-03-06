@@ -16,7 +16,6 @@ import { practiceAction } from "../store";
 
 export const Form = (props) => {
   const weekArr = useSelector((state) => state.weekArr);
-  const currentWeek = useSelector((state) => state.currentWeek);
   const dispatch = useDispatch();
 
   // add week
@@ -29,17 +28,25 @@ export const Form = (props) => {
     dispatch(practiceAction.addTest());
   };
 
+  // delete test
+  const deleteTestHandler = (id) => {
+    dispatch(practiceAction.deleteTest(id));
+  };
+
   // add practice
   const addPracticeHandler = () => {
     dispatch(practiceAction.addPractice());
   };
 
+  // delete practice
+  const deletePracticeHandler = (id) => {
+    dispatch(practiceAction.deletePractice(id));
+  };
+
   // change current week
   const changeWeekHandler = (string) => {
     const payload = string.match(/\d/);
-    console.log(payload[0]);
     dispatch(practiceAction.changeCurrentWeek(payload[0]));
-    console.log(string);
   };
 
   return (
@@ -53,11 +60,25 @@ export const Form = (props) => {
                   <div key={indexWeek}>
                     <Week onClick={changeWeekHandler} week={indexWeek} />
                     <ListPractice>
-                      {weekArr[indexWeek].week.practice.map((_, index) => {
-                        return <Practice key={index} practice={index} />;
-                      })}
-                      {weekArr[indexWeek].week.test.map((_, index) => {
-                        return <Test key={index} test={index} />;
+                      {weekArr[indexWeek].week.practice.map(
+                        (practice, index) => {
+                          return (
+                            <Practice
+                              key={index}
+                              practice={practice.practiceNumber}
+                              onDelete={deletePracticeHandler}
+                            />
+                          );
+                        }
+                      )}
+                      {weekArr[indexWeek].week.test.map((test, index) => {
+                        return (
+                          <Test
+                            key={index}
+                            test={test.testNumber}
+                            onDelete={deleteTestHandler}
+                          />
+                        );
                       })}
                     </ListPractice>
                   </div>

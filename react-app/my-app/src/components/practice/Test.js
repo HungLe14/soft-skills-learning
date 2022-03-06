@@ -7,9 +7,12 @@ export const Test = (props) => {
       <li className={classes["practice"]}>
         <div className={classes["practice-wrapper"]}>
           <a href="#" className={classes["practice-name"]}>
-            Bài kiểm tra {props.test + 1}
+            Bài kiểm tra {props.test}
           </a>
           <svg
+            onClick={() => {
+              props.onDelete(props.test);
+            }}
             xmlns="http://www.w3.org/2000/svg"
             className={classes["delete-icon"]}
             fill="none"

@@ -7,9 +7,12 @@ export const Practice = (props) => {
       <li className={classes["practice"]}>
         <div className={classes["practice-wrapper"]}>
           <a href="#" className={classes["practice-name"]}>
-            Bài {props.practice + 1}
+            Bài {props.practice}
           </a>
           <svg
+            onClick={() => {
+              props.onDelete(props.practice);
+            }}
             xmlns="http://www.w3.org/2000/svg"
             className={classes["delete-icon"]}
             fill="none"

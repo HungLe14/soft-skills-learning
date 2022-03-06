@@ -27,6 +27,7 @@ const rootReducer = {
     testArr.test.push({
       testNumber: state.weekArr[state.currentWeek - 1].week.totalTest,
       description: "",
+      image: "",
     });
 
     state.weekArr[state.currentWeek - 1].week = {
@@ -35,18 +36,37 @@ const rootReducer = {
     };
   },
 
+  deleteTest(state, action) {
+    const testArr = state.weekArr[state.currentWeek - 1].week;
+    testArr.totalTest--;
+    const newTestArr = testArr.test.filter((test) => {
+      return test.testNumber !== action.payload;
+    });
+    testArr.test = [...newTestArr];
+  },
+
   addPractice(state) {
     const practiceArr = state.weekArr[state.currentWeek - 1].week;
-    practiceArr.totalTest++;
+    practiceArr.totalPractice++;
     practiceArr.practice.push({
       practiceNumber: state.weekArr[state.currentWeek - 1].week.totalPractice,
       description: "",
+      image: "",
     });
 
     state.weekArr[state.currentWeek - 1].week = {
       ...state.weekArr[state.currentWeek - 1].week,
       numberOfPractice: state.weekArr[state.currentWeek - 1].week.totalPractice,
     };
+  },
+
+  deletePractice(state, action) {
+    const practiceArr = state.weekArr[state.currentWeek - 1].week;
+    practiceArr.totalPractice--;
+    const newPracticeArr = practiceArr.practice.filter((practice) => {
+      return practice.practiceNumber !== action.payload;
+    });
+    practiceArr.practice = [...newPracticeArr];
   },
 
   changeCurrentWeek(state, action) {
