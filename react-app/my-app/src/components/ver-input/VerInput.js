@@ -15,20 +15,26 @@ export const VerInput = (props) => {
     dispatch(practiceAction.changeInput(inputRef.current.value));
   };
 
+  const changeContentHandler = () => {
+    dispatch(practiceAction.changeCurrentContent(props.contentIndex + 1));
+  };
   return (
     <div>
       <div className={classes["ver-input"]}>
-        <label htmlFor="des-course">Nội dung bài giảng:</label>
+        <label htmlFor={`des-course-${props.contentIndex}`}>
+          Nội dung bài giảng:
+        </label>
         <textarea
           rows="10"
           placeholder="Viết tóm tắt nội dung khóa học"
-          id="des-course"
+          id={`des-course-${props.contentIndex}`}
           name="des-course"
           ref={inputRef}
           onChange={changeInputHandler}
+          onClick={changeContentHandler}
           value={
             weekArr[currentWeek - 1]?.week.practice[currentPractice - 1]
-              ?.description
+              ?.description[props.contentIndex]?.content
           }
         ></textarea>
       </div>

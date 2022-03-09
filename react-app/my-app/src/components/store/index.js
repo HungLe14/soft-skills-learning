@@ -5,6 +5,7 @@ const initState = {
   numberOfWeek: 0,
   currentWeek: 0,
   currentPractice: 0,
+  currentContent: 0,
 };
 
 const rootReducer = {
@@ -52,8 +53,8 @@ const rootReducer = {
     practiceArr.totalPractice++;
     practiceArr.practice.push({
       practiceNumber: state.weekArr[state.currentWeek - 1].week.totalPractice,
-      description: "",
-      image: "",
+      description: [],
+      image: [],
     });
 
     state.weekArr[state.currentWeek - 1].week = {
@@ -63,6 +64,8 @@ const rootReducer = {
 
     state.currentPractice =
       state.weekArr[state.currentWeek - 1].week.practice.length;
+
+    state.currentContent = 0;
   },
 
   deletePractice(state, action) {
@@ -74,6 +77,19 @@ const rootReducer = {
     practiceArr.practice = [...newPracticeArr];
   },
 
+  addContentPractice(state) {
+    const contentArr =
+      state.weekArr[state.currentWeek - 1].week.practice[
+        state.currentPractice - 1
+      ].description;
+    state.currentContent = contentArr.length;
+    state.currentContent++;
+    contentArr.push({
+      number: state.currentContent,
+      content: "",
+    });
+  },
+
   changeCurrentWeek(state, action) {
     state.currentWeek = action.payload;
     state.currentPractice = 1;
@@ -82,13 +98,21 @@ const rootReducer = {
   changeCurrentPractice(state, action) {
     state.currentPractice = action.payload.practice;
     state.currentWeek = action.payload.week;
+    state.currentContent = 0;
+  },
+
+  changeCurrentContent(state, action) {
+    state.currentContent = action.payload;
   },
 
   changeInput(state, action) {
-    const practiceArr = state.weekArr[state.currentWeek - 1].week.practice;
-    practiceArr[state.currentPractice - 1] = {
-      ...practiceArr[state.currentPractice - 1],
-      description: action.payload,
+    const contentArr =
+      state.weekArr[state.currentWeek - 1].week.practice[
+        state.currentPractice - 1
+      ].description;
+    contentArr[state.currentContent - 1] = {
+      ...contentArr[state.currentContent - 1],
+      content: action.payload,
     };
   },
 };

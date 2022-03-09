@@ -19,7 +19,7 @@ export const Content = (props) => {
   };
   return (
     <div className={classes["content-wrapper"]}>
-      <VerInput />
+      <VerInput contentIndex={props.contentIndex} />
       {picArr.map((_, index) => {
         return (
           <InputPic

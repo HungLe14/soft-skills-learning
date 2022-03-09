@@ -17,6 +17,8 @@ import { Content } from "../content/content";
 export const Form = (props) => {
   const [content, setContent] = useState([]);
   const weekArr = useSelector((state) => state.weekArr);
+  const currentWeek = useSelector((state) => state.currentWeek);
+  const currentPractice = useSelector((state) => state.currentPractice);
   const dispatch = useDispatch();
 
   // add week
@@ -57,9 +59,7 @@ export const Form = (props) => {
 
   // add content
   const addContentHandler = () => {
-    const newContentArr = [...content];
-    newContentArr.push({});
-    setContent([...newContentArr]);
+    dispatch(practiceAction.addContentPractice());
   };
 
   return (
@@ -105,7 +105,9 @@ export const Form = (props) => {
             <AddWeek onClick={addWeekHandler} />
           </div>
           <div className={classes["form-content"]}>
-            {content.map((c, index) => (
+            {weekArr[currentWeek - 1]?.week?.practice[
+              currentPractice - 1
+            ]?.description.map((c, index) => (
               <Content key={index} contentIndex={index} />
             ))}
             <AddContent onClick={addContentHandler} />
