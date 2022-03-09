@@ -54,7 +54,6 @@ const rootReducer = {
     practiceArr.practice.push({
       practiceNumber: state.weekArr[state.currentWeek - 1].week.totalPractice,
       description: [],
-      image: [],
     });
 
     state.weekArr[state.currentWeek - 1].week = {
@@ -87,7 +86,29 @@ const rootReducer = {
     contentArr.push({
       number: state.currentContent,
       content: "",
+      image: [],
     });
+  },
+
+  addPicPractice(state) {
+    const imageArr =
+      state.weekArr[state.currentWeek - 1].week.practice[
+        state.currentPractice - 1
+      ].description[state.currentContent - 1]?.image;
+    imageArr.push({
+      name: "Chọn ảnh",
+    });
+  },
+
+  selectPic(state, action) {
+    const imageArr =
+      state.weekArr[state.currentWeek - 1].week.practice[
+        state.currentPractice - 1
+      ].description[state.currentContent - 1].image;
+    imageArr[action.payload.index] = {
+      ...imageArr[action.payload.index],
+      name: action.payload.name,
+    };
   },
 
   changeCurrentWeek(state, action) {

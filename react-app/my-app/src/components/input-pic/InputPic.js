@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./InputPic.module.css";
 
 export const InputPic = (props) => {
-  console.log(props.contentIndex, props.inputIndex);
   return (
     <div className={classes["hor-input"]}>
       <label>Ảnh mô tả:</label>

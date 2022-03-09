@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AddPractice } from "../add-practice/AddPractice";
 import { AddTest } from "../add-test/AddTest";
 import { AddWeek } from "../add-week/AddWeek";
@@ -15,7 +15,6 @@ import { AddContent } from "../add-content/AddContent";
 import { Content } from "../content/content";
 
 export const Form = (props) => {
-  const [content, setContent] = useState([]);
   const weekArr = useSelector((state) => state.weekArr);
   const currentWeek = useSelector((state) => state.currentWeek);
   const currentPractice = useSelector((state) => state.currentPractice);
