@@ -29,8 +29,7 @@ const rootReducer = {
     testArr.totalTest++;
     testArr.test.push({
       testNumber: state.weekArr[state.currentWeek - 1].week.totalTest,
-      description: "",
-      image: "",
+      exams: [],
     });
 
     state.weekArr[state.currentWeek - 1].week = {

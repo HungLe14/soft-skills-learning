@@ -5,10 +5,10 @@ export const Test = (props) => {
   return (
     <div>
       <li className={classes["practice"]}>
-        <div className={classes["practice-wrapper"]}>
-          <a href="#" className={classes["practice-name"]}>
+        <div className={classes["practice-wrapper"]} onClick={props.onClick}>
+          <span className={classes["practice-name"]}>
             Bài kiểm tra {props.test}
-          </a>
+          </span>
           <svg
             onClick={() => {
               props.onDelete(props.test);

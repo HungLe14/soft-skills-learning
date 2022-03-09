@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AddPractice } from "../add-practice/AddPractice";
 import { AddTest } from "../add-test/AddTest";
 import { AddWeek } from "../add-week/AddWeek";
@@ -13,8 +13,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { practiceAction } from "../store";
 import { AddContent } from "../add-content/AddContent";
 import { Content } from "../content/content";
+import { TestModule } from "../test/TestModule";
+import { AddQuestion } from "../add-question/AddQuestion";
 
 export const Form = (props) => {
+  const [showTest, setShowTest] = useState(false);
   const weekArr = useSelector((state) => state.weekArr);
   const currentWeek = useSelector((state) => state.currentWeek);
   const currentPractice = useSelector((state) => state.currentPractice);
@@ -54,11 +57,17 @@ export const Form = (props) => {
   // change current practice
   const changePracticeHandler = (practiceNum) => {
     dispatch(practiceAction.changeCurrentPractice(practiceNum));
+    setShowTest(false);
   };
 
   // add content
   const addContentHandler = () => {
     dispatch(practiceAction.addContentPractice());
+  };
+
+  // show test
+  const showTestHandler = () => {
+    setShowTest(true);
   };
 
   return (
@@ -91,6 +100,7 @@ export const Form = (props) => {
                             key={index}
                             test={test.testNumber}
                             onDelete={deleteTestHandler}
+                            onClick={showTestHandler}
                           />
                         );
                       })}
@@ -104,13 +114,23 @@ export const Form = (props) => {
             <AddWeek onClick={addWeekHandler} />
           </div>
           <div className={classes["form-content"]}>
-            {weekArr[currentWeek - 1]?.week?.practice[
-              currentPractice - 1
-            ]?.description.map((c, index) => (
-              <Content key={index} contentIndex={index} />
-            ))}
-            <AddContent onClick={addContentHandler} />
-            <HorInput />
+            {!showTest ? (
+              <React.Fragment>
+                {weekArr[currentWeek - 1]?.week?.practice[
+                  currentPractice - 1
+                ]?.description.map((c, index) => (
+                  <Content key={index} contentIndex={index} />
+                ))}
+                <AddContent onClick={addContentHandler} />
+                <HorInput />
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+              {weekArr[currentWeek - 1].week.practice[currentPractice - 1]}
+                <TestModule />
+                <AddQuestion />
+              </React.Fragment>
+            )}
             <ButtonControl />
           </div>
         </div>
