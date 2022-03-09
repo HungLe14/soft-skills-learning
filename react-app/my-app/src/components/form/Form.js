@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AddPic } from "../add-pic/AddPic";
 import { AddPractice } from "../add-practice/AddPractice";
 import { AddTest } from "../add-test/AddTest";
@@ -7,6 +7,7 @@ import { ButtonControl } from "../button-control/ButtonControl";
 import { HorInput } from "../hor-input/HorInput";
 import { ListPractice } from "../list-practice/ListPractice";
 import { Practice } from "../practice/Practice";
+import { Test } from "../practice/Test";
 import { VerInput } from "../ver-input/VerInput";
 import { Week } from "../week/Week";
 import classes from "./Form.module.css";
@@ -15,10 +16,9 @@ import { practiceAction } from "../store";
 
 export const Form = (props) => {
   const weekArr = useSelector((state) => state.weekArr);
-  const currentWeek = useSelector((state) => state.currentWeek);
   const dispatch = useDispatch();
 
-  // add practice
+  // add week
   const addWeekHandler = () => {
     dispatch(practiceAction.addWeek());
   };
@@ -28,35 +28,71 @@ export const Form = (props) => {
     dispatch(practiceAction.addTest());
   };
 
-  // change current week
-  const changeWeekHandler = (string) => {
-    const payload = string.match(/\d/);
-    console.log(payload[0]);
-    dispatch(practiceAction.changeCurrentWeek(payload[0]));
-    console.log(string);
+  // delete test
+  const deleteTestHandler = (id) => {
+    dispatch(practiceAction.deleteTest(id));
   };
+
+  // add practice
+  const addPracticeHandler = () => {
+    dispatch(practiceAction.addPractice());
+  };
+
+  // delete practice
+  const deletePracticeHandler = (id) => {
+    dispatch(practiceAction.deletePractice(id));
+  };
+
+  // change current week
+  const changeWeekHandler = (weekNum) => {
+    // const payload = string.match(/\d/);
+    dispatch(practiceAction.changeCurrentWeek(weekNum));
+  };
+
+  // change current practice
+  const changePracticeHandler = (practiceNum) => {
+    dispatch(practiceAction.changeCurrentPractice(practiceNum));
+  };
+
   return (
     <React.Fragment>
       <form>
         <div className={classes["form-wrapper"]}>
           <div className={classes["form-menu"]}>
             <div className={classes["practice-detail"]}>
-              {weekArr.map((week, index) => {
+              {weekArr.map((week, indexWeek) => {
                 return (
-                  <div key={index}>
-                    <Week onClick={changeWeekHandler} />
+                  <div key={indexWeek}>
+                    <Week onClick={changeWeekHandler} week={indexWeek} />
                     <ListPractice>
-                      {weekArr[currentWeek - 1].week.test.map(
+                      {weekArr[indexWeek].week.practice.map(
                         (practice, index) => {
-                          return <Practice key={index} />;
+                          return (
+                            <Practice
+                              key={index}
+                              week={indexWeek}
+                              practice={practice.practiceNumber}
+                              onDelete={deletePracticeHandler}
+                              onClick={changePracticeHandler}
+                            />
+                          );
                         }
                       )}
+                      {weekArr[indexWeek].week.test.map((test, index) => {
+                        return (
+                          <Test
+                            key={index}
+                            test={test.testNumber}
+                            onDelete={deleteTestHandler}
+                          />
+                        );
+                      })}
                     </ListPractice>
                   </div>
                 );
               })}
             </div>
-            <AddPractice />
+            <AddPractice onClick={addPracticeHandler} />
             <AddTest onClick={addTestHandler} />
             <AddWeek onClick={addWeekHandler} />
           </div>

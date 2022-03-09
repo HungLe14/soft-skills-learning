@@ -1,25 +1,17 @@
 import React from "react";
 import classes from "./Practice.module.css";
 
-export const Practice = (props) => {
+export const Test = (props) => {
   return (
     <div>
       <li className={classes["practice"]}>
         <div className={classes["practice-wrapper"]}>
-          <span
-            className={classes["practice-name"]}
-            onClick={() => {
-              props.onClick({
-                practice: props.practice,
-                week: props.week + 1,
-              });
-            }}
-          >
-            Bài {props.practice}
-          </span>
+          <a href="#" className={classes["practice-name"]}>
+            Bài kiểm tra {props.test}
+          </a>
           <svg
             onClick={() => {
-              props.onDelete(props.practice);
+              props.onDelete(props.test);
             }}
             xmlns="http://www.w3.org/2000/svg"
             className={classes["delete-icon"]}
