@@ -25,6 +25,10 @@
   color: #fff;
 }
 
+.button-node:hover {
+  cursor: pointer;
+}
+
 .button-node > svg {
   width: 3rem;
   height: 3rem;
