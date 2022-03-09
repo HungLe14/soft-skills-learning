@@ -12,7 +12,7 @@ export const Content = (props) => {
   const currentWeek = useSelector((state) => state.currentWeek);
   const currentPractice = useSelector((state) => state.currentPractice);
   const picArr =
-    weekArr[currentWeek - 1].week.practice[currentPractice - 1].description[
+    weekArr[currentWeek - 1].practice[currentPractice - 1].description[
       props.contentIndex
     ]?.image;
 

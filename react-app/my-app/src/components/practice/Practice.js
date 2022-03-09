@@ -20,7 +20,8 @@ export const Practice = (props) => {
             style={{
               color: `${
                 currentPractice === props.practice &&
-                currentWeek === props.week + 1
+                currentWeek === props.week + 1 &&
+                !props.showTest
                   ? `#40abdf`
                   : `#000`
               }`,

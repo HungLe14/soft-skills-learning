@@ -21,6 +21,7 @@ export const Form = (props) => {
   const weekArr = useSelector((state) => state.weekArr);
   const currentWeek = useSelector((state) => state.currentWeek);
   const currentPractice = useSelector((state) => state.currentPractice);
+  const currentTest = useSelector((state) => state.currentTest);
   const dispatch = useDispatch();
 
   // add week
@@ -36,6 +37,11 @@ export const Form = (props) => {
   // delete test
   const deleteTestHandler = (id) => {
     dispatch(practiceAction.deleteTest(id));
+  };
+
+  // add question to test
+  const addQuestionHandler = () => {
+    dispatch(practiceAction.addQuestionToTest());
   };
 
   // add practice
@@ -66,8 +72,14 @@ export const Form = (props) => {
   };
 
   // show test
-  const showTestHandler = () => {
+  const switchTestHandler = (currentTest, weekIndex) => {
     setShowTest(true);
+    dispatch(
+      practiceAction.changeCurrentTest({
+        currentTest,
+        weekIndex,
+      })
+    );
   };
 
   return (
@@ -79,28 +91,33 @@ export const Form = (props) => {
               {weekArr.map((week, indexWeek) => {
                 return (
                   <div key={indexWeek}>
-                    <Week onClick={changeWeekHandler} week={indexWeek} />
+                    <Week
+                      onClick={changeWeekHandler}
+                      week={indexWeek}
+                      showTest={showTest}
+                    />
                     <ListPractice>
-                      {weekArr[indexWeek].week.practice.map(
-                        (practice, index) => {
-                          return (
-                            <Practice
-                              key={index}
-                              week={indexWeek}
-                              practice={practice.practiceNumber}
-                              onDelete={deletePracticeHandler}
-                              onClick={changePracticeHandler}
-                            />
-                          );
-                        }
-                      )}
-                      {weekArr[indexWeek].week.test.map((test, index) => {
+                      {weekArr[indexWeek].practice.map((practice, index) => {
+                        return (
+                          <Practice
+                            key={index}
+                            week={indexWeek}
+                            practice={practice.practiceNumber}
+                            onDelete={deletePracticeHandler}
+                            onClick={changePracticeHandler}
+                            showTest={showTest}
+                          />
+                        );
+                      })}
+                      {weekArr[indexWeek].test.map((test, index) => {
                         return (
                           <Test
                             key={index}
+                            week={indexWeek}
                             test={test.testNumber}
                             onDelete={deleteTestHandler}
-                            onClick={showTestHandler}
+                            onClick={switchTestHandler}
+                            showTest={showTest}
                           />
                         );
                       })}
@@ -116,7 +133,7 @@ export const Form = (props) => {
           <div className={classes["form-content"]}>
             {!showTest ? (
               <React.Fragment>
-                {weekArr[currentWeek - 1]?.week?.practice[
+                {weekArr[currentWeek - 1]?.practice[
                   currentPractice - 1
                 ]?.description.map((c, index) => (
                   <Content key={index} contentIndex={index} />
@@ -126,9 +143,13 @@ export const Form = (props) => {
               </React.Fragment>
             ) : (
               <React.Fragment>
-              {weekArr[currentWeek - 1].week.practice[currentPractice - 1]}
-                <TestModule />
-                <AddQuestion />
+                {weekArr[currentWeek - 1]?.test[currentTest - 1]?.exams?.map(
+                  (e, index) => {
+                    return <TestModule questionIndex={index} key={index} />;
+                  }
+                )}
+
+                <AddQuestion onClick={addQuestionHandler} />
               </React.Fragment>
             )}
             <ButtonControl />

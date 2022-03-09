@@ -4,7 +4,7 @@ import classes from "./AddQuestion.module.css";
 export const AddQuestion = (props) => {
   return (
     <div>
-      <div className={classes["add-pic"]}>
+      <div className={classes["add-pic"]} onClick={props.onClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

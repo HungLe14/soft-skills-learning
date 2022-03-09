@@ -1,12 +1,31 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import classes from "./Practice.module.css";
 
 export const Test = (props) => {
+  const currentTest = useSelector((state) => state.currentTest);
+  const currentWeek = useSelector((state) => state.currentWeek);
   return (
     <div>
       <li className={classes["practice"]}>
-        <div className={classes["practice-wrapper"]} onClick={props.onClick}>
-          <span className={classes["practice-name"]}>
+        <div
+          className={classes["practice-wrapper"]}
+          onClick={() => {
+            props.onClick(props.test, props.week);
+          }}
+        >
+          <span
+            className={classes["practice-name"]}
+            style={{
+              color: `${
+                currentTest === props.test &&
+                currentWeek === props.week + 1 &&
+                props.showTest
+                  ? `#40abdf`
+                  : `#000`
+              }`,
+            }}
+          >
             Bài kiểm tra {props.test}
           </span>
           <svg

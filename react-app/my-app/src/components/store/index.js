@@ -6,40 +6,40 @@ const initState = {
   currentWeek: 0,
   currentPractice: 0,
   currentContent: 0,
+  currentTest: 0,
 };
 
 const rootReducer = {
   addWeek(state) {
     state.numberOfWeek++;
     state.weekArr.push({
-      week: {
-        numberOfWeek: state.numberOfWeek,
-        totalTest: 0,
-        test: [],
-        totalPractice: 0,
-        practice: [],
-      },
+      numberOfWeek: state.numberOfWeek,
+      totalTest: 0,
+      test: [],
+      totalPractice: 0,
+      practice: [],
     });
     state.currentWeek = state.weekArr.length;
     state.currentPractice = 0;
   },
 
   addTest(state) {
-    const testArr = state.weekArr[state.currentWeek - 1].week;
+    const testArr = state.weekArr[state.currentWeek - 1];
+    state.currentTest++;
     testArr.totalTest++;
     testArr.test.push({
-      testNumber: state.weekArr[state.currentWeek - 1].week.totalTest,
+      testNumber: state.weekArr[state.currentWeek - 1].totalTest,
       exams: [],
     });
 
-    state.weekArr[state.currentWeek - 1].week = {
-      ...state.weekArr[state.currentWeek - 1].week,
-      numberOfTest: state.weekArr[state.currentWeek - 1].week.totalTest,
+    state.weekArr[state.currentWeek - 1] = {
+      ...state.weekArr[state.currentWeek - 1],
+      numberOfTest: state.weekArr[state.currentWeek - 1].totalTest,
     };
   },
 
   deleteTest(state, action) {
-    const testArr = state.weekArr[state.currentWeek - 1].week;
+    const testArr = state.weekArr[state.currentWeek - 1];
     testArr.totalTest--;
     const newTestArr = testArr.test.filter((test) => {
       return test.testNumber !== action.payload;
@@ -47,27 +47,38 @@ const rootReducer = {
     testArr.test = [...newTestArr];
   },
 
+  addQuestionToTest(state, action) {
+    const exams =
+      state.weekArr[state.currentWeek - 1].test[state.currentTest - 1]?.exams;
+    exams?.push({
+      question: "",
+      point: 0,
+      answer: [],
+      correctAnswer: "",
+    });
+  },
+
   addPractice(state) {
-    const practiceArr = state.weekArr[state.currentWeek - 1].week;
+    const practiceArr = state.weekArr[state.currentWeek - 1];
     practiceArr.totalPractice++;
     practiceArr.practice.push({
-      practiceNumber: state.weekArr[state.currentWeek - 1].week.totalPractice,
+      practiceNumber: state.weekArr[state.currentWeek - 1].totalPractice,
       description: [],
     });
 
-    state.weekArr[state.currentWeek - 1].week = {
-      ...state.weekArr[state.currentWeek - 1].week,
-      numberOfPractice: state.weekArr[state.currentWeek - 1].week.totalPractice,
+    state.weekArr[state.currentWeek - 1] = {
+      ...state.weekArr[state.currentWeek - 1],
+      numberOfPractice: state.weekArr[state.currentWeek - 1].totalPractice,
     };
 
     state.currentPractice =
-      state.weekArr[state.currentWeek - 1].week.practice.length;
+      state.weekArr[state.currentWeek - 1].practice.length;
 
     state.currentContent = 0;
   },
 
   deletePractice(state, action) {
-    const practiceArr = state.weekArr[state.currentWeek - 1].week;
+    const practiceArr = state.weekArr[state.currentWeek - 1];
     practiceArr.totalPractice--;
     const newPracticeArr = practiceArr.practice.filter((practice) => {
       return practice.practiceNumber !== action.payload;
@@ -77,9 +88,8 @@ const rootReducer = {
 
   addContentPractice(state) {
     const contentArr =
-      state.weekArr[state.currentWeek - 1].week.practice[
-        state.currentPractice - 1
-      ].description;
+      state.weekArr[state.currentWeek - 1].practice[state.currentPractice - 1]
+        .description;
     state.currentContent = contentArr.length;
     state.currentContent++;
     contentArr.push({
@@ -91,9 +101,8 @@ const rootReducer = {
 
   addPicPractice(state, action) {
     const imageArr =
-      state.weekArr[state.currentWeek - 1].week.practice[
-        state.currentPractice - 1
-      ].description[action.payload]?.image;
+      state.weekArr[state.currentWeek - 1].practice[state.currentPractice - 1]
+        .description[action.payload]?.image;
     imageArr.push({
       name: "Chọn ảnh",
     });
@@ -101,9 +110,8 @@ const rootReducer = {
 
   selectPic(state, action) {
     const imageArr =
-      state.weekArr[state.currentWeek - 1].week.practice[
-        state.currentPractice - 1
-      ].description[action.payload.contentIndex].image;
+      state.weekArr[state.currentWeek - 1].practice[state.currentPractice - 1]
+        .description[action.payload.contentIndex].image;
     imageArr[action.payload.inputIndex] = {
       ...imageArr[action.payload.inputIndex],
       name: action.payload.name,
@@ -125,15 +133,46 @@ const rootReducer = {
     state.currentContent = action.payload;
   },
 
+  changeCurrentTest(state, action) {
+    state.currentTest = action.payload.currentTest;
+    state.currentWeek = action.payload.weekIndex + 1;
+  },
+
   changeInput(state, action) {
     const contentArr =
-      state.weekArr[state.currentWeek - 1].week.practice[
-        state.currentPractice - 1
-      ].description;
+      state.weekArr[state.currentWeek - 1].practice[state.currentPractice - 1]
+        .description;
     contentArr[state.currentContent - 1] = {
       ...contentArr[state.currentContent - 1],
       content: action.payload,
     };
+  },
+
+  setQuestionContent(state, action) {
+    const { exams } =
+      state.weekArr[state.currentWeek - 1].test[state.currentTest - 1];
+    exams[action.payload.questionIndex].question =
+      action.payload.questionContent;
+  },
+
+  setPointContent(state, action) {
+    const { exams } =
+      state.weekArr[state.currentWeek - 1].test[state.currentTest - 1];
+    exams[action.payload.questionIndex].point = action.payload.point;
+  },
+
+  setAnswerContent(state, action) {
+    const { exams } =
+      state.weekArr[state.currentWeek - 1].test[state.currentTest - 1];
+    exams[action.payload.questionIndex].answer[action.payload.answerIndex] =
+      action.payload.answer;
+  },
+
+  setCorrectAnswer(state, action) {
+    const { exams } =
+      state.weekArr[state.currentWeek - 1].test[state.currentTest - 1];
+    exams[action.payload.questionIndex].correctAnswer =
+      exams[action.payload.questionIndex].answer[action.payload.answerIndex];
   },
 };
 

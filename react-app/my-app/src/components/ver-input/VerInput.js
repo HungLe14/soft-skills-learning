@@ -33,8 +33,9 @@ export const VerInput = (props) => {
           onChange={changeInputHandler}
           onClick={changeContentHandler}
           value={
-            weekArr[currentWeek - 1]?.week.practice[currentPractice - 1]
-              ?.description[props.contentIndex]?.content
+            weekArr[currentWeek - 1].practice[currentPractice - 1]?.description[
+              props.contentIndex
+            ]?.content
           }
         ></textarea>
       </div>
