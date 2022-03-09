@@ -1,5 +1,4 @@
 import React from "react";
-import { AddPic } from "../add-pic/AddPic";
 import { AddPractice } from "../add-practice/AddPractice";
 import { AddTest } from "../add-test/AddTest";
 import { AddWeek } from "../add-week/AddWeek";
@@ -8,14 +7,17 @@ import { HorInput } from "../hor-input/HorInput";
 import { ListPractice } from "../list-practice/ListPractice";
 import { Practice } from "../practice/Practice";
 import { Test } from "../practice/Test";
-import { VerInput } from "../ver-input/VerInput";
 import { Week } from "../week/Week";
 import classes from "./Form.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { practiceAction } from "../store";
+import { AddContent } from "../add-content/AddContent";
+import { Content } from "../content/content";
 
 export const Form = (props) => {
   const weekArr = useSelector((state) => state.weekArr);
+  const currentWeek = useSelector((state) => state.currentWeek);
+  const currentPractice = useSelector((state) => state.currentPractice);
   const dispatch = useDispatch();
 
   // add week
@@ -52,6 +54,11 @@ export const Form = (props) => {
   // change current practice
   const changePracticeHandler = (practiceNum) => {
     dispatch(practiceAction.changeCurrentPractice(practiceNum));
+  };
+
+  // add content
+  const addContentHandler = () => {
+    dispatch(practiceAction.addContentPractice());
   };
 
   return (
@@ -97,8 +104,12 @@ export const Form = (props) => {
             <AddWeek onClick={addWeekHandler} />
           </div>
           <div className={classes["form-content"]}>
-            <VerInput />
-            <AddPic />
+            {weekArr[currentWeek - 1]?.week?.practice[
+              currentPractice - 1
+            ]?.description.map((c, index) => (
+              <Content key={index} contentIndex={index} />
+            ))}
+            <AddContent onClick={addContentHandler} />
             <HorInput />
             <ButtonControl />
           </div>
