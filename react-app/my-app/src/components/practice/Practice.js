@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import classes from "./Practice.module.css";
 
 export const Practice = (props) => {
+  const currentPractice = useSelector((state) => state.currentPractice);
+  const currentWeek = useSelector((state) => state.currentWeek);
   return (
     <div>
       <li className={classes["practice"]}>
@@ -13,6 +16,14 @@ export const Practice = (props) => {
                 practice: props.practice,
                 week: props.week + 1,
               });
+            }}
+            style={{
+              color: `${
+                currentPractice === props.practice &&
+                currentWeek === props.week + 1
+                  ? `#40abdf`
+                  : `#000`
+              }`,
             }}
           >
             Bài {props.practice}
