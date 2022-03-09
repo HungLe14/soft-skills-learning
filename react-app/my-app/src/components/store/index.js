@@ -90,11 +90,11 @@ const rootReducer = {
     });
   },
 
-  addPicPractice(state) {
+  addPicPractice(state, action) {
     const imageArr =
       state.weekArr[state.currentWeek - 1].week.practice[
         state.currentPractice - 1
-      ].description[state.currentContent - 1]?.image;
+      ].description[action.payload]?.image;
     imageArr.push({
       name: "Chọn ảnh",
     });

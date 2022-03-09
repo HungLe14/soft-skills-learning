@@ -4,7 +4,12 @@ import classes from "./AddPic.module.css";
 export const AddPic = (props) => {
   return (
     <div>
-      <div className={classes["add-pic"]} onClick={props.onClick}>
+      <div
+        className={classes["add-pic"]}
+        onClick={() => {
+          props.onClick(props.contentIndex);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
