@@ -4,7 +4,6 @@ import classes from "./Week.module.css";
 
 export const Week = (props) => {
   const currentWeek = useSelector((state) => state.currentWeek);
-  console.log(currentWeek === props.week + 1);
   return (
     <div
       onClick={(e) => {

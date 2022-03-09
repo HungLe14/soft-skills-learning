@@ -14,17 +14,20 @@ export const Content = (props) => {
   const currentContent = useSelector((state) => state.currentContent);
   const picArr =
     weekArr[currentWeek - 1].week.practice[currentPractice - 1].description[
-      currentContent - 1
+      props.contentIndex
     ]?.image;
+
   const addPicHandler = () => {
     dispatch(practiceAction.addPicPractice());
   };
 
-  const selectPicHandler = (name, index) => {
+  const selectPicHandler = (name, inputIndex, contentIndex) => {
+    console.log(contentIndex);
     dispatch(
       practiceAction.selectPic({
-        index: index,
-        name: name,
+        name,
+        inputIndex,
+        contentIndex,
       })
     );
   };

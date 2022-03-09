@@ -104,9 +104,9 @@ const rootReducer = {
     const imageArr =
       state.weekArr[state.currentWeek - 1].week.practice[
         state.currentPractice - 1
-      ].description[state.currentContent - 1].image;
-    imageArr[action.payload.index] = {
-      ...imageArr[action.payload.index],
+      ].description[action.payload.contentIndex].image;
+    imageArr[action.payload.inputIndex] = {
+      ...imageArr[action.payload.inputIndex],
       name: action.payload.name,
     };
   },
