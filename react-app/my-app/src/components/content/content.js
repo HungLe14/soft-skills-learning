@@ -21,7 +21,6 @@ export const Content = (props) => {
   };
 
   const selectPicHandler = (name, inputIndex, contentIndex) => {
-    console.log(contentIndex);
     dispatch(
       practiceAction.selectPic({
         name,

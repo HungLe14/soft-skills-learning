@@ -1,6 +1,18 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const initState = {
+  courseName: "",
+  courseImg: "",
+  courseDescriptions: [
+    {
+      description: "",
+      images: [
+        {
+          name: "Chọn tệp",
+        },
+      ],
+    },
+  ],
   weekArr: [],
   numberOfWeek: 0,
   currentWeek: 0,
@@ -10,6 +22,45 @@ const initState = {
 };
 
 const rootReducer = {
+  changeCourseName(state, action) {
+    state.courseName = action.payload;
+  },
+
+  addCourseMainImg(state, action) {
+    state.courseImg = action.payload;
+  },
+
+  addCourseDescription(state) {
+    state.courseDescriptions.push("");
+  },
+
+  addCourseImage(state, action) {
+    const images = state.courseDescriptions[action.payload].images;
+    images.push({
+      name: "Chọn tệp",
+    });
+  },
+
+  changeCourseDescription(state, action) {
+    state.courseDescriptions[action.payload.desIndex].description =
+      action.payload.description;
+  },
+
+  addDescriptions(state, action) {
+    state.courseDescriptions.push({
+      description: "",
+      images: [],
+    });
+  },
+
+  selectPictureOnDescription(state, action) {
+    const image =
+      state.courseDescriptions[action.payload.descriptionIndex].images[
+        action.payload.imageIndex
+      ];
+    image.name = action.payload.name;
+  },
+
   addWeek(state) {
     state.numberOfWeek++;
     state.weekArr.push({

@@ -1,13 +1,14 @@
 import React from "react";
 import classes from "./ButtonControl.module.css";
 
-export const ButtonControl = () => {
+export const ButtonControl = (props) => {
   return (
-    <div>
+    <React.Fragment>
       <div className={classes["button-control"]}>
         <button
-          type="submit"
+          type="button"
           className={`${classes["button-node"]} ${classes.review}`}
+          onClick={props.onClick}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +28,7 @@ export const ButtonControl = () => {
               d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <a href="#">Xem trước</a>
+          Xem trước
         </button>
         <button
           type="submit"
@@ -51,6 +52,9 @@ export const ButtonControl = () => {
         <button
           type="button"
           className={`${classes["button-node"]} ${classes.cancel}`}
+          onClick={() => {
+            props.onCancel(true);
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +72,6 @@ export const ButtonControl = () => {
           Hủy
         </button>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
