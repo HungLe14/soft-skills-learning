@@ -61,6 +61,12 @@ const rootReducer = {
     image.name = action.payload.name;
   },
 
+  deleteLastDescription(state) {
+    state.courseDescriptions.pop(
+      state.courseDescriptions[state.courseDescriptions.length - 1]
+    );
+  },
+
   addWeek(state) {
     state.numberOfWeek++;
     state.weekArr.push({

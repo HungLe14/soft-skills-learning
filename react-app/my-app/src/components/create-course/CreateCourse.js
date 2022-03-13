@@ -51,6 +51,11 @@ export const CreateCourse = (props) => {
     );
   };
 
+  // delete last description
+  const deleteLastDescription = () => {
+    dispatch(practiceAction.deleteLastDescription());
+  };
+
   return (
     <React.Fragment>
       <div className={classes["hor-input"]}>
@@ -92,10 +97,10 @@ export const CreateCourse = (props) => {
           />
         </div>
       </div>
-      {courseDescriptions.map((des, index) => {
+      {courseDescriptions.map((des, descriptionIndex) => {
         return (
-          <React.Fragment>
-            <div className={classes["ver-input"]} key={index}>
+          <React.Fragment key={descriptionIndex}>
+            <div className={classes["ver-input"]}>
               <label htmlFor="des-course">Mô tả:</label>
               <textarea
                 rows="3"
@@ -103,23 +108,24 @@ export const CreateCourse = (props) => {
                 id="des-course"
                 name="des-course"
                 onChange={(e) => {
-                  changeCourseDescription(e, index);
+                  changeCourseDescription(e, descriptionIndex);
                 }}
-                value={courseDescriptions[index].descriptions}
+                value={courseDescriptions[descriptionIndex].description}
               ></textarea>
             </div>
             {des.images.map((image, imageIndex) => (
               <InputPicOnCourse
+                key={imageIndex}
                 fileName={image.name}
                 imageIndex={imageIndex}
-                descriptionIndex={index}
+                descriptionIndex={descriptionIndex}
                 onSelect={selectPicture}
               />
             ))}
             <div
               className={classes["add-pic"]}
               onClick={() => {
-                addPictureHandler(index);
+                addPictureHandler(descriptionIndex);
               }}
             >
               <svg
@@ -165,6 +171,7 @@ export const CreateCourse = (props) => {
         <button
           type="button"
           className={`${classes["button-node"]} ${classes["cancel"]}`}
+          onClick={deleteLastDescription}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
