@@ -8,7 +8,7 @@ export const ButtonControl = (props) => {
   const courseDescriptions = useSelector((state) => state.courseDescriptions);
   const weekArr = useSelector((state) => state.weekarr);
 
-  const sumbitData = async () => {
+  const submitData = async () => {
     const data = {
       courseName,
       courseImg,
@@ -53,7 +53,7 @@ export const ButtonControl = (props) => {
         <button
           type="button"
           className={`${classes["button-node"]} ${classes.confirm}`}
-          onClick={sumbitData}
+          onClick={submitData}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
