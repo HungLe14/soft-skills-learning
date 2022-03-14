@@ -16,6 +16,7 @@ export const ButtonControl = (props) => {
       weekArr,
     };
     fetch("/api", {
+      method: "POST",
       header: {
         "Content-Type": "application/json",
       },
