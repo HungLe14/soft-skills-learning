@@ -1,7 +1,27 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import classes from "./ButtonControl.module.css";
 
 export const ButtonControl = (props) => {
+  const courseName = useSelector((state) => state.courseName);
+  const courseImg = useSelector((state) => state.courseImg);
+  const courseDescriptions = useSelector((state) => state.courseDescriptions);
+  const weekArr = useSelector((state) => state.weekarr);
+
+  const sumbitData = async () => {
+    const data = {
+      courseName,
+      courseImg,
+      courseDescriptions,
+      weekArr,
+    };
+    fetch("/api", {
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  };
   return (
     <React.Fragment>
       <div className={classes["button-control"]}>
@@ -31,8 +51,9 @@ export const ButtonControl = (props) => {
           Xem trước
         </button>
         <button
-          type="submit"
+          type="button"
           className={`${classes["button-node"]} ${classes.confirm}`}
+          onClick={sumbitData}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
