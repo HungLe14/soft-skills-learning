@@ -30,7 +30,7 @@ export const CreateCourse = (props) => {
     );
   };
 
-  // add picture
+  // add picture handler
   const addPictureHandler = (courseIndex) => {
     dispatch(practiceAction.addCourseImage(courseIndex));
   };
