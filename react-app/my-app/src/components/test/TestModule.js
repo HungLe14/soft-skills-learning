@@ -9,6 +9,7 @@ export const TestModule = (props) => {
   const weekArr = useSelector((state) => state.weekArr);
   const currentWeek = useSelector((state) => state.currentWeek);
   const currentTest = useSelector((state) => state.currentTest);
+  console.log(props.questionIndex);
 
   const setQuestionContenHandler = (e, questionIndex) => {
     dispatch(
@@ -96,7 +97,7 @@ export const TestModule = (props) => {
             />
             <input
               className={classes.rightAnswer}
-              name="answer"
+              name={`question ${props.questionIndex + 1}`}
               type="radio"
               onChange={(e) => {
                 if (e.target.checked) {
