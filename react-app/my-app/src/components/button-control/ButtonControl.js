@@ -53,7 +53,7 @@ export const ButtonControl = (props) => {
     const content = courseDescriptions.map(el => {
       const imgStr = el.images.map(img => img.name === "Chọn tệp" ? undefined : `<img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media/>`).filter(img => img !== undefined).join("")
       return `<p>${el.description}</p>${imgStr}`
-    })
+    }).join("");
     
 
     // const testDtos = week.test.map((el, index) => {
