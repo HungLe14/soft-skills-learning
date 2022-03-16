@@ -20,14 +20,35 @@ export const Content = (props) => {
     dispatch(practiceAction.addPicPractice(contentIndex));
   };
 
-  const selectPicHandler = (name, inputIndex, contentIndex) => {
-    dispatch(
-      practiceAction.selectPic({
-        name,
-        inputIndex,
-        contentIndex,
-      })
-    );
+  const selectPicHandler = (e, inputIndex, contentIndex) => {
+    // code xu li upload len server
+    e.preventDefault();
+        const data = new FormData();
+        data.append('file', e.target.files[0] );
+        fetch("/api/file", {
+             method: 'POST',
+             headers: {
+                 'Accept': 'application/json'
+             },
+             body: data
+        }).then((response) =>  {
+           return response.json();
+        }).then(data => {
+          console.log(data);
+          const name = data[1];
+          dispatch(
+            practiceAction.selectPic({
+              name,
+              inputIndex,
+              contentIndex,
+            })
+          );
+
+        })
+
+
+
+    
   };
   return (
     <div className={classes["content-wrapper"]}>

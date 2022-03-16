@@ -17,7 +17,28 @@ export const CreateCourse = (props) => {
 
   // show file name
   const addCourseImg = (e) => {
-    dispatch(practiceAction.addCourseMainImg(e.target.files[0].name));
+    // code xu li upload len server
+
+    e.preventDefault();
+        const data = new FormData();
+        data.append('file', e.target.files[0] );
+        fetch("/api/file", {
+             method: 'POST',
+             headers: {
+                 'Accept': 'application/json'
+             },
+             body: data
+        }).then((response) =>  {
+           return response.json();
+        }).then(data => {
+          console.log(data);
+          const name = data[1];
+          dispatch(practiceAction.addCourseMainImg(name));
+
+        })
+
+
+    
   };
 
   // change description content
@@ -41,14 +62,34 @@ export const CreateCourse = (props) => {
   };
 
   // show image name
-  const selectPicture = (name, imageIndex, descriptionIndex) => {
-    dispatch(
-      practiceAction.selectPictureOnDescription({
-        name,
-        imageIndex,
-        descriptionIndex,
-      })
-    );
+  const selectPicture = (e, imageIndex, descriptionIndex) => {
+    // code xu li upload len server
+
+    e.preventDefault();
+        const data = new FormData();
+        data.append('file', e.target.files[0] );
+        fetch("/api/file", {
+             method: 'POST',
+             headers: {
+                 'Accept': 'application/json'
+             },
+             body: data
+        }).then((response) =>  {
+           return response.json();
+        }).then(data => {
+          console.log(data);
+          const name = data[1];
+          dispatch(
+            practiceAction.selectPictureOnDescription({
+              name,
+              imageIndex,
+              descriptionIndex,
+            })
+          );
+
+        })
+
+    
   };
 
   // delete last description

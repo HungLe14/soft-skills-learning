@@ -32,7 +32,7 @@ export const InputPic = (props) => {
           name="img-course"
           accept=".jpg,.jpeg,.png"
           onChange={(e) => {
-            props.onSelect(e.target.files[0].name, props.inputIndex, props.contentIndex);
+            props.onSelect(e, props.inputIndex, props.contentIndex);
           }}
         />
       </div>

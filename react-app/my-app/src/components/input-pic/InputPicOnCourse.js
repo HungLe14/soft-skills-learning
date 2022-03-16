@@ -33,7 +33,7 @@ export const InputPicOnCourse = (props) => {
           accept=".jpg,.jpeg,.png"
           onChange={(e) => {
             props.onSelect(
-              e.target.files[0].name,
+              e,
               props.imageIndex,
               props.descriptionIndex
             );

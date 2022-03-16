@@ -4,7 +4,28 @@ import classes from "./HorInput.module.css";
 export const HorInput = () => {
   const [file, setFile] = useState();
   const selectFileHandler = (e) => {
-    setFile(e.target.files[0].name);
+    // code xu li len server 
+
+    e.preventDefault();
+        const data = new FormData();
+        data.append('file', e.target.files[0] );
+        fetch("/api/file", {
+             method: 'POST',
+             headers: {
+                 'Accept': 'application/json'
+             },
+             body: data
+        }).then((response) =>  {
+           return response.json();
+        }).then(data => {
+          console.log(data);
+          const name = data[1];
+          setFile(name);
+
+        })
+
+
+    
   };
   return (
     <div>
