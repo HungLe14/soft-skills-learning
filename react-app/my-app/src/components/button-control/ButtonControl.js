@@ -13,48 +13,65 @@ export const ButtonControl = (props) => {
   const submitData = async () => {
     const lectureDtos = [];
     const testDtos = [];
-    
-     week.forEach((weekEl, weekIndex) => {
+
+    week.forEach((weekEl, weekIndex) => {
       weekEl.practice.forEach((practiceEl, practiceIndex) => {
-        const content = practiceEl.description.map(des => {
-  
-          const imgStr = des.image.map(img => img.name === "Chọn ảnh" ? undefined : `<img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media/>`).filter(img => img !== undefined).join("");
-  
-          return `<p>${des.content}</p>${imgStr}`
-        }).join("");
-  
+        const content = practiceEl.description
+          .map((des) => {
+            const imgStr = des.image
+              .map((img) =>
+                img.name === "Chọn ảnh"
+                  ? undefined
+                  : `<img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media/>`
+              )
+              .filter((img) => img !== undefined)
+              .join("");
+
+            return `<p>${des.content}</p>${imgStr}`;
+          })
+          .join("");
+
         lectureDtos.push({
-          week: `Tuan ${weekIndex+1}`,
+          week: `Tuan ${weekIndex + 1}`,
           practiceIndex,
           resouceUrl: "",
           content,
-          name: `Bai ${practiceIndex+1}`
-  
-        }) ;
+          name: `Bai ${practiceIndex + 1}`,
+        });
       });
-    
+
       weekEl.test.forEach((testEl, testIndex) => {
-        const content = testEl.exams.map((exam, index) => {
-          const answers = exam.answer.map(ans => `${ans}`).join("|");
-          return `Bai ${index+1}||${exam.point}||${exam.question}||${answers}||${exam.correctAnswer}`;
-        }).join("\n");
-       
+        const content = testEl.exams
+          .map((exam, index) => {
+            const answers = exam.answer.map((ans) => `${ans}`).join("|");
+            return `Bai ${index + 1}||${exam.point}||${
+              exam.question
+            }||${answers}||${exam.correctAnswer}`;
+          })
+          .join("\n");
+
         testDtos.push({
-          week: `Tuan ${weekIndex+1}`,
+          week: `Tuan ${weekIndex + 1}`,
           index: testIndex,
           content,
-          name: `Bai kiem tra ${testEl.testNumber}`
-        })
+          name: `Bai kiem tra ${testEl.testNumber}`,
+        });
+      });
+    });
 
+    const content = courseDescriptions
+      .map((el) => {
+        const imgStr = el.images
+          .map((img) =>
+            img.name === "Chọn tệp"
+              ? undefined
+              : `<img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media/>`
+          )
+          .filter((img) => img !== undefined)
+          .join("");
+        return `<p>${el.description}</p>${imgStr}`;
       })
-
-    })
-
-    const content = courseDescriptions.map(el => {
-      const imgStr = el.images.map(img => img.name === "Chọn tệp" ? undefined : `<img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media/>`).filter(img => img !== undefined).join("")
-      return `<p>${el.description}</p>${imgStr}`
-    }).join("");
-    
+      .join("");
 
     // const testDtos = week.test.map((el, index) => {
     //   return {
@@ -71,7 +88,7 @@ export const ButtonControl = (props) => {
       courseImgUrl: `https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${courseImgUrl}?alt=media`,
       content,
       lectureDtos,
-      testDtos
+      testDtos,
     };
 
     fetch("/api/course", {
@@ -84,7 +101,6 @@ export const ButtonControl = (props) => {
       .then((data) => data.json())
       .then((data) => console.log(data));
 
-   
     console.log("==========================");
     console.log(state);
   };
