@@ -22,13 +22,13 @@ function Update() {
 
   useEffect(() => {
     fetchData().then((data) => {
-      console.log(data);
       if (data) {
         dispatch(practiceAction.loadAPItoRedux(data));
+        dispatch(practiceAction.changeCurrentWeek(1));
         setIsLoading(false);
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

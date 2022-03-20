@@ -131,8 +131,11 @@ export const Form = (props) => {
             </div>
             {preview ? null : (
               <React.Fragment>
-                <AddPractice onClick={addPracticeHandler} />
-                <AddTest onClick={addTestHandler} />
+                <AddPractice
+                  onClick={addPracticeHandler}
+                  onShowTest={setShowTest}
+                />
+                <AddTest onClick={addTestHandler} onShowTest={setShowTest} />
                 <AddWeek onClick={addWeekHandler} />
               </React.Fragment>
             )}

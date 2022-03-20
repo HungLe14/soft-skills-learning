@@ -90,18 +90,19 @@ const rootReducer = {
   },
 
   addTest(state) {
-    const testArr = state.weekArr[state.currentWeek - 1];
-    state.currentTest++;
+    let testArr = state.weekArr[state.currentWeek - 1];
     testArr.totalTest++;
     testArr.test.push({
-      testNumber: state.weekArr[state.currentWeek - 1].totalTest,
+      testNumber: testArr.totalTest,
       exams: [],
     });
 
-    state.weekArr[state.currentWeek - 1] = {
-      ...state.weekArr[state.currentWeek - 1],
-      numberOfTest: state.weekArr[state.currentWeek - 1].totalTest,
+    testArr = {
+      ...testArr,
+      numberOfTest: testArr.totalTest,
     };
+
+    state.currentTest = testArr.test.length;
   },
 
   deleteTest(state, action) {
@@ -125,20 +126,19 @@ const rootReducer = {
   },
 
   addPractice(state) {
-    const practiceArr = state.weekArr[state.currentWeek - 1];
+    let practiceArr = state.weekArr[state.currentWeek - 1];
     practiceArr.totalPractice++;
     practiceArr.practice.push({
-      practiceNumber: state.weekArr[state.currentWeek - 1].totalPractice,
+      practiceNumber: practiceArr.totalPractice,
       description: [],
     });
 
-    state.weekArr[state.currentWeek - 1] = {
-      ...state.weekArr[state.currentWeek - 1],
-      numberOfPractice: state.weekArr[state.currentWeek - 1].totalPractice,
+    practiceArr = {
+      ...practiceArr,
+      numberOfPractice: practiceArr.totalPractice,
     };
 
-    state.currentPractice =
-      state.weekArr[state.currentWeek - 1].practice.length;
+    state.currentPractice = practiceArr.practice.length;
 
     state.currentContent = 0;
   },
@@ -150,6 +150,8 @@ const rootReducer = {
       return practice.practiceNumber !== action.payload;
     });
     practiceArr.practice = [...newPracticeArr];
+    state.currentPractice =
+      practiceArr.practice[practiceArr.practice.length - 1].practiceNumber;
   },
 
   addContentPractice(state) {

@@ -4,7 +4,13 @@ import classes from "./AddPractice.module.css";
 export const AddPractice = (props) => {
   return (
     <div>
-      <div className={classes["add-practice"]} onClick={props.onClick}>
+      <div
+        className={classes["add-practice"]}
+        onClick={() => {
+          props.onClick();
+          props.onShowTest(false);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
