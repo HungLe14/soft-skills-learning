@@ -130,7 +130,9 @@ const rootReducer = {
     let practiceArr = state.weekArr[state.currentWeek - 1];
     practiceArr.totalPractice++;
     practiceArr.practice.push({
-      practiceNumber: practiceArr.totalPractice,
+      practiceNumber:
+        practiceArr.practice[practiceArr.practice.length - 1].practiceNumber +
+        1,
       description: [],
     });
 
@@ -139,7 +141,8 @@ const rootReducer = {
       numberOfPractice: practiceArr.totalPractice,
     };
 
-    state.currentPractice = practiceArr.practice.length;
+    state.currentPractice =
+      practiceArr.practice[practiceArr.practice.length - 1].practiceNumber;
 
     state.currentContent = 0;
   },
