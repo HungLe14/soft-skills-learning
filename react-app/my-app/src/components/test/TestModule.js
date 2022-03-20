@@ -9,7 +9,6 @@ export const TestModule = (props) => {
   const weekArr = useSelector((state) => state.weekArr);
   const currentWeek = useSelector((state) => state.currentWeek);
   const currentTest = useSelector((state) => state.currentTest);
-  console.log(props.questionIndex);
 
   const setQuestionContenHandler = (e, questionIndex) => {
     dispatch(

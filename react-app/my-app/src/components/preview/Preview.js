@@ -1,7 +1,9 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import classes from "./Preview.module.css";
 
 export const Preview = () => {
+  const dispatch = useDispatch();
   return (
     <React.Fragment>
       <div className={classes.buttonWrapper}>

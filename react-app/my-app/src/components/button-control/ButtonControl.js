@@ -112,7 +112,7 @@ export const ButtonControl = (props) => {
             type="button"
             className={`${classes["button-node"]} ${classes.confirm}`}
             onClick={() => {
-              props.onShowPreview(false);
+              props.onPreview(false);
             }}
           >
             <svg
@@ -136,7 +136,7 @@ export const ButtonControl = (props) => {
               type="button"
               className={`${classes["button-node"]} ${classes.review}`}
               onClick={() => {
-                props.onShowPreview(true);
+                props.onPreview(true);
               }}
             >
               <svg

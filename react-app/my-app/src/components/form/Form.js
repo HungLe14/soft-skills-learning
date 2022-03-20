@@ -84,6 +84,11 @@ export const Form = (props) => {
     );
   };
 
+  //showPreview
+  const previewHandler = (boolean) => {
+    setPreview(boolean);
+  };
+
   return (
     <React.Fragment>
       <form>
@@ -158,7 +163,7 @@ export const Form = (props) => {
             )}
             <ButtonControl
               preview={preview}
-              onShowPreview={setPreview}
+              onPreview={previewHandler}
               onCancelCourse={props.onCancelCourse}
             />
           </div>
