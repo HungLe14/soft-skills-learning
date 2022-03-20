@@ -93,7 +93,7 @@ const rootReducer = {
     let testArr = state.weekArr[state.currentWeek - 1];
     testArr.totalTest++;
     testArr.test.push({
-      testNumber: testArr.totalTest,
+      testNumber: testArr.test[testArr.test.length - 1].testNumber + 1,
       exams: [],
     });
 
@@ -102,7 +102,7 @@ const rootReducer = {
       numberOfTest: testArr.totalTest,
     };
 
-    state.currentTest = testArr.test.length;
+    state.currentTest = testArr.test[testArr.test.length - 1].testNumber;
   },
 
   deleteTest(state, action) {
@@ -112,6 +112,7 @@ const rootReducer = {
       return test.testNumber !== action.payload;
     });
     testArr.test = [...newTestArr];
+    state.currentTest = testArr.test[testArr.test.length - 1].testNumber;
   },
 
   addQuestionToTest(state, action) {
@@ -204,7 +205,7 @@ const rootReducer = {
 
   changeCurrentTest(state, action) {
     state.currentTest = action.payload.currentTest;
-    state.currentWeek = action.payload.weekIndex + 1;
+    state.currentWeek = action.payload.week;
   },
 
   changeInput(state, action) {

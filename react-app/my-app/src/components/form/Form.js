@@ -74,12 +74,12 @@ export const Form = (props) => {
   };
 
   // show test
-  const switchTestHandler = (currentTest, weekIndex) => {
+  const switchTestHandler = (currentTest, week) => {
     setShowTest(true);
     dispatch(
       practiceAction.changeCurrentTest({
         currentTest,
-        weekIndex,
+        week,
       })
     );
   };

@@ -8,14 +8,12 @@ export const Test = (props) => {
   return (
     <div>
       <li className={classes["practice"]}>
-        <div
-          className={classes["practice-wrapper"]}
-          onClick={() => {
-            props.onClick(props.test, props.week);
-          }}
-        >
+        <div className={classes["practice-wrapper"]}>
           <span
             className={classes["practice-name"]}
+            onClick={() => {
+              props.onClick(props.test, props.week + 1);
+            }}
             style={{
               color: `${
                 currentTest === props.test &&
