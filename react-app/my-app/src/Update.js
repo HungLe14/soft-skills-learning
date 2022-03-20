@@ -38,7 +38,7 @@ function Update() {
         ) : createCourse ? (
           <CreateCourse onCreateCourse={setCreateCourse} />
         ) : (
-          <Form onCancel={setCreateCourse} />
+          <Form onCancelCourse={setCreateCourse} />
         )}
       </DashBoard>
     </div>

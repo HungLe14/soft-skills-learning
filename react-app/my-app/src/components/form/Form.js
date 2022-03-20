@@ -15,6 +15,7 @@ import { AddContent } from "../add-content/AddContent";
 import { Content } from "../content/content";
 import { TestModule } from "../test/TestModule";
 import { AddQuestion } from "../add-question/AddQuestion";
+import { Preview } from "../preview/Preview";
 
 export const Form = (props) => {
   const [showTest, setShowTest] = useState(false);
@@ -83,11 +84,6 @@ export const Form = (props) => {
     );
   };
 
-  // preview course
-  const showPreview = () => {
-    setPreview(true);
-  };
-
   return (
     <React.Fragment>
       <form>
@@ -128,13 +124,17 @@ export const Form = (props) => {
                 );
               })}
             </div>
-            <AddPractice onClick={addPracticeHandler} />
-            <AddTest onClick={addTestHandler} />
-            <AddWeek onClick={addWeekHandler} />
+            {preview ? null : (
+              <React.Fragment>
+                <AddPractice onClick={addPracticeHandler} />
+                <AddTest onClick={addTestHandler} />
+                <AddWeek onClick={addWeekHandler} />
+              </React.Fragment>
+            )}
           </div>
           <div className={classes["form-content"]}>
             {preview ? (
-              <div>Preview course</div>
+              <Preview />
             ) : !showTest ? (
               <React.Fragment>
                 {weekArr[currentWeek - 1]?.practice[
@@ -156,7 +156,11 @@ export const Form = (props) => {
                 <AddQuestion onClick={addQuestionHandler} />
               </React.Fragment>
             )}
-            <ButtonControl onClick={showPreview} onCancel={props.onCancel} />
+            <ButtonControl
+              preview={preview}
+              onShowPreview={setPreview}
+              onCancelCourse={props.onCancelCourse}
+            />
           </div>
         </div>
       </form>

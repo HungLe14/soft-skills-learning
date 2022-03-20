@@ -187,6 +187,7 @@ const rootReducer = {
   changeCurrentWeek(state, action) {
     state.currentWeek = action.payload;
     state.currentPractice = 1;
+    state.currentTest = 1;
   },
 
   changeCurrentPractice(state, action) {
