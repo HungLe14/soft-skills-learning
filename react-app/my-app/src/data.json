@@ -1,0 +1,48 @@
+{
+  "courseName": "Ky nang mem",
+  "courseImg": "",
+  "courseDescriptions": [
+    {
+      "description": "mo ta noi dung khoa hoc",
+      "images": [
+        {
+          "name": "Chọn tệp"
+        }
+      ]
+    }
+  ],
+  "weekArr": [
+    {
+      "numberOfWeek": 1,
+      "totalTest": 1,
+      "test": [
+        {
+          "testNumber": 1,
+          "exams": [
+            {
+              "question": "cau hoi 1",
+              "point": "5",
+              "answer": ["dap an 1", "dap an 2", "dap an 3", "dap an 4"],
+              "correctAnswer": "dap an 1"
+            }
+          ]
+        }
+      ],
+      "totalPractice": 1,
+      "practice": [
+        {
+          "practiceNumber": 1,
+          "description": [
+            {
+              "number": 1,
+              "content": "mo ta noi dung bai 1",
+              "image": []
+            }
+          ]
+        }
+      ],
+      "numberOfPractice": 1,
+      "numberOfTest": 1
+    }
+  ]
+}

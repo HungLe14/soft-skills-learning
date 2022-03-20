@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import { Provider } from "react-redux";
 import practiceStore from "../src/components/store/index";
+import Create from "./Create";
+import Update from "./Update";
 
 export const mount = (
   containerId,
@@ -11,11 +12,12 @@ export const mount = (
   props
 ) => {
   let externalContext = props;
+  const isCreate = false;
 
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={practiceStore}>
-        <App />
+        {isCreate ? <Create /> : <Update />}
       </Provider>
     </React.StrictMode>,
     document.getElementById("root")

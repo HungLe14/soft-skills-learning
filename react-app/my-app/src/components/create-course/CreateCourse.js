@@ -8,6 +8,7 @@ export const CreateCourse = (props) => {
   const courseName = useSelector((state) => state.courseName);
   const courseImg = useSelector((state) => state.courseImg);
   const courseDescriptions = useSelector((state) => state.courseDescriptions);
+  const mode = useSelector((state) => state.mode);
   const dispatch = useDispatch();
 
   // change course name
@@ -20,25 +21,23 @@ export const CreateCourse = (props) => {
     // code xu li upload len server
 
     e.preventDefault();
-        const data = new FormData();
-        data.append('file', e.target.files[0] );
-        fetch("/api/file", {
-             method: 'POST',
-             headers: {
-                 'Accept': 'application/json'
-             },
-             body: data
-        }).then((response) =>  {
-           return response.json();
-        }).then(data => {
-          console.log(data);
-          const name = data[1];
-          dispatch(practiceAction.addCourseMainImg(name));
-
-        })
-
-
-    
+    const data = new FormData();
+    data.append("file", e.target.files[0]);
+    fetch("/api/file", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: data,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        const name = data[1];
+        dispatch(practiceAction.addCourseMainImg(name));
+      });
   };
 
   // change description content
@@ -66,30 +65,29 @@ export const CreateCourse = (props) => {
     // code xu li upload len server
 
     e.preventDefault();
-        const data = new FormData();
-        data.append('file', e.target.files[0] );
-        fetch("/api/file", {
-             method: 'POST',
-             headers: {
-                 'Accept': 'application/json'
-             },
-             body: data
-        }).then((response) =>  {
-           return response.json();
-        }).then(data => {
-          console.log(data);
-          const name = data[1];
-          dispatch(
-            practiceAction.selectPictureOnDescription({
-              name,
-              imageIndex,
-              descriptionIndex,
-            })
-          );
-
-        })
-
-    
+    const data = new FormData();
+    data.append("file", e.target.files[0]);
+    fetch("/api/file", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: data,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        const name = data[1];
+        dispatch(
+          practiceAction.selectPictureOnDescription({
+            name,
+            imageIndex,
+            descriptionIndex,
+          })
+        );
+      });
   };
 
   // delete last description
@@ -251,7 +249,9 @@ export const CreateCourse = (props) => {
               d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span>Tạo khóa học</span>
+          <span>
+            {mode === "update" ? "Chỉnh sửa khóa học" : "Tạo khóa học"}
+          </span>
         </button>
         <button
           type="button"

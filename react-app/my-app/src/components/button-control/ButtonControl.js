@@ -9,7 +9,7 @@ export const ButtonControl = (props) => {
   const courseDescriptions = useSelector((state) => state.courseDescriptions);
   const week = useSelector((state) => state.weekArr);
   const state = useSelector((state) => state);
-
+  const mode = useSelector((state) => state.mode);
   const submitData = async () => {
     const lectureDtos = [];
     const testDtos = [];
@@ -150,7 +150,7 @@ export const ButtonControl = (props) => {
               d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          Tạo khóa học
+          {mode === "update" ? "Lưu" : "Tạo khóa học"}
         </button>
         <button
           type="button"

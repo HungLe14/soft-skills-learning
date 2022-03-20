@@ -1,6 +1,7 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const initState = {
+  mode: "",
   courseName: "",
   courseImg: "",
   courseDescriptions: [
@@ -22,6 +23,14 @@ const initState = {
 };
 
 const rootReducer = {
+  loadAPItoRedux(state, action) {
+    state.mode = "update";
+    state.courseName = action.payload.courseName;
+    state.courseImg = action.payload.courseImg;
+    state.courseDescriptions = action.payload.courseDescriptions;
+    state.weekArr = action.payload.weekArr;
+  },
+
   changeCourseName(state, action) {
     state.courseName = action.payload;
   },
