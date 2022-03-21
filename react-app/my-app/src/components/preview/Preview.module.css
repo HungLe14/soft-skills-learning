@@ -43,3 +43,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.previewPicture {
+  width: 70%;
+  height: 40rem;
+}
+
+.previewContent {
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
