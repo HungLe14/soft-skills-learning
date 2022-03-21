@@ -115,7 +115,7 @@ const rootReducer = {
       return test.testNumber !== action.payload;
     });
     testArr.test = [...newTestArr];
-    state.currentTest = testArr.test[testArr.test.length - 1].testNumber;
+    state.currentTest = testArr?.test[testArr.test.length - 1]?.testNumber || 0;
   },
 
   addQuestionToTest(state, action) {
@@ -158,7 +158,8 @@ const rootReducer = {
     });
     practiceArr.practice = [...newPracticeArr];
     state.currentPractice =
-      practiceArr.practice[practiceArr.practice.length - 1].practiceNumber;
+      practiceArr?.practice[practiceArr.practice.length - 1]?.practiceNumber ||
+      0;
   },
 
   addContentPractice(state) {
