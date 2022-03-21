@@ -87,13 +87,16 @@ const rootReducer = {
     });
     state.currentWeek = state.weekArr.length;
     state.currentPractice = 0;
+    state.currentTest = 0;
   },
 
   addTest(state) {
     let testArr = state.weekArr[state.currentWeek - 1];
     testArr.totalTest++;
     testArr.test.push({
-      testNumber: testArr.test[testArr.test.length - 1].testNumber + 1,
+      testNumber:
+        testArr?.test[testArr.test.length - 1]?.testNumber + 1 ||
+        state.currentTest + 1,
       exams: [],
     });
 
@@ -131,8 +134,8 @@ const rootReducer = {
     practiceArr.totalPractice++;
     practiceArr.practice.push({
       practiceNumber:
-        practiceArr.practice[practiceArr.practice.length - 1].practiceNumber +
-        1,
+        practiceArr?.practice[practiceArr.practice.length - 1]?.practiceNumber +
+          1 || state.currentPractice + 1,
       description: [],
     });
 
