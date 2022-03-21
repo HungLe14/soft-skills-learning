@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./DoTest.module.css";
+import classes from "./PreviewTest.module.css";
 
-export const DoTest = (props) => {
+export const PreviewTest = (props) => {
   return (
     <React.Fragment>
       {props.exams.map((exam, examIndex) => {

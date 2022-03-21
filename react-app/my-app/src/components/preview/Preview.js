@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DoTest } from "../do-test/DoTest";
+import { PreviewTest } from "../do-test/PreviewTest";
 import classes from "./Preview.module.css";
 
 export const Preview = (props) => {
@@ -91,7 +91,7 @@ export const Preview = (props) => {
             );
           })
         ) : (
-          <DoTest exams={test.exams} />
+          <PreviewTest exams={test.exams} />
         )}
       </div>
     </React.Fragment>
