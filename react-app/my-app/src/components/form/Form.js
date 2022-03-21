@@ -29,6 +29,8 @@ export const Form = (props) => {
   // add week
   const addWeekHandler = () => {
     dispatch(practiceAction.addWeek());
+    addPracticeHandler();
+    addTestHandler();
   };
 
   // add test
