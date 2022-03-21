@@ -111,6 +111,7 @@ export const Form = (props) => {
                             onDelete={deletePracticeHandler}
                             onClick={changePracticeHandler}
                             showTest={showTest}
+                            preview={preview}
                           />
                         );
                       })}
@@ -123,6 +124,7 @@ export const Form = (props) => {
                             onDelete={deleteTestHandler}
                             onClick={switchTestHandler}
                             showTest={showTest}
+                            preview={preview}
                           />
                         );
                       })}
