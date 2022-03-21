@@ -45,8 +45,20 @@
 }
 
 .previewPicture {
-  width: 70%;
-  height: 40rem;
+  width: auto;
+  height: auto;
+}
+
+.imgWrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.imgWrapper > img {
+  width: 40%;
+  height: auto;
 }
 
 .previewContent {

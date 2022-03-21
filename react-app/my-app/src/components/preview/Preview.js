@@ -59,17 +59,33 @@ export const Preview = (props) => {
           practice.description.map((des, desIndex) => {
             return (
               <React.Fragment key={desIndex}>
-                {des.image.map((image, imageIndex) => {
-                  return (
-                    <img
-                      key={imageIndex}
-                      src={`https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/${image.name}?alt=media`}
-                      alt="description img"
-                      className={classes.previewPicture}
-                    />
-                  );
-                })}
-
+                {des.image.length === 1 ? (
+                  des.image.map((image, imageIndex) => {
+                    return (
+                      <img
+                        key={imageIndex}
+                        src={`https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/${image.name}?alt=media`}
+                        // src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
+                        alt="description img"
+                        className={classes.previewPicture}
+                      />
+                    );
+                  })
+                ) : (
+                  <div className={classes.imgWrapper}>
+                    {des.image.map((image, imageIndex) => {
+                      return (
+                        <img
+                          key={imageIndex}
+                          src={`https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/${image.name}?alt=media`}
+                          // src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
+                          alt="description img"
+                          className={classes.previewPicture}
+                        />
+                      );
+                    })}
+                  </div>
+                )}
                 <p className={classes.previewContent}>{des.content}</p>
               </React.Fragment>
             );
