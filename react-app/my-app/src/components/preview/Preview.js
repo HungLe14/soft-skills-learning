@@ -45,7 +45,10 @@ export const Preview = (props) => {
   const submitExamResultHandler = (e) => {
     console.log(e);
     const answers = weekArr[currentWeek - 1].test[currentTest - 1]?.answers;
+    const exams = weekArr[currentWeek - 1].test[currentTest - 1]?.exams;
+
     console.log(answers);
+    console.log(exams);
   }
 
   return (

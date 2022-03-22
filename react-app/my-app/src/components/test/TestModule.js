@@ -106,10 +106,7 @@ export const TestModule = (props) => {
               checked={
                 weekArr[currentWeek - 1].test[currentTest - 1].exams[
                   props.questionIndex
-                ].correctAnswer ===
-                weekArr[currentWeek - 1].test[currentTest - 1].exams[
-                  props.questionIndex
-                ].answer[index]
+                ].correctAnswer === index
               }
             />
           </div>

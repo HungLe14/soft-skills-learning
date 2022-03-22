@@ -129,15 +129,18 @@ const rootReducer = {
       correctAnswer: "",
     });
 
-    const answers = state.weekArr[state.currentWeek - 1].test[state.currentTest - 1]?.answers;
+    const answers =
+      state.weekArr[state.currentWeek - 1].test[state.currentTest - 1]?.answers;
     answers.push("");
   },
 
   chooseCorrectAnswer(state, action) {
     const temp = state;
-    temp.weekArr[temp.currentWeek - 1].test[temp.currentTest - 1].answers[action.payload.examIndex] = action.payload.answerIndex;
+    temp.weekArr[temp.currentWeek - 1].test[temp.currentTest - 1].answers[
+      action.payload.examIndex
+    ] = action.payload.answerIndex;
 
-    state = {...temp};
+    state = { ...temp };
   },
 
   addPractice(state) {
@@ -260,7 +263,7 @@ const rootReducer = {
     const { exams } =
       state.weekArr[state.currentWeek - 1].test[state.currentTest - 1];
     exams[action.payload.questionIndex].correctAnswer =
-      exams[action.payload.questionIndex].answer[action.payload.answerIndex];
+      action.payload.answerIndex;
   },
 };
 
