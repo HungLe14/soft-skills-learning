@@ -15,7 +15,7 @@ import { AddContent } from "../add-content/AddContent";
 import { Content } from "../content/content";
 import { TestModule } from "../test/TestModule";
 import { AddQuestion } from "../add-question/AddQuestion";
-import { Preview } from "../preview/Preview";
+import { PreviewFragment } from "../preview-fragment/PreviewFragment";
 
 export const Form = (props) => {
   const [showTest, setShowTest] = useState(false);
@@ -146,7 +146,7 @@ export const Form = (props) => {
           </div>
           <div className={classes["form-content"]}>
             {preview ? (
-              <Preview showTest={showTest} />
+              <PreviewFragment showTest={showTest} />
             ) : !showTest ? (
               <React.Fragment>
                 {weekArr[currentWeek - 1]?.practice[

@@ -1,4 +1,4 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { createSlice, configureStore, current } from "@reduxjs/toolkit";
 
 const initState = {
   mode: "",
@@ -98,6 +98,7 @@ const rootReducer = {
         testArr?.test[testArr.test.length - 1]?.testNumber + 1 ||
         state.currentTest + 1,
       exams: [],
+      answers: [],
     });
 
     testArr = {
@@ -127,6 +128,16 @@ const rootReducer = {
       answer: [],
       correctAnswer: "",
     });
+
+    const answers = state.weekArr[state.currentWeek - 1].test[state.currentTest - 1]?.answers;
+    answers.push("");
+  },
+
+  chooseCorrectAnswer(state, action) {
+    const temp = state;
+    temp.weekArr[temp.currentWeek - 1].test[temp.currentTest - 1].answers[action.payload.examIndex] = action.payload.answerIndex;
+
+    state = {...temp};
   },
 
   addPractice(state) {

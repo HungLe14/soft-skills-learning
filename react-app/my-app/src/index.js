@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { Provider } from "react-redux";
 import practiceStore from "../src/components/store/index";
-import Create from "./Create";
-import Update from "./Update";
 import { Main } from "./Main";
 
 export const mount = (
@@ -13,11 +11,12 @@ export const mount = (
   props
 ) => {
   let externalContext = props;
+  console.log(externalContext);
 
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={practiceStore}>
-        <Main />
+        <Main mode={props.mode}/>
       </Provider>
     </React.StrictMode>,
     document.getElementById("root")

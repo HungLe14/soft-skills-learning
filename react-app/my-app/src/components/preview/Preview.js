@@ -1,99 +1,98 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PreviewTest } from "../do-test/PreviewTest";
 import classes from "./Preview.module.css";
+import { practiceAction } from "../store";
+import { ListPractice } from "../list-practice/ListPractice";
+import { Test } from "../practice/Test";
+import { Practice } from "../practice/Practice";
+import { Week } from "../week/Week";
+import { PreviewFragment } from "../preview-fragment/PreviewFragment";
 
 export const Preview = (props) => {
-  const week = useSelector((state) => state.weekArr);
-  const currentWeek = useSelector((state) => state.currentWeek);
-  const currentPractice = useSelector((state) => state.currentPractice);
-  const practice = week[currentWeek - 1].practice[currentPractice - 1];
-  const currentTest = useSelector((state) => state.currentTest);
-  const test = week[currentWeek - 1].test[currentTest - 1];
-
+  const weekArr = useSelector((state) => state.weekArr);
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+  const [showTest, setShowTest] = useState(false);
+  const [preview] = useState(true);
+
+  const currentWeek = useSelector((state) => state.currentWeek);
+  const currentTest = useSelector((state) => state.currentTest);
+
+
+  // change current week
+  const changeWeekHandler = (weekNum) => {
+    // const payload = string.match(/\d/);
+    dispatch(practiceAction.changeCurrentWeek(weekNum));
+  };
+
+  // change current practice
+  const changePracticeHandler = (practiceNum) => {
+    dispatch(practiceAction.changeCurrentPractice(practiceNum));
+    setShowTest(false);
+  };
+
+  // show test
+  const switchTestHandler = (currentTest, week) => {
+    setShowTest(true);
+    dispatch(
+      practiceAction.changeCurrentTest({
+        currentTest,
+        week,
+      })
+    );
+  };
+
+  const submitExamResultHandler = (e) => {
+    console.log(e);
+    const answers = weekArr[currentWeek - 1].test[currentTest - 1]?.answers;
+    console.log(answers);
+  }
+
   return (
     <React.Fragment>
-      <div className={classes.buttonWrapper}>
-        <button
-          type="button"
-          className={`${classes["button-node"]} ${classes.confirm}`}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
-            />
-          </svg>
-          Bài trước
-        </button>
-        <button
-          type="button"
-          className={`${classes["button-node"]} ${classes.confirm}`}
-        >
-          Bài sau
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M13 5l7 7-7 7M5 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-      </div>
-      <div className={classes.body}>
-        {!props.showTest ? (
-          practice.description.map((des, desIndex) => {
-            return (
-              <React.Fragment key={desIndex}>
-                {des.image.length === 1 ? (
-                  des.image.map((image, imageIndex) => {
-                    return (
-                      <img
-                        key={imageIndex}
-                        src={`https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/${image.name}?alt=media`}
-                        // src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
-                        alt="description img"
-                        className={classes.previewPicture}
-                      />
-                    );
-                  })
-                ) : (
-                  <div className={classes.imgWrapper}>
-                    {des.image.map((image, imageIndex) => {
+      <div className={classes["form-wrapper"]}>
+        <div className={classes["form-menu"]}>
+          <div className={classes["practice-detail"]}>
+            {weekArr.map((week, indexWeek) => {
+              return (
+                <div key={indexWeek}>
+                  <Week onClick={changeWeekHandler} week={indexWeek} />
+                  <ListPractice>
+                    {weekArr[indexWeek].practice.map((practice, index) => {
                       return (
-                        <img
-                          key={imageIndex}
-                          src={`https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/${image.name}?alt=media`}
-                          // src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
-                          alt="description img"
-                          className={classes.previewPicture}
+                        <Practice
+                          key={index}
+                          week={indexWeek}
+                          practice={practice.practiceNumber}
+                          onClick={changePracticeHandler}
+                          showTest={showTest}
+                          preview={preview}
                         />
                       );
                     })}
-                  </div>
-                )}
-                <p className={classes.previewContent}>{des.content}</p>
-              </React.Fragment>
-            );
-          })
-        ) : (
-          <PreviewTest exams={test.exams} />
-        )}
+                    {weekArr[indexWeek].test.map((test, index) => {
+                      return (
+                        <Test
+                          key={index}
+                          week={indexWeek}
+                          test={test.testNumber}
+                          onClick={switchTestHandler}
+                          showTest={showTest}
+                          preview={preview}
+                        />
+                      );
+                    })}
+                  </ListPractice>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className={classes["form-content"]}>
+          <PreviewFragment showTest={showTest} />
+        </div>
       </div>
+      <button className={classes["submit-test"]} style={{display: showTest ? 'block' : 'none'}} onClick={submitExamResultHandler}>Submit</button>
     </React.Fragment>
   );
 };

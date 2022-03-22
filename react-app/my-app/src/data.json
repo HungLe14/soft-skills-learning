@@ -24,8 +24,15 @@
               "point": "5",
               "answer": ["dap an 1", "dap an 2", "dap an 3", "dap an 4"],
               "correctAnswer": "dap an 1"
+            },
+            {
+              "question": "cau hoi 2",
+              "point": "1",
+              "answer": ["dap an 1", "dap an 2", "dap an 3", "dap an 4"],
+              "correctAnswer": "dap an 1"
             }
-          ]
+          ],
+          "answers": ["", ""]
         }
       ],
       "totalPractice": 1,
