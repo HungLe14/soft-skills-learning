@@ -5,6 +5,7 @@ import {
   getContentInsidePTag,
   getImgNameFromSrc,
   getImgNameCourse,
+  buildReduxObject,
 } from "../utils";
 
 const initState = {
@@ -32,65 +33,12 @@ const initState = {
 const rootReducer = {
   loadAPItoRedux(state, action) {
     state.mode = "update";
-    let description = action.payload.content;
-    let isFinish = true;
-    const contentArr = [];
-    while (isFinish) {
-      const contentInsidePTag = getContentInsidePTag(description);
-      if (contentInsidePTag) {
-        contentArr.push({
-          type: "p",
-          content: contentInsidePTag,
-        });
-        description = deletePTag(description);
-        continue;
-      }
-      const nameImgFromSrc = getImgNameFromSrc(description);
-      if (nameImgFromSrc) {
-        contentArr.push({
-          type: "img",
-          content: nameImgFromSrc,
-        });
-        description = deleteImgTag(description);
-        continue;
-      }
-      if (!contentInsidePTag && !nameImgFromSrc) {
-        isFinish = false;
-      }
-    }
-
-    const result = [];
-    contentArr.forEach((content) => {
-      if (content.type === "p") {
-        result.push({ descriptionContent: content.content, imageName: [] });
-      }
-      if (content.type === "img") {
-        result[result.length - 1].imageName.push(content.content);
-      }
-    });
-
-    result.forEach((r, i) => {
-      if (i > 0) {
-        state.courseDescriptions.push({
-          description: "",
-          images: [
-            {
-              name: "",
-            },
-          ],
-        });
-      }
-      state.courseDescriptions[i].description = r.descriptionContent;
-      r.imageName.forEach((img, imgIndex) => {
-        state.courseDescriptions[i].images[imgIndex].name = img;
-      });
-    });
-
-    state.courseName = action.payload.title;
-    state.courseImg = getImgNameCourse(action.payload.imageUrl);
-    // state.weekArr = action.payload.weekArr;
-
-    console.log(result);
+    const reduxObject = buildReduxObject(action.payload);
+    console.log(reduxObject);
+    state.courseName = reduxObject.courseName;
+    state.courseImg = reduxObject.courseImg;
+    state.weekArr = reduxObject.weekArr;
+    state.courseDescriptions = reduxObject.courseDescriptions;
   },
 
   changeCourseName(state, action) {

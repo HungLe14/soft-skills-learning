@@ -7,6 +7,7 @@ import { Test } from "../practice/Test";
 import { Practice } from "../practice/Practice";
 import { Week } from "../week/Week";
 import { PreviewFragment } from "../preview-fragment/PreviewFragment";
+import { ReadPractice } from "../read-practice/ReadPractice";
 
 export const Preview = (props) => {
   const weekArr = useSelector((state) => state.weekArr);
@@ -17,7 +18,6 @@ export const Preview = (props) => {
 
   const currentWeek = useSelector((state) => state.currentWeek);
   const currentTest = useSelector((state) => state.currentTest);
-
 
   // change current week
   const changeWeekHandler = (weekNum) => {
@@ -49,7 +49,7 @@ export const Preview = (props) => {
 
     console.log(answers);
     console.log(exams);
-  }
+  };
 
   return (
     <React.Fragment>
@@ -92,10 +92,16 @@ export const Preview = (props) => {
           </div>
         </div>
         <div className={classes["form-content"]}>
-          <PreviewFragment showTest={showTest} />
+          <ReadPractice showTest={showTest} />
         </div>
       </div>
-      <button className={classes["submit-test"]} style={{display: showTest ? 'block' : 'none'}} onClick={submitExamResultHandler}>Submit</button>
+      <button
+        className={classes["submit-test"]}
+        style={{ display: showTest ? "block" : "none" }}
+        onClick={submitExamResultHandler}
+      >
+        Submit
+      </button>
     </React.Fragment>
   );
 };

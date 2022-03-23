@@ -22,7 +22,7 @@ export const ButtonControl = (props) => {
               .map((img) =>
                 img.name === "Chọn ảnh"
                   ? undefined
-                  : `<img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media/>`
+                  : `<img src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media"/>`
               )
               .filter((img) => img !== undefined)
               .join("");
@@ -65,7 +65,7 @@ export const ButtonControl = (props) => {
           .map((img) =>
             img.name === "Chọn tệp"
               ? undefined
-              : `<img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media/>`
+              : `<img src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media"/>`
           )
           .filter((img) => img !== undefined)
           .join("");

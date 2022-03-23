@@ -13,7 +13,7 @@ function Read() {
   const fetchData = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(require("./data.json"));
+        resolve(require("./data-from-api.json"));
       }, 3000);
     });
   };
@@ -29,11 +29,7 @@ function Read() {
   }, [dispatch]);
   return (
     <div className="App">
-      <DashBoard>
-        {isLoading ? (
-          <LoadingSpinner />
-        ) : <Preview/>}
-      </DashBoard>
+      <DashBoard>{isLoading ? <LoadingSpinner /> : <Preview />}</DashBoard>
     </div>
   );
 }
