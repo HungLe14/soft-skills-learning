@@ -15,7 +15,7 @@ function Update() {
   const fetchData = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(require("./data.json"));
+        resolve(require("./data-from-api.json"));
       }, 3000);
     });
   };
@@ -23,6 +23,7 @@ function Update() {
   useEffect(() => {
     fetchData().then((data) => {
       if (data) {
+        console.log(data);
         dispatch(practiceAction.loadAPItoRedux(data));
         dispatch(practiceAction.changeCurrentWeek(1));
         setIsLoading(false);

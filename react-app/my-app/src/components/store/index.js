@@ -1,4 +1,11 @@
 import { createSlice, configureStore, current } from "@reduxjs/toolkit";
+import {
+  deleteImgTag,
+  deletePTag,
+  getContentInsidePTag,
+  getImgNameFromSrc,
+  getImgNameCourse,
+} from "../utils";
 
 const initState = {
   mode: "",
@@ -25,10 +32,65 @@ const initState = {
 const rootReducer = {
   loadAPItoRedux(state, action) {
     state.mode = "update";
-    state.courseName = action.payload.courseName;
-    state.courseImg = action.payload.courseImg;
-    state.courseDescriptions = action.payload.courseDescriptions;
-    state.weekArr = action.payload.weekArr;
+    let description = action.payload.content;
+    let isFinish = true;
+    const contentArr = [];
+    while (isFinish) {
+      const contentInsidePTag = getContentInsidePTag(description);
+      if (contentInsidePTag) {
+        contentArr.push({
+          type: "p",
+          content: contentInsidePTag,
+        });
+        description = deletePTag(description);
+        continue;
+      }
+      const nameImgFromSrc = getImgNameFromSrc(description);
+      if (nameImgFromSrc) {
+        contentArr.push({
+          type: "img",
+          content: nameImgFromSrc,
+        });
+        description = deleteImgTag(description);
+        continue;
+      }
+      if (!contentInsidePTag && !nameImgFromSrc) {
+        isFinish = false;
+      }
+    }
+
+    const result = [];
+    contentArr.forEach((content) => {
+      if (content.type === "p") {
+        result.push({ descriptionContent: content.content, imageName: [] });
+      }
+      if (content.type === "img") {
+        result[result.length - 1].imageName.push(content.content);
+      }
+    });
+
+    result.forEach((r, i) => {
+      if (i > 0) {
+        state.courseDescriptions.push({
+          description: "",
+          images: [
+            {
+              name: "",
+            },
+          ],
+        });
+      }
+      state.courseDescriptions[i].description = r.descriptionContent;
+      r.imageName.forEach((img, imgIndex) => {
+        state.courseDescriptions[i].images[imgIndex].name = img;
+      });
+    });
+
+    state.courseName = action.payload.title;
+    state.courseImg = getImgNameCourse(action.payload.imageUrl);
+    // state.weekArr = action.payload.weekArr;
+
+    console.log(result);
   },
 
   changeCourseName(state, action) {
