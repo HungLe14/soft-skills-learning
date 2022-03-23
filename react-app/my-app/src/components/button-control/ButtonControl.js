@@ -4,13 +4,14 @@ import classes from "./ButtonControl.module.css";
 
 export const ButtonControl = (props) => {
   //https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/IMG_HERE?alt=media
+  const id = useSelector((state) => state.id);
   const courseTitle = useSelector((state) => state.courseName);
   const courseImgUrl = useSelector((state) => state.courseImg);
   const courseDescriptions = useSelector((state) => state.courseDescriptions);
   const week = useSelector((state) => state.weekArr);
   const state = useSelector((state) => state);
   const mode = useSelector((state) => state.mode);
-  const submitData = async () => {
+  const submitPostData = async () => {
     const lectureDtos = [];
     const testDtos = [];
 
@@ -104,6 +105,106 @@ export const ButtonControl = (props) => {
     console.log("==========================");
     console.log(state);
   };
+
+  const submitPutData = async () => {
+    const lectureDtos = [];
+    const testDtos = [];
+
+    week.forEach((weekEl, weekIndex) => {
+      weekEl.practice.forEach((practiceEl, practiceIndex) => {
+        const content = practiceEl.description
+          .map((des) => {
+            const imgStr = des.image
+              .map((img) =>
+                img.name === "Chọn ảnh"
+                  ? undefined
+                  : `<img src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media"/>`
+              )
+              .filter((img) => img !== undefined)
+              .join("");
+
+            return `<p>${des.content}</p>${imgStr}`;
+          })
+          .join("");
+
+        lectureDtos.push({
+          id: practiceEl.id,
+          week: `Tuan ${weekIndex + 1}`,
+          practiceIndex,
+          resouceUrl: "",
+          content,
+          name: `Bai ${practiceIndex + 1}`,
+        });
+      });
+
+      weekEl.test.forEach((testEl, testIndex) => {
+        const content = testEl.exams
+          .map((exam, index) => {
+            const answers = exam.answer.map((ans) => `${ans}`).join("|");
+            return `Bai ${index + 1}||${exam.point}||${
+              exam.question
+            }||${answers}||${exam.correctAnswer}`;
+          })
+          .join("\n");
+
+        testDtos.push({
+          id: testEl.id,
+          week: `Tuan ${weekIndex + 1}`,
+          index: testIndex,
+          content,
+          name: `Bai kiem tra ${testEl.testNumber}`,
+        });
+      });
+    });
+
+    const content = courseDescriptions
+      .map((el) => {
+        const imgStr = el.images
+          .map((img) =>
+            img.name === "Chọn tệp"
+              ? undefined
+              : `<img src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media"/>`
+          )
+          .filter((img) => img !== undefined)
+          .join("");
+        return `<p>${el.description}</p>${imgStr}`;
+      })
+      .join("");
+
+    // const testDtos = week.test.map((el, index) => {
+    //   return {
+    //     week: `Bai ${index+1}`,
+    //     index,
+    //     resouceUrl: "",
+    //     content: '',
+
+    //   };
+    // });
+
+    const data = {
+      id,
+      courseTitle,
+      courseImgUrl: `https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${courseImgUrl}?alt=media`,
+      content,
+      lectureDtos,
+      testDtos,
+    };
+
+    fetch(`/api/course/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((data) => data.json())
+      .then((data) => console.log(data));
+
+    console.log("==========================");
+    console.log(state);
+  };
+
+
   return (
     <React.Fragment>
       <div className={classes["button-control"]}>
@@ -162,7 +263,7 @@ export const ButtonControl = (props) => {
             <button
               type="button"
               className={`${classes["button-node"]} ${classes.confirm}`}
-              onClick={submitData}
+              onClick={mode === 'update' ? submitPutData :submitPostData}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -35,6 +35,7 @@ export const buildReduxObject = (data) => {
 
   // get all course information
 
+  finalObject.id = data.id;
   finalObject.courseName = data.title;
   finalObject.courseImg = getImgNameCourse(data.imageUrl);
 
@@ -61,6 +62,7 @@ export const buildReduxObject = (data) => {
       numberOfWeek: index + 1,
       totalTest: tests.length,
       test: tests.map((test, index) => ({
+        id: test.id,
         testNumber: index + 1,
         exams: test.content.split("\n").map((exam) => {
           return {
@@ -78,6 +80,7 @@ export const buildReduxObject = (data) => {
         const practiceDescription = getPracticeDescription(practice.content);
 
         return {
+          id: practice.id,
           practiceNumber: index + 1,
           description: practiceDescription,
         };
