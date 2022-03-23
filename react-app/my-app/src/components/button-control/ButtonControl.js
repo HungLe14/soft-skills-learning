@@ -5,10 +5,12 @@ import classes from "./ButtonControl.module.css";
 export const ButtonControl = (props) => {
   //https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/IMG_HERE?alt=media
   const id = useSelector((state) => state.id);
+  console.log(id);
   const courseTitle = useSelector((state) => state.courseName);
   const courseImgUrl = useSelector((state) => state.courseImg);
   const courseDescriptions = useSelector((state) => state.courseDescriptions);
   const week = useSelector((state) => state.weekArr);
+  console.log(week);
   const state = useSelector((state) => state);
   const mode = useSelector((state) => state.mode);
   const submitPostData = async () => {

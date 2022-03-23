@@ -35,10 +35,16 @@ const rootReducer = {
     state.mode = "update";
     const reduxObject = buildReduxObject(action.payload);
     console.log(reduxObject);
+
+    state.id = reduxObject.id;
     state.courseName = reduxObject.courseName;
     state.courseImg = reduxObject.courseImg;
     state.weekArr = reduxObject.weekArr;
     state.courseDescriptions = reduxObject.courseDescriptions;
+  },
+
+  setId(state, action) {
+    state.id = action.payload;
   },
 
   changeCourseName(state, action) {

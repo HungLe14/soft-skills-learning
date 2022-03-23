@@ -12,6 +12,14 @@ function Update() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
+  // const fetchData = () => {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve(require("./data-from-api.json"));
+  //     }, 3000);
+  //   });
+  // };
+  
   const fetchData = async () => {
     const url = window.location.href;
     console.log(url);
