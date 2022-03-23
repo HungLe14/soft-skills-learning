@@ -13,11 +13,9 @@ function Update() {
   const dispatch = useDispatch();
 
   const fetchData = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(require("./data-from-api.json"));
-      }, 3000);
-    });
+    const url = window.location.href;
+    const id = url.split("/")[url.length - 1];
+    fetch(`/api/course/${id}`).then((data) => data.json());
   };
 
   useEffect(() => {

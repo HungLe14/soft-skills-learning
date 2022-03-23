@@ -100,7 +100,10 @@ export const ButtonControl = (props) => {
       body: JSON.stringify(data),
     })
       .then((data) => data.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        window.location.reload();
+      });
 
     console.log("==========================");
     console.log(state);
@@ -198,12 +201,14 @@ export const ButtonControl = (props) => {
       body: JSON.stringify(data),
     })
       .then((data) => data.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        window.location.reload();
+      });
 
     console.log("==========================");
     console.log(state);
   };
-
 
   return (
     <React.Fragment>
@@ -263,7 +268,7 @@ export const ButtonControl = (props) => {
             <button
               type="button"
               className={`${classes["button-node"]} ${classes.confirm}`}
-              onClick={mode === 'update' ? submitPutData :submitPostData}
+              onClick={mode === "update" ? submitPutData : submitPostData}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
