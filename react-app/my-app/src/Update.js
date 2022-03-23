@@ -12,10 +12,13 @@ function Update() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
-  const fetchData = () => {
+  const fetchData = async () => {
     const url = window.location.href;
+    console.log(url);
     const id = url.split("/")[url.length - 1];
-    fetch(`/api/course/${id}`).then((data) => data.json());
+    console.log(id);
+    const data = await fetch(`/api/course/${id}`);
+    return await data.json();
   };
 
   useEffect(() => {
