@@ -15,7 +15,7 @@ function Update() {
   const fetchData = async () => {
     const url = window.location.href;
     console.log(url);
-    const id = url.split("/")[url.length - 1];
+    const id = url.split("/").at(-1);
     console.log(id);
     const data = await fetch(`/api/course/${id}`);
     return await data.json();
