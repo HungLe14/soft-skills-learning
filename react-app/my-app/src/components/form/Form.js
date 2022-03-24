@@ -97,12 +97,12 @@ export const Form = (props) => {
         <div className={classes["form-wrapper"]}>
           <div className={classes["form-menu"]}>
             <div className={classes["practice-detail"]}>
-              {weekArr.map((week, indexWeek) => {
+              {weekArr?.map((week, indexWeek) => {
                 return (
                   <div key={indexWeek}>
                     <Week onClick={changeWeekHandler} week={indexWeek} />
                     <ListPractice>
-                      {weekArr[indexWeek].practice.map((practice, index) => {
+                      {weekArr[indexWeek]?.practice?.map((practice, index) => {
                         return (
                           <Practice
                             key={index}
@@ -115,7 +115,7 @@ export const Form = (props) => {
                           />
                         );
                       })}
-                      {weekArr[indexWeek].test.map((test, index) => {
+                      {weekArr[indexWeek]?.test?.map((test, index) => {
                         return (
                           <Test
                             key={index}
@@ -151,7 +151,7 @@ export const Form = (props) => {
               <React.Fragment>
                 {weekArr[currentWeek - 1]?.practice[
                   currentPractice - 1
-                ]?.description.map((c, index) => (
+                ]?.description?.map((c, index) => (
                   <Content key={index} contentIndex={index} />
                 ))}
                 <AddContent onClick={addContentHandler} />

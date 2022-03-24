@@ -66,8 +66,8 @@ export const PreviewFragment = (props) => {
           practice?.description?.map((des, desIndex) => {
             return (
               <React.Fragment key={desIndex}>
-                {des.image.length === 1 ? (
-                  des.image.map((image, imageIndex) => {
+                {des?.image?.length === 1 ? (
+                  des?.image?.map((image, imageIndex) => {
                     return (
                       <img
                         key={imageIndex}
@@ -80,7 +80,7 @@ export const PreviewFragment = (props) => {
                   })
                 ) : (
                   <div className={classes.imgWrapper}>
-                    {des.image.map((image, imageIndex) => {
+                    {des?.image?.map((image, imageIndex) => {
                       return (
                         <img
                           key={imageIndex}

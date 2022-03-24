@@ -136,7 +136,7 @@ export const CreateCourse = (props) => {
           />
         </div>
       </div>
-      {courseDescriptions.map((des, descriptionIndex) => {
+      {courseDescriptions?.map((des, descriptionIndex) => {
         return (
           <React.Fragment key={descriptionIndex}>
             <div className={classes["ver-input"]}>
@@ -152,7 +152,7 @@ export const CreateCourse = (props) => {
                 value={courseDescriptions[descriptionIndex].description}
               ></textarea>
             </div>
-            {des.images.map((image, imageIndex) => (
+            {des?.images?.map((image, imageIndex) => (
               <InputPicOnCourse
                 key={imageIndex}
                 fileName={image.name}

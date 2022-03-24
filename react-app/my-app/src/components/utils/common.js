@@ -21,17 +21,19 @@ export const getImgNameFromSrc = (string) => {
 };
 
 export const deleteImgTag = (string) => {
-  const reg =
-    /(^<img src=)([\s\S]+?)(\/>)/;
+  const reg = /(^<img src=)([\s\S]+?)(\/>)/;
   const wholeContent = string.replace(reg, "");
   return wholeContent;
 };
 
 export const getImgNameCourse = (string) => {
-  const reg =
-    /(?<=^)([\s\S]+?)(?=\?alt=media)/;
+  const reg = /(?<=^)([\s\S]+?)(?=\?alt=media)/;
   const nameImg = string.match(reg);
-  return nameImg[0];
+  return (
+    nameImg &&
+    nameImg[0] &&
+    nameImg[0].split("/")[nameImg[0].split("/").length - 1]
+  );
 };
 
 export const buildReduxObject = (data) => {
@@ -51,8 +53,8 @@ export const buildReduxObject = (data) => {
   const weekArr = [];
 
   const weekKey = new Set(
-    data.lectures
-      .map((lecture) => lecture.week)
+    data?.lectures
+      ?.map((lecture) => lecture.week)
       .concat(data.tests.map((test) => test.week))
   );
   let index = 0;
@@ -65,10 +67,10 @@ export const buildReduxObject = (data) => {
     weekArr.push({
       numberOfWeek: index + 1,
       totalTest: tests.length,
-      test: tests.map((test, index) => ({
+      test: tests?.map((test, index) => ({
         id: test.id,
         testNumber: index + 1,
-        exams: test.content.split("\n").map((exam) => {
+        exams: test?.content?.split("\n").map((exam) => {
           return {
             question: exam.split("||")[2],
             point: exam.split("||")[1],
@@ -79,7 +81,7 @@ export const buildReduxObject = (data) => {
         answers: [], // need after check
       })),
       totalPractice: practices.length,
-      practice: practices.map((practice, index) => {
+      practice: practices?.map((practice, index) => {
         // nem vao
         const practiceDescription = getPracticeDescription(practice.content);
 

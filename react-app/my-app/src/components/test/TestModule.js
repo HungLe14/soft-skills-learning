@@ -78,7 +78,7 @@ export const TestModule = (props) => {
           }
         />
       </div>
-      {answerArr.map((_, index) => {
+      {answerArr?.map((_, index) => {
         return (
           <div className={classes.questionBody} key={index}>
             <input

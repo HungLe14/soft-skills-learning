@@ -56,12 +56,12 @@ export const Preview = (props) => {
       <div className={classes["form-wrapper"]}>
         <div className={classes["form-menu"]}>
           <div className={classes["practice-detail"]}>
-            {weekArr.map((week, indexWeek) => {
+            {weekArr?.map((week, indexWeek) => {
               return (
                 <div key={indexWeek}>
                   <Week onClick={changeWeekHandler} week={indexWeek} />
                   <ListPractice>
-                    {weekArr[indexWeek].practice.map((practice, index) => {
+                    {weekArr[indexWeek]?.practice?.map((practice, index) => {
                       return (
                         <Practice
                           key={index}

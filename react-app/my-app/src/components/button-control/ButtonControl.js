@@ -19,10 +19,10 @@ export const ButtonControl = (props) => {
 
     week.forEach((weekEl, weekIndex) => {
       weekEl.practice.forEach((practiceEl, practiceIndex) => {
-        const content = practiceEl.description
-          .map((des) => {
-            const imgStr = des.image
-              .map((img) =>
+        const content = practiceEl?.description
+          ?.map((des) => {
+            const imgStr = des?.image
+              ?.map((img) =>
                 img.name === "Chọn ảnh"
                   ? undefined
                   : `<img src="${props.prefix}${img.name}${props.suffix}"/>`
@@ -44,9 +44,9 @@ export const ButtonControl = (props) => {
       });
 
       weekEl.test.forEach((testEl, testIndex) => {
-        const content = testEl.exams
-          .map((exam, index) => {
-            const answers = exam.answer.map((ans) => `${ans}`).join("|");
+        const content = testEl?.exams
+          ?.map((exam, index) => {
+            const answers = exam?.answer?.map((ans) => `${ans}`).join("|");
             return `Bai ${index + 1}||${exam.point}||${
               exam.question
             }||${answers}||${exam.correctAnswer}`;
@@ -64,8 +64,8 @@ export const ButtonControl = (props) => {
 
     const content = courseDescriptions
       .map((el) => {
-        const imgStr = el.images
-          .map((img) =>
+        const imgStr = el?.images
+          ?.map((img) =>
             img.name === "Chọn tệp"
               ? undefined
               : `<img src="${props.prefix}${img.name}${props.suffix}"/>`
@@ -117,10 +117,10 @@ export const ButtonControl = (props) => {
 
     week.forEach((weekEl, weekIndex) => {
       weekEl.practice.forEach((practiceEl, practiceIndex) => {
-        const content = practiceEl.description
-          .map((des) => {
-            const imgStr = des.image
-              .map((img) =>
+        const content = practiceEl?.description
+          ?.map((des) => {
+            const imgStr = des?.image
+              ?.map((img) =>
                 img.name === "Chọn ảnh"
                   ? undefined
                   : `<img src="${props.prefix}${img.name}${props.suffix}"/>`
@@ -143,9 +143,9 @@ export const ButtonControl = (props) => {
       });
 
       weekEl.test.forEach((testEl, testIndex) => {
-        const content = testEl.exams
-          .map((exam, index) => {
-            const answers = exam.answer.map((ans) => `${ans}`).join("|");
+        const content = testEl?.exams
+          ?.map((exam, index) => {
+            const answers = exam?.answer?.map((ans) => `${ans}`).join("|");
             return `Bai ${index + 1}||${exam.point}||${
               exam.question
             }||${answers}||${exam.correctAnswer}`;
@@ -163,9 +163,9 @@ export const ButtonControl = (props) => {
     });
 
     const content = courseDescriptions
-      .map((el) => {
-        const imgStr = el.images
-          .map((img) =>
+      ?.map((el) => {
+        const imgStr = el?.images
+          ?.map((img) =>
             img.name === "Chọn tệp"
               ? undefined
               : `<img src="${props.prefix}${img.name}${props.suffix}"/>`
