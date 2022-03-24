@@ -13,6 +13,10 @@ export const ButtonControl = (props) => {
   console.log(week);
   const state = useSelector((state) => state);
   const mode = useSelector((state) => state.mode);
+
+  //
+  //
+  //
   const submitPostData = async () => {
     const lectureDtos = [];
     const testDtos = [];

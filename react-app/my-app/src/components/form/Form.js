@@ -146,7 +146,11 @@ export const Form = (props) => {
           </div>
           <div className={classes["form-content"]}>
             {preview ? (
-              <PreviewFragment showTest={showTest} />
+              <PreviewFragment
+                showTest={showTest}
+                prefix={props.prefix}
+                suffix={props.suffix}
+              />
             ) : !showTest ? (
               <React.Fragment>
                 {weekArr[currentWeek - 1]?.practice[
