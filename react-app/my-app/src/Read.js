@@ -10,26 +10,35 @@ function Read(props) {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
-  const fetchData = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(require("./data-from-api.json"));
-      }, 3000);
-    });
+  const fetchData = async () => {
+    const url = window.location.href;
+    console.log(url);
+    const id = url.split("/").at(-1);
+    console.log(id);
+    const data = await fetch(`/api/course/${id}`);
+    return await data.json();
   };
 
   useEffect(() => {
     fetchData().then((data) => {
       if (data) {
+        console.log(data);
         dispatch(practiceAction.loadAPItoRedux(data));
         dispatch(practiceAction.changeCurrentWeek(1));
         setIsLoading(false);
       }
     });
   }, [dispatch]);
+  
   return (
     <div className="App">
-      <DashBoard>{isLoading ? <LoadingSpinner /> : <Preview prefix={props.prefix} suffix={props.suffix}/>}</DashBoard>
+      <DashBoard>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <Preview prefix={props.prefix} suffix={props.suffix} />
+        )}
+      </DashBoard>
     </div>
   );
 }
