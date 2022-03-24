@@ -10,7 +10,7 @@ export const deletePTag = (string) => {
 };
 
 export const getImgNameFromSrc = (string) => {
-  const reg = /(?<=^<img src=)([\s\S]+?)(?=\?alt=media\/>)/;
+  const reg = /(?<=^<img src=")([\s\S]+?)(?=\?alt=media"\/>)/;
   const nameImg = string.match(reg);
 
   return (
@@ -21,7 +21,7 @@ export const getImgNameFromSrc = (string) => {
 };
 
 export const deleteImgTag = (string) => {
-  const reg = /(^<img src=)([\s\S]+?)(\/>)/;
+  const reg = /(^<img src=")([\s\S]+?)("\/>)/;
   const wholeContent = string.replace(reg, "");
   return wholeContent;
 };
