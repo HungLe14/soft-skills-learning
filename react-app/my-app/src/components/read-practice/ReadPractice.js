@@ -20,7 +20,7 @@ export const ReadPractice = (props) => {
   return (
     <React.Fragment>
       <div className={classes.buttonWrapper}>
-        <button
+        {/* <button
           type="button"
           className={`${classes["button-node"]} ${classes.confirm}`}
         >
@@ -57,7 +57,7 @@ export const ReadPractice = (props) => {
               d="M13 5l7 7-7 7M5 5l7 7-7 7"
             />
           </svg>
-        </button>
+        </button> */}
       </div>
       <div className={classes.body}>
         {props.showTest ? (

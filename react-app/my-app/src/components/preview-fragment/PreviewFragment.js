@@ -20,7 +20,7 @@ export const PreviewFragment = (props) => {
   return (
     <React.Fragment>
       <div className={classes.buttonWrapper}>
-        <button
+        {/* <button
           type="button"
           className={`${classes["button-node"]} ${classes.confirm}`}
         >
@@ -57,7 +57,7 @@ export const PreviewFragment = (props) => {
               d="M13 5l7 7-7 7M5 5l7 7-7 7"
             />
           </svg>
-        </button>
+        </button> */}
       </div>
       <div className={classes.body}>
         {props.showTest ? (
@@ -72,7 +72,7 @@ export const PreviewFragment = (props) => {
                       <img
                         key={imageIndex}
                         // src={`https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/${image.name}?alt=media`}
-                        src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
+                        src={`${props.prefix}${image.name}${props.suffix}`}
                         alt="description img"
                         className={classes.previewPicture}
                       />
@@ -85,7 +85,7 @@ export const PreviewFragment = (props) => {
                         <img
                           key={imageIndex}
                           // src={`https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/${image.name}?alt=media`}
-                          src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
+                          src={`${props.prefix}${image.name}${props.suffix}`}
                           alt="description img"
                           className={classes.previewPicture}
                         />
