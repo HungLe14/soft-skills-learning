@@ -110,6 +110,7 @@ export const getCourseDescription = (description) => {
     if (contentInsidePTag) {
       courseDescriptions.push({
         description: contentInsidePTag,
+        images: [],
       });
       description = deletePTag(description);
       continue;
@@ -145,6 +146,7 @@ export const getPracticeDescription = (description) => {
       practiceDescriptions.push({
         number: count,
         content: contentInsidePTag,
+        image: []
       });
       description = deletePTag(description);
       continue;
