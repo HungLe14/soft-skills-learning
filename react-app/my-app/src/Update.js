@@ -7,7 +7,7 @@ import { Form } from "./components/form/Form";
 import LoadingSpinner from "./components/spinner/Spinner";
 import { practiceAction } from "./components/store";
 
-function Update() {
+function Update(props) {
   const [createCourse, setCreateCourse] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Update() {
   //     }, 3000);
   //   });
   // };
-  
+
   const fetchData = async () => {
     const url = window.location.href;
     console.log(url);
@@ -46,9 +46,17 @@ function Update() {
         {isLoading ? (
           <LoadingSpinner />
         ) : createCourse ? (
-          <CreateCourse onCreateCourse={setCreateCourse} />
+          <CreateCourse
+            onCreateCourse={setCreateCourse}
+            prefix={props.prefix}
+            suffix={props.suffix}
+          />
         ) : (
-          <Form onCancelCourse={setCreateCourse} />
+          <Form
+            onCancelCourse={setCreateCourse}
+            prefix={props.prefix}
+            suffix={props.suffix}
+          />
         )}
       </DashBoard>
     </div>
