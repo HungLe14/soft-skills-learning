@@ -4,16 +4,16 @@ import Read from "./Read";
 import Update from "./Update";
 
 export const Main = (props) => {
-  const { mode } = props;
+  const { mode, prefix, suffix } = props;
 
   function renderComponent() {
     switch (mode) {
       case "create":
-        return <Create />;
+        return <Create prefix={prefix} suffix={suffix} />;
       case "update":
-        return <Update />;
+        return <Update prefix={prefix} suffix={suffix} />;
       case "read":
-        return <Read />;
+        return <Read prefix={prefix} suffix={suffix}/>;
       default:
     }
   }

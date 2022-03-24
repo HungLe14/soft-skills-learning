@@ -4,7 +4,7 @@ import { CreateCourse } from "./components/create-course/CreateCourse";
 import { DashBoard } from "./components/DashBoard/DashBoard";
 import { Form } from "./components/form/Form";
 
-function Create() {
+function Create(props) {
   const [createCourse, setCreateCourse] = useState(true);
 
   return (
@@ -13,7 +13,7 @@ function Create() {
         {createCourse ? (
           <CreateCourse onCreateCourse={setCreateCourse} />
         ) : (
-          <Form onCancelCourse={setCreateCourse} />
+          <Form prefix={props.prefix} suffix={props.suffix} onCancelCourse={setCreateCourse} />
         )}
       </DashBoard>
     </div>

@@ -25,7 +25,7 @@ export const ButtonControl = (props) => {
               .map((img) =>
                 img.name === "Chọn ảnh"
                   ? undefined
-                  : `<img src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media"/>`
+                  : `<img src="${props.prefix}${img.name}${props.suffix}"/>`
               )
               .filter((img) => img !== undefined)
               .join("");
@@ -68,7 +68,7 @@ export const ButtonControl = (props) => {
           .map((img) =>
             img.name === "Chọn tệp"
               ? undefined
-              : `<img src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media"/>`
+              : `<img src="${props.prefix}${img.name}${props.suffix}"/>`
           )
           .filter((img) => img !== undefined)
           .join("");
@@ -88,7 +88,7 @@ export const ButtonControl = (props) => {
 
     const data = {
       courseTitle,
-      courseImgUrl: `https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${courseImgUrl}?alt=media`,
+      courseImgUrl: `${props.prefix}${courseImgUrl}${props.suffix}`,
       content,
       lectureDtos,
       testDtos,
@@ -123,7 +123,7 @@ export const ButtonControl = (props) => {
               .map((img) =>
                 img.name === "Chọn ảnh"
                   ? undefined
-                  : `<img src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media"/>`
+                  : `<img src="${props.prefix}${img.name}${props.suffix}"/>`
               )
               .filter((img) => img !== undefined)
               .join("");
@@ -168,7 +168,7 @@ export const ButtonControl = (props) => {
           .map((img) =>
             img.name === "Chọn tệp"
               ? undefined
-              : `<img src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${img.name}?alt=media"/>`
+              : `<img src="${props.prefix}${img.name}${props.suffix}"/>`
           )
           .filter((img) => img !== undefined)
           .join("");
@@ -189,7 +189,7 @@ export const ButtonControl = (props) => {
     const data = {
       id,
       courseTitle,
-      courseImgUrl: `https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/${courseImgUrl}?alt=media`,
+      courseImgUrl: `${props.prefix}${courseImgUrl}${props.suffix}`,
       content,
       lectureDtos,
       testDtos,

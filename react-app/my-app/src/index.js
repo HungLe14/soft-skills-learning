@@ -16,7 +16,7 @@ export const mount = (
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={practiceStore}>
-        <Main mode={props.mode}/>
+        <Main mode={props.mode} prefix={props.prefix} suffix={props.suffix} />
       </Provider>
     </React.StrictMode>,
     document.getElementById("root")

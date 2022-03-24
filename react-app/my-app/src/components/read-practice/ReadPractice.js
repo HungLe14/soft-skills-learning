@@ -71,7 +71,7 @@ export const ReadPractice = (props) => {
                     return (
                       <img
                         key={imageIndex}
-                        src={`https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/${image.name}?alt=media`}
+                        src={`${props.prefix}${image.name}${props.suffix}`}
                         // src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
                         alt="description img"
                         className={classes.previewPicture}
@@ -84,7 +84,7 @@ export const ReadPractice = (props) => {
                       return (
                         <img
                           key={imageIndex}
-                          src={`https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/${image.name}?alt=media`}
+                          src={`${props.prefix}${image.name}${props.suffix}`}
                           // src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
                           alt="description img"
                           className={classes.previewPicture}

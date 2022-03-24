@@ -172,6 +172,8 @@ export const Form = (props) => {
               preview={preview}
               onPreview={previewHandler}
               onCancelCourse={props.onCancelCourse}
+              prefix={props.prefix}
+              suffix={props.suffix}
             />
           </div>
         </div>

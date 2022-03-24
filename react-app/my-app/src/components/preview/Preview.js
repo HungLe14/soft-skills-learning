@@ -92,7 +92,7 @@ export const Preview = (props) => {
           </div>
         </div>
         <div className={classes["form-content"]}>
-          <ReadPractice showTest={showTest} />
+          <ReadPractice showTest={showTest} prefix={props.prefix} suffix={props.suffix}/>
         </div>
       </div>
       <button

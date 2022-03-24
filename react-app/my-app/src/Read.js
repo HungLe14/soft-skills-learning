@@ -6,7 +6,7 @@ import { Preview } from "./components/preview/Preview";
 import LoadingSpinner from "./components/spinner/Spinner";
 import { practiceAction } from "./components/store";
 
-function Read() {
+function Read(props) {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ function Read() {
   }, [dispatch]);
   return (
     <div className="App">
-      <DashBoard>{isLoading ? <LoadingSpinner /> : <Preview />}</DashBoard>
+      <DashBoard>{isLoading ? <LoadingSpinner /> : <Preview prefix={props.prefix} suffix={props.suffix}/>}</DashBoard>
     </div>
   );
 }
