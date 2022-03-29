@@ -15,6 +15,13 @@ function Read(props) {
     console.log(url);
     const id = url.split("/").at(-1);
     console.log(id);
+    if (process.env.NODE_ENV === "development") {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(require("./data-from-api.json"));
+        }, 3000);
+      });
+    }
     const data = await fetch(`/api/course/${id}`);
     return await data.json();
   };
@@ -29,14 +36,14 @@ function Read(props) {
       }
     });
   }, [dispatch]);
-  
+
   return (
     <div className="App">
       <DashBoard>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
-          <Preview prefix={props.prefix} suffix={props.suffix} />
+          <Preview prefix={props.prefix} suffix={props.suffix} enrollmentId={props.enrollmentId}/>
         )}
       </DashBoard>
     </div>

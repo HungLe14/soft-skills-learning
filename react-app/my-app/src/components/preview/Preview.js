@@ -18,6 +18,7 @@ export const Preview = (props) => {
 
   const currentWeek = useSelector((state) => state.currentWeek);
   const currentTest = useSelector((state) => state.currentTest);
+  const currentPractice = useSelector((state) => state.currentPractice);
 
   // change current week
   const changeWeekHandler = (weekNum) => {
@@ -42,13 +43,76 @@ export const Preview = (props) => {
     );
   };
 
-  const submitExamResultHandler = (e) => {
+  const markAsComplete = async (e) => {
+    console.log(e);
+
+    const url = window.location.href;
+    console.log(url);
+    const id = url.split("/").at(-1);
+    console.log(id);
+
+    const practiceId =
+      weekArr[currentWeek - 1].practice[currentPractice - 1]?.id;
+
+    console.log(practiceId);
+
+    await fetch(`/api/course/${id}/lecture/${practiceId}`, {
+      method: "PUT",
+    });
+  };
+
+  const submitExamResultHandler = async (e) => {
     console.log(e);
     const answers = weekArr[currentWeek - 1].test[currentTest - 1]?.answers;
     const exams = weekArr[currentWeek - 1].test[currentTest - 1]?.exams;
 
-    console.log(answers);
-    console.log(exams);
+    const url = window.location.href;
+    console.log(url);
+    const id = url.split("/").at(-1);
+    console.log(id);
+
+    const testId = weekArr[currentWeek - 1].test[currentTest - 1]?.id;
+
+    const totalMark = exams.reduce((totalMark, exam) => {
+      return Number(exam.point) + totalMark;
+    }, 0);
+
+    const answerResult = answers.reduce(
+      (obj, answer, index) => {
+        const isCorrect = exams[index].correctAnswer === answer;
+        if (isCorrect) {
+          obj.mark += 1;
+        }
+
+        obj.answerDetails.push({
+          isCorrect,
+          correctAnswer: exams[index].correctAnswer,
+          studentAnswer: answer,
+        });
+
+        return obj;
+      },
+      {
+        mark: 0,
+        answerDetails: [],
+      }
+    );
+
+    const markPercentage = Math.floor((answerResult.mark / totalMark) * 100);
+
+    console.log("answer", answers);
+    console.log("exam", exams);
+    console.log("totalMark", totalMark);
+    console.log("result", answerResult);
+    console.log(markPercentage);
+
+    await fetch(`/api/course/${id}/test/${testId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ mark: markPercentage }),
+    });
   };
 
   return (
@@ -92,15 +156,18 @@ export const Preview = (props) => {
           </div>
         </div>
         <div className={classes["form-content"]}>
-          <ReadPractice showTest={showTest} prefix={props.prefix} suffix={props.suffix}/>
+          <ReadPractice
+            showTest={showTest}
+            prefix={props.prefix}
+            suffix={props.suffix}
+          />
         </div>
       </div>
       <button
         className={classes["submit-test"]}
-        style={{ display: showTest ? "block" : "none" }}
-        onClick={submitExamResultHandler}
+        onClick={!showTest ? markAsComplete : submitExamResultHandler}
       >
-        Submit
+        {showTest ? "Submit" : "Mark as completed"}
       </button>
     </React.Fragment>
   );
