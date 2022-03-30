@@ -11,6 +11,12 @@
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
 }
 
+.feedback-wrapper > svg {
+  width: 50%;
+  height: auto;
+  color: var(--primary-color);
+}
+
 .feedback-header {
   font-size: 2.4rem;
   font-weight: 600;
@@ -130,11 +136,9 @@ input[type="checkbox"]:checked ~ label {
   background-color: #a1a1a1;
 }
 
-.submit-btn {
+.control-btn {
   width: 100%;
   height: 4rem;
-  background-color: #f81818;
-  color: #fff;
   font-size: 2rem;
   border: none;
   box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
@@ -142,11 +146,21 @@ input[type="checkbox"]:checked ~ label {
   transition: all 0.1s;
 }
 
-/* .submit-btn:hover {
-  opacity: 0.8;
-} */
+.control-btn:hover {
+  transform: translateY(-2px);
+}
 
-.submit-btn:active {
+.control-btn:active {
   transform: translateY(4px);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.control-btn.close-modal {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.control-btn.submit {
+  background-color: #f81818;
+  color: #fff;
 }
