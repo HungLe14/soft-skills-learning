@@ -72,7 +72,7 @@ export const ReadPractice = (props) => {
                       <img
                         key={imageIndex}
                         src={`${props.prefix}${image.name}${props.suffix}`}
-                        // src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
+                        // src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1649080817115-21614.jpg?alt=media"
                         alt="description img"
                         className={classes.previewPicture}
                       />
@@ -85,7 +85,7 @@ export const ReadPractice = (props) => {
                         <img
                           key={imageIndex}
                           src={`${props.prefix}${image.name}${props.suffix}`}
-                          // src="https://elearningindustry.com/wp-content/uploads/2019/10/7-Benefits-That-Highlight-The-Importance-Of-Soft-Skills-In-The-Workplace.png"
+                          // src="https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1649080817115-21614.jpg?alt=media"
                           alt="description img"
                           className={classes.previewPicture}
                         />
