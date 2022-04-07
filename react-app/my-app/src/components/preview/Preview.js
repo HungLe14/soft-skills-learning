@@ -90,7 +90,7 @@ export const Preview = (props) => {
       (obj, answer, index) => {
         const isCorrect = exams[index].correctAnswer === answer;
         if (isCorrect) {
-          obj.mark += 1;
+          obj.mark += exams[index].point;
         }
 
         obj.answerDetails.push({
