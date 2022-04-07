@@ -281,6 +281,14 @@ const rootReducer = {
     exams[action.payload.questionIndex].correctAnswer =
       action.payload.answerIndex;
   },
+
+  markLectureCompleted(state, action){
+    state.weekArr[state.currentWeek - 1].practice[state.currentPractice - 1].isFinished = true
+  },
+  markTestCompleted(state, action){
+    state.weekArr[state.currentWeek - 1].test[state.currentTest - 1].isFinished = true
+    state.weekArr[state.currentWeek - 1].test[state.currentTest - 1].mark = action.payload.mark
+  }
 };
 
 const practiceSlice = createSlice({

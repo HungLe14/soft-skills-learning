@@ -42,8 +42,8 @@ export const buildReduxObject = (data) => {
   // get all course information
 
   finalObject.id = data.id;
-  finalObject.courseName = data.title;
-  finalObject.courseImg = getImgNameCourse(data.imageUrl);
+  finalObject.courseName = data.courseTitle;
+  finalObject.courseImg = getImgNameCourse(data.courseImageUrl);
 
   let description = data.content;
   const courseDescriptions = getCourseDescription(description);
@@ -53,16 +53,16 @@ export const buildReduxObject = (data) => {
   const weekArr = [];
 
   const weekKey = new Set(
-    data?.lectures
+    data?.lectureDtos
       ?.map((lecture) => lecture.week)
-      .concat(data.tests.map((test) => test.week))
+      .concat(data.testDtos.map((test) => test.week))
   );
   let index = 0;
 
   weekKey.forEach((key) => {
     console.log(index);
-    const tests = data.tests.filter((test) => test.week === key);
-    const practices = data.lectures.filter((lecture) => lecture.week === key);
+    const tests = data.testDtos.filter((test) => test.week === key);
+    const practices = data.lectureDtos.filter((lecture) => lecture.week === key);
 
     weekArr.push({
       numberOfWeek: index + 1,
@@ -78,6 +78,8 @@ export const buildReduxObject = (data) => {
             correctAnswer: Number(exam.split("||")[4]),
           };
         }),
+        isFinished: test.isFinished,
+        mark: test.mark,
         answers: [], // need after check
       })),
       totalPractice: practices.length,
@@ -89,6 +91,7 @@ export const buildReduxObject = (data) => {
           id: practice.id,
           practiceNumber: index + 1,
           description: practiceDescription,
+          isFinished: practice.isFinished
         };
       }),
       numberOfPractice: tests.length,

@@ -1,16 +1,17 @@
 {
   "id": 13,
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043427569-21591.jpg?alt=media",
-  "title": "soft skill learning",
+  "courseImageUrl": "https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043427569-21591.jpg?alt=media",
+  "courseTitle": "soft skill learning",
   "content": "<p>nội dung khóa học 1</p><img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043443658-21593.jpg?alt=media/><p>nội dung khóa học 2</p><img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043454860-21593.jpg?alt=media/>",
-  "lectures": [
+  "lectureDtos": [
     {
       "id": 10,
       "week": "Tuan 1",
       "name": "Bai 1",
       "content": "<p>nội dung 1</p><img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043468544-21600.jpg?alt=media/><p>nội dung 2</p><img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043478016-21606.jpg?alt=media/><img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043482294-21611.png?alt=media/>",
       "resourceUrl": null,
-      "indexOrder": 0
+      "index": 0,
+      "isFinished": true
     },
     {
       "id": 11,
@@ -18,7 +19,8 @@
       "name": "Bai 2",
       "content": "<p>nội dung 2.1</p><img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043505006-21593.jpg?alt=media/><img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043512378-21591.jpg?alt=media/><p>nội dung 2.2</p><img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043521035-21606.jpg?alt=media/>",
       "resourceUrl": null,
-      "indexOrder": 1
+      "index": 1,
+      "isFinished": true
     },
     {
       "id": 12,
@@ -26,7 +28,8 @@
       "name": "Bai 1",
       "content": "<p>bài 1.1 tuần 2</p><img src=https://firebasestorage.googleapis.com/v0/b/fpt-soft-skill-learning.appspot.com/o/1648043931330-21593.jpg?alt=media/>",
       "resourceUrl": null,
-      "indexOrder": 0
+      "index": 0,
+      "isFinished": false
     },
     {
       "id": 13,
@@ -34,30 +37,37 @@
       "name": "Bai 2",
       "content": "<p>bài 2.1 tuần 2</p>",
       "resourceUrl": null,
-      "indexOrder": 1
+      "index": 1,
+      "isFinished": false
     }
   ],
-  "tests": [
+  "testDtos": [
     {
       "id": 7,
       "week": "Tuan 1",
       "name": "Bai kiem tra 1",
       "content": "Bai 1||1||câu hỏi 1||1|2|3|4||1\nBai 2||2||câu hỏi 2||1|2|3|4||1",
-      "indexOrder": 0
+      "index": 0,
+      "isFinished": true,
+      "mark": 50
     },
     {
       "id": 8,
       "week": "Tuan 1",
       "name": "Bai kiem tra 2",
       "content": "Bai 1||2||câu hỏi 1||||1\nBai 2||2||câu hỏi 2||1|2|4|5||0",
-      "indexOrder": 1
+      "index": 1,
+      "isFinished": false,
+      "mark": 0
     },
     {
       "id": 9,
       "week": "Tuan 2",
       "name": "Bai kiem tra 1",
       "content": "Bai 1||2||câu hỏi 1||1|2|3|4||1\nBai 2||2||câu hỏi 2||4|3|2|1||2",
-      "indexOrder": 0
+      "index": 0,
+      "isFinished": false,
+      "mark": 0
     }
   ]
 }
