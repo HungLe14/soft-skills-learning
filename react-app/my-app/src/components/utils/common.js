@@ -43,7 +43,7 @@ export const buildReduxObject = (data) => {
 
   finalObject.id = data.id;
   finalObject.courseName = data.courseTitle;
-  finalObject.courseImg = getImgNameCourse(data.courseImageUrl);
+  finalObject.courseImg = getImgNameCourse(data.courseImgUrl);
 
   let description = data.content;
   const courseDescriptions = getCourseDescription(description);
