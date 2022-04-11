@@ -36,6 +36,7 @@ export const Form = (props) => {
   // add test
   const addTestHandler = () => {
     dispatch(practiceAction.addTest());
+    addQuestionHandler();
   };
 
   // delete test
@@ -51,6 +52,7 @@ export const Form = (props) => {
   // add practice
   const addPracticeHandler = () => {
     dispatch(practiceAction.addPractice());
+    addContentHandler();
   };
 
   // delete practice
