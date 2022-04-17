@@ -24,8 +24,6 @@ export const Preview = (props) => {
   console.log(weekArr[currentWeek - 1].test[currentTest - 1]);
   const currentPractice = useSelector((state) => state.currentPractice);
   const isStart = weekArr[currentWeek - 1].test[currentTest - 1].isStart;
-  console.log(isStart);
-
   // change current week
   const changeWeekHandler = (weekNum) => {
     // const payload = string.match(/\d/);
@@ -165,6 +163,7 @@ export const Preview = (props) => {
                           onClick={changePracticeHandler}
                           showTest={showTest}
                           preview={preview}
+                          isFinished={practice.isFinished}
                         />
                       );
                     })}
@@ -177,6 +176,7 @@ export const Preview = (props) => {
                           onClick={switchTestHandler}
                           showTest={showTest}
                           preview={preview}
+                          isFinished={test.isFinished}
                         />
                       );
                     })}
