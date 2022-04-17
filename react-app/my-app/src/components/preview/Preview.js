@@ -23,10 +23,13 @@ export const Preview = (props) => {
   console.log(weekArr[currentWeek - 1]);
   console.log(weekArr[currentWeek - 1].test[currentTest - 1]);
   const currentPractice = useSelector((state) => state.currentPractice);
+  const isStart = weekArr[currentWeek - 1].test[currentTest - 1].isStart;
+  console.log(isStart);
 
   // change current week
   const changeWeekHandler = (weekNum) => {
     // const payload = string.match(/\d/);
+    dispatch(practiceAction.stopTestCheck());
     dispatch(practiceAction.changeCurrentWeek(weekNum));
   };
 
@@ -39,6 +42,24 @@ export const Preview = (props) => {
   // show test
   const switchTestHandler = (currentTest, week) => {
     setShowTest(true);
+    if (isStart) {
+      if (
+        window.confirm(
+          "Kết quả bài kiểm tra sẽ không được lưu lại?\nBạn chắc chắn muốn chuyển chứ?"
+        )
+      ) {
+        dispatch(practiceAction.stopTestCheck());
+        dispatch(
+          practiceAction.changeCurrentTest({
+            currentTest,
+            week,
+          })
+        );
+      } else {
+        return;
+      }
+    }
+    dispatch(practiceAction.stopTestCheck());
     dispatch(
       practiceAction.changeCurrentTest({
         currentTest,

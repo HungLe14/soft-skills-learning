@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import classes from "./PreviewTest.module.css";
 import { practiceAction } from "../store";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { CoutingTime } from "../counting-time/CoutingTime";
 
 export const PreviewTest = (props) => {
+  const weekArr = useSelector((state) => state.weekArr);
+  const currentWeek = useSelector((state) => state.currentWeek);
+  const currentTest = useSelector((state) => state.currentTest);
+
+  let min = weekArr[currentWeek - 1].test[currentTest - 1].time?.min;
+  let second = weekArr[currentWeek - 1].test[currentTest - 1].time?.second;
+  const isStart = weekArr[currentWeek - 1].test[currentTest - 1].isStart;
   const dispatch = useDispatch();
   const [isTimeout, setIsTimeOut] = useState(false);
-  const [isStart, setIsStart] = useState(false);
   const updateAnswer = (examIndex, answerIndex) => {
     dispatch(practiceAction.chooseCorrectAnswer({ examIndex, answerIndex }));
+  };
+
+  const startingTest = () => {
+    dispatch(practiceAction.startTestCheck());
   };
 
   return (
@@ -18,7 +28,7 @@ export const PreviewTest = (props) => {
         <button
           className={classes.startBtn}
           onClick={() => {
-            setIsStart(true);
+            startingTest();
           }}
         >
           BẮT ĐẦU
@@ -26,7 +36,7 @@ export const PreviewTest = (props) => {
       )}
       {isStart && (
         <React.Fragment>
-          <CoutingTime onSetTimeOut={setIsTimeOut} />
+          <CoutingTime onSetTimeOut={setIsTimeOut} min={min} second={second} />
           {!isTimeout &&
             props?.exams?.map((exam, examIndex) => {
               return (

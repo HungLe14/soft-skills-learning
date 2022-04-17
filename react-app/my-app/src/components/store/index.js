@@ -184,6 +184,12 @@ const rootReducer = {
     ].isStart = true;
   },
 
+  stopTestCheck(state) {
+    state.weekArr[state.currentWeek - 1].test[
+      state.currentTest - 1
+    ].isStart = false;
+  },
+
   chooseCorrectAnswer(state, action) {
     const temp = state;
     temp.weekArr[temp.currentWeek - 1].test[temp.currentTest - 1].answers[

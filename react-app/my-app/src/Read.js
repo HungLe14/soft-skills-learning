@@ -43,7 +43,11 @@ function Read(props) {
         {isLoading ? (
           <LoadingSpinner />
         ) : (
-          <Preview prefix={props.prefix} suffix={props.suffix} enrollmentId={props.enrollmentId}/>
+          <Preview
+            prefix={props.prefix}
+            suffix={props.suffix}
+            enrollmentId={props.enrollmentId}
+          />
         )}
       </DashBoard>
     </div>

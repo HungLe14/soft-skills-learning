@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import classes from "./CountingTime.module.css";
 
-export const CoutingTime = ({props}) => {
-  const weekArr = useSelector((state) => state.weekArr);
-  const currentWeek = useSelector((state) => state.currentWeek);
-  const currentTest = useSelector((state) => state.currentTest);
-
-  let min = weekArr[currentWeek - 1].test[currentTest - 1].time?.min;
-  let second = weekArr[currentWeek - 1].test[currentTest - 1].time?.second;
+export const CoutingTime = (props) => {
+  let min = props.min;
+  let second = props.second;
   const [isTimeOut, setIsTimeOut] = useState(false);
   const [minutes, setMinutes] = useState(min);
   const [seconds, setSeconds] = useState(second);
