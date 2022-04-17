@@ -195,42 +195,75 @@ export const Preview = (props) => {
           />
         </div>
       </div>
-      <button
-        className={
-          showTest
-            ? weekArr[currentWeek - 1].test &&
-              weekArr[currentWeek - 1].test[currentTest - 1]?.isFinished
+      {!showTest ? (
+        <button
+          className={
+            showTest
+              ? weekArr[currentWeek - 1].test &&
+                weekArr[currentWeek - 1].test[currentTest - 1]?.isFinished
+                ? classes["submitted-test"]
+                : classes["submit-test"]
+              : weekArr[currentWeek - 1].practice &&
+                weekArr[currentWeek - 1].practice[currentPractice - 1]
+                  ?.isFinished
               ? classes["submitted-test"]
               : classes["submit-test"]
-            : weekArr[currentWeek - 1].practice &&
-              weekArr[currentWeek - 1].practice[currentPractice - 1]?.isFinished
-            ? classes["submitted-test"]
-            : classes["submit-test"]
-        }
-        onClick={() => {
-          if (showTest) {
+          }
+          onClick={() => {
+            markAsComplete();
+          }}
+          // onClick={!showTest ? markAsComplete : submitExamResultHandler}
+          disabled={
+            showTest
+              ? weekArr[currentWeek - 1].test &&
+                weekArr[currentWeek - 1].test[currentTest - 1]?.isFinished
+                ? true
+                : false
+              : weekArr[currentWeek - 1].practice &&
+                weekArr[currentWeek - 1].practice[currentPractice - 1]
+                  ?.isFinished
+              ? true
+              : false
+          }
+        >
+          Mark as completed
+        </button>
+      ) : isStart ? (
+        <button
+          className={
+            showTest
+              ? weekArr[currentWeek - 1].test &&
+                weekArr[currentWeek - 1].test[currentTest - 1]?.isFinished
+                ? classes["submitted-test"]
+                : classes["submit-test"]
+              : weekArr[currentWeek - 1].practice &&
+                weekArr[currentWeek - 1].practice[currentPractice - 1]
+                  ?.isFinished
+              ? classes["submitted-test"]
+              : classes["submit-test"]
+          }
+          onClick={() => {
             if (window.confirm("Bạn chắc chắn muốn nộp bài?")) {
               submitExamResultHandler();
             }
-          } else {
-            markAsComplete();
-          }
-        }}
-        // onClick={!showTest ? markAsComplete : submitExamResultHandler}
-        disabled={
-          showTest
-            ? weekArr[currentWeek - 1].test &&
-              weekArr[currentWeek - 1].test[currentTest - 1]?.isFinished
+          }}
+          // onClick={!showTest ? markAsComplete : submitExamResultHandler}
+          disabled={
+            showTest
+              ? weekArr[currentWeek - 1].test &&
+                weekArr[currentWeek - 1].test[currentTest - 1]?.isFinished
+                ? true
+                : false
+              : weekArr[currentWeek - 1].practice &&
+                weekArr[currentWeek - 1].practice[currentPractice - 1]
+                  ?.isFinished
               ? true
               : false
-            : weekArr[currentWeek - 1].practice &&
-              weekArr[currentWeek - 1].practice[currentPractice - 1]?.isFinished
-            ? true
-            : false
-        }
-      >
-        {showTest ? "Submit" : "Mark as completed"}
-      </button>
+          }
+        >
+          Submit
+        </button>
+      ) : null}
     </React.Fragment>
   );
 };
