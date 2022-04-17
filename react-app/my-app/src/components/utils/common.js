@@ -81,6 +81,7 @@ export const buildReduxObject = (data) => {
           };
         }),
         isFinished: test.isFinished,
+        isStart: false,
         mark: test.mark,
         time: {
           min: Math.floor(test.time / 60),

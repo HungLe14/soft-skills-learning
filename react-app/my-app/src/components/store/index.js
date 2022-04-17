@@ -115,6 +115,7 @@ const rootReducer = {
         state.currentTest + 1,
       exams: [],
       answers: [],
+      isStart: false,
       time: {
         min: 0,
         second: 0,
@@ -175,6 +176,12 @@ const rootReducer = {
     state.weekArr[state.currentWeek - 1].test[
       state.currentTest - 1
     ].time.second = action.payload;
+  },
+
+  startTestCheck(state) {
+    state.weekArr[state.currentWeek - 1].test[
+      state.currentTest - 1
+    ].isStart = true;
   },
 
   chooseCorrectAnswer(state, action) {

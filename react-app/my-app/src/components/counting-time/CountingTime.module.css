@@ -1,0 +1,13 @@
+.countingWrapper {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+}
+
+.countingWrapper > span {
+  font-size: 6.4rem;
+}
+
+.countingStatus {
+  color: red
+}

@@ -26,3 +26,15 @@
 .answerWrapper > label {
   font-size: 1.8rem;
 }
+
+.startBtn {
+  width: 30%;
+  height: auto;
+  padding: 2rem;
+  font-size: 6.4rem;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+}
