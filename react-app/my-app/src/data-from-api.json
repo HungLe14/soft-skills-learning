@@ -48,8 +48,8 @@
       "name": "Bai kiem tra 1",
       "content": "Bai 1||1||câu hỏi 1||1|2|3|4||1\nBai 2||2||câu hỏi 2||1|2|3|4||1",
       "index": 0,
-      "time": 600,
       "isFinished": true,
+      "time": 600,
       "mark": 50
     },
     {

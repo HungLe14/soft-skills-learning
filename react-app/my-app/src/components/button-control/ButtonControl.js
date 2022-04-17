@@ -139,7 +139,7 @@ export const ButtonControl = (props) => {
         lectureDtos.push({
           id: practiceEl.id,
           week: `Tuan ${weekIndex + 1}`,
-          practiceIndex,
+          index: practiceIndex,
           resouceUrl: "",
           content,
           name: `Bai ${practiceIndex + 1}`,
