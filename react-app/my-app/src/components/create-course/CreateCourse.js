@@ -92,7 +92,9 @@ export const CreateCourse = (props) => {
 
   // delete last description
   const deleteLastDescription = () => {
-    dispatch(practiceAction.deleteLastDescription());
+    if (window.confirm("Bạn chắc chắn muốn xóa?")) {
+      dispatch(practiceAction.deleteLastDescription());
+    }
   };
 
   return (

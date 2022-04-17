@@ -113,6 +113,7 @@ export const ButtonControl = (props) => {
 
     console.log("==========================");
     console.log(state);
+    alert("Thành công");
   };
 
   const submitPutData = async () => {
@@ -214,6 +215,8 @@ export const ButtonControl = (props) => {
 
     console.log("==========================");
     console.log(state);
+
+    alert("Thành công");
   };
 
   return (
@@ -295,7 +298,7 @@ export const ButtonControl = (props) => {
               type="button"
               className={`${classes["button-node"]} ${classes.cancel}`}
               onClick={() => {
-                props.onCancelCourse(true);
+                props.onCancelCourse();
               }}
             >
               <svg

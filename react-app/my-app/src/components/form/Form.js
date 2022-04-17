@@ -42,7 +42,9 @@ export const Form = (props) => {
 
   // delete test
   const deleteTestHandler = (id) => {
-    dispatch(practiceAction.deleteTest(id));
+    if (window.confirm("Bạn chắc chắn muốn xóa?")) {
+      dispatch(practiceAction.deleteTest(id));
+    }
   };
 
   // add question to test
@@ -58,7 +60,9 @@ export const Form = (props) => {
 
   // delete practice
   const deletePracticeHandler = (id) => {
-    dispatch(practiceAction.deletePractice(id));
+    if (window.confirm("Bạn chắc chắn muốn xóa?")) {
+      dispatch(practiceAction.deletePractice(id));
+    }
   };
 
   // change current week
