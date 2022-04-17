@@ -38,7 +38,7 @@ export const InputTiming = () => {
         onChange={(e) => {
           inputMinHandler(+e.target.value);
         }}
-        value={weekArr[currentWeek - 1].test[currentTest - 1].time?.min}
+        value={weekArr[currentWeek - 1].test[currentTest - 1]?.time?.min}
       />
       <span className={classes.min}>phút</span>
       <input
@@ -48,7 +48,7 @@ export const InputTiming = () => {
           validate(e.target.value);
           inputSecondHandler(+e.target.value);
         }}
-        value={weekArr[currentWeek - 1].test[currentTest - 1].time?.second}
+        value={weekArr[currentWeek - 1].test[currentTest - 1]?.time?.second}
       />
       <span className={classes.second}>giây</span>
       {isError && (
