@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { practiceAction } from "../store";
+import { useDispatch } from "react-redux";
 import classes from "./CountingTime.module.css";
 
 export const CoutingTime = (props) => {
+  const dispatch = useDispatch();
   let min = props.min;
   let second = props.second;
   const [isTimeOut, setIsTimeOut] = useState(false);
@@ -23,6 +26,9 @@ export const CoutingTime = (props) => {
       if (minutes === 0 && seconds === 0) {
         setIsTimeOut(true);
         props.onSetTimeOut(true);
+        setTimeout(() => {
+          props.onAutoSubmit();
+        }, 1000);
       }
     }, 1000);
     return () => {

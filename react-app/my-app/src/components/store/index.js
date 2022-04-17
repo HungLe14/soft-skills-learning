@@ -327,6 +327,7 @@ const rootReducer = {
       state.currentPractice - 1
     ].isFinished = true;
   },
+
   markTestCompleted(state, action) {
     state.weekArr[state.currentWeek - 1].test[
       state.currentTest - 1

@@ -89,63 +89,61 @@ export const Preview = (props) => {
   };
 
   const submitExamResultHandler = async (e) => {
-    if (window.confirm("Bạn chắc chắn muốn nộp bài?")) {
-      console.log(e);
-      const answers = weekArr[currentWeek - 1].test[currentTest - 1]?.answers;
-      const exams = weekArr[currentWeek - 1].test[currentTest - 1]?.exams;
+    console.log(e);
+    const answers = weekArr[currentWeek - 1].test[currentTest - 1]?.answers;
+    const exams = weekArr[currentWeek - 1].test[currentTest - 1]?.exams;
 
-      const url = window.location.href;
-      console.log(url);
-      const id = url.split("/").at(-1);
-      console.log(id);
+    const url = window.location.href;
+    console.log(url);
+    const id = url.split("/").at(-1);
+    console.log(id);
 
-      const testId = weekArr[currentWeek - 1].test[currentTest - 1]?.id;
+    const testId = weekArr[currentWeek - 1].test[currentTest - 1]?.id;
 
-      const totalMark = exams.reduce((totalMark, exam) => {
-        return Number(exam.point) + totalMark;
-      }, 0);
+    const totalMark = exams.reduce((totalMark, exam) => {
+      return Number(exam.point) + totalMark;
+    }, 0);
 
-      const answerResult = answers.reduce(
-        (obj, answer, index) => {
-          const isCorrect = exams[index]?.correctAnswer === answer;
-          if (isCorrect) {
-            obj.mark += exams[index].point;
-          }
-
-          obj.answerDetails.push({
-            isCorrect,
-            correctAnswer: exams[index].correctAnswer,
-            studentAnswer: answer,
-          });
-
-          return obj;
-        },
-        {
-          mark: 0,
-          answerDetails: [],
+    const answerResult = answers.reduce(
+      (obj, answer, index) => {
+        const isCorrect = exams[index]?.correctAnswer === answer;
+        if (isCorrect) {
+          obj.mark += exams[index].point;
         }
-      );
 
-      const markPercentage = Math.floor((answerResult.mark / totalMark) * 100);
+        obj.answerDetails.push({
+          isCorrect,
+          correctAnswer: exams[index].correctAnswer,
+          studentAnswer: answer,
+        });
 
-      console.log("answer", answers);
-      console.log("exam", exams);
-      console.log("totalMark", totalMark);
-      console.log("result", answerResult);
-      console.log(markPercentage);
+        return obj;
+      },
+      {
+        mark: 0,
+        answerDetails: [],
+      }
+    );
 
-      dispatch(practiceAction.markTestCompleted({ mark: markPercentage }));
+    const markPercentage = Math.floor((answerResult.mark / totalMark) * 100);
 
-      await fetch(`/api/course/${id}/test/${testId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ mark: markPercentage }),
-      });
-    } else {
-      return;
-    }
+    console.log("answer", answers);
+    console.log("exam", exams);
+    console.log("totalMark", totalMark);
+    console.log("result", answerResult);
+    console.log(markPercentage);
+
+    dispatch(practiceAction.markTestCompleted({ mark: markPercentage }));
+
+    await fetch(`/api/course/${id}/test/${testId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ mark: markPercentage }),
+    });
+
+    dispatch(practiceAction.stopTestCheck());
   };
 
   return (
@@ -193,6 +191,7 @@ export const Preview = (props) => {
             showTest={showTest}
             prefix={props.prefix}
             suffix={props.suffix}
+            onAutoSubmit={submitExamResultHandler}
           />
         </div>
       </div>
@@ -208,7 +207,16 @@ export const Preview = (props) => {
             ? classes["submitted-test"]
             : classes["submit-test"]
         }
-        onClick={!showTest ? markAsComplete : submitExamResultHandler}
+        onClick={() => {
+          if (showTest) {
+            if (window.confirm("Bạn chắc chắn muốn nộp bài?")) {
+              submitExamResultHandler();
+            }
+          } else {
+            markAsComplete();
+          }
+        }}
+        // onClick={!showTest ? markAsComplete : submitExamResultHandler}
         disabled={
           showTest
             ? weekArr[currentWeek - 1].test &&

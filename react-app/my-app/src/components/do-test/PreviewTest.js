@@ -41,7 +41,12 @@ export const PreviewTest = (props) => {
       )}
       {isStart && (
         <React.Fragment>
-          <CoutingTime onSetTimeOut={setIsTimeOut} min={min} second={second} />
+          <CoutingTime
+            onAutoSubmit={props.onAutoSubmit}
+            onSetTimeOut={setIsTimeOut}
+            min={min}
+            second={second}
+          />
           {!isTimeout &&
             props?.exams?.map((exam, examIndex) => {
               return (

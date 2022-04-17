@@ -61,7 +61,7 @@ export const ReadPractice = (props) => {
       </div>
       <div className={classes.body}>
         {props.showTest ? (
-          <PreviewTest exams={test.exams} />
+          <PreviewTest onAutoSubmit={props.onAutoSubmit} exams={test.exams} />
         ) : (
           practice?.description?.map((des, desIndex) => {
             return (
