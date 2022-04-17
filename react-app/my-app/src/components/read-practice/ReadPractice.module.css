@@ -3,8 +3,8 @@
   justify-content: space-between;
 }
 
-.button-node > a,
-.button-node > a:hover {
+.button-node>a,
+.button-node>a:hover {
   color: #fff;
   text-decoration: none;
 }
@@ -27,7 +27,7 @@
   cursor: pointer;
 }
 
-.button-node > svg {
+.button-node>svg {
   width: 3rem;
   height: 3rem;
 }
@@ -56,7 +56,7 @@
   gap: 2rem;
 }
 
-.imgWrapper > img {
+.imgWrapper>img {
   width: 40%;
   height: auto;
 }
@@ -64,6 +64,7 @@
 .previewContent {
   font-size: 1.6rem;
   line-height: 2rem;
+  white-space: pre-wrap;
 }
 
 .practiceContent {
@@ -74,11 +75,11 @@
   align-items: center;
 }
 
-.practiceContent > p {
+.practiceContent>p {
   font-size: 1.8rem;
 }
 
-.practiceContent > img {
+.practiceContent>img {
   width: 100%;
   height: auto;
 }
