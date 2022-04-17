@@ -51,15 +51,15 @@ export const ButtonControl = (props) => {
         const content = testEl?.exams
           ?.map((exam, index) => {
             const answers = exam?.answer?.map((ans) => `${ans}`).join("|");
-            return `Bai ${index + 1}||${exam.point}||${
-              exam.question
-            }||${answers}||${exam.correctAnswer}`;
+            return `Bai ${index + 1}||${exam.point}||${exam.question
+              }||${answers}||${exam.correctAnswer}`;
           })
           .join("\n");
 
         testDtos.push({
           week: `Tuan ${weekIndex + 1}`,
           index: testIndex,
+          time: testEl.time.totalTime,
           content,
           name: `Bai kiem tra ${testEl.testNumber}`,
         });
@@ -151,9 +151,8 @@ export const ButtonControl = (props) => {
         const content = testEl?.exams
           ?.map((exam, index) => {
             const answers = exam?.answer?.map((ans) => `${ans}`).join("|");
-            return `Bai ${index + 1}||${exam.point}||${
-              exam.question
-            }||${answers}||${exam.correctAnswer}`;
+            return `Bai ${index + 1}||${exam.point}||${exam.question
+              }||${answers}||${exam.correctAnswer}`;
           })
           .join("\n");
 
@@ -161,6 +160,7 @@ export const ButtonControl = (props) => {
           id: testEl.id,
           week: `Tuan ${weekIndex + 1}`,
           index: testIndex,
+          time: testEl.time.totalTime,
           content,
           name: `Bai kiem tra ${testEl.testNumber}`,
         });
