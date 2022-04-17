@@ -89,59 +89,63 @@ export const Preview = (props) => {
   };
 
   const submitExamResultHandler = async (e) => {
-    console.log(e);
-    const answers = weekArr[currentWeek - 1].test[currentTest - 1]?.answers;
-    const exams = weekArr[currentWeek - 1].test[currentTest - 1]?.exams;
+    if (window.confirm("Bạn chắc chắn muốn nộp bài?")) {
+      console.log(e);
+      const answers = weekArr[currentWeek - 1].test[currentTest - 1]?.answers;
+      const exams = weekArr[currentWeek - 1].test[currentTest - 1]?.exams;
 
-    const url = window.location.href;
-    console.log(url);
-    const id = url.split("/").at(-1);
-    console.log(id);
+      const url = window.location.href;
+      console.log(url);
+      const id = url.split("/").at(-1);
+      console.log(id);
 
-    const testId = weekArr[currentWeek - 1].test[currentTest - 1]?.id;
+      const testId = weekArr[currentWeek - 1].test[currentTest - 1]?.id;
 
-    const totalMark = exams.reduce((totalMark, exam) => {
-      return Number(exam.point) + totalMark;
-    }, 0);
+      const totalMark = exams.reduce((totalMark, exam) => {
+        return Number(exam.point) + totalMark;
+      }, 0);
 
-    const answerResult = answers.reduce(
-      (obj, answer, index) => {
-        const isCorrect = exams[index]?.correctAnswer === answer;
-        if (isCorrect) {
-          obj.mark += exams[index].point;
+      const answerResult = answers.reduce(
+        (obj, answer, index) => {
+          const isCorrect = exams[index]?.correctAnswer === answer;
+          if (isCorrect) {
+            obj.mark += exams[index].point;
+          }
+
+          obj.answerDetails.push({
+            isCorrect,
+            correctAnswer: exams[index].correctAnswer,
+            studentAnswer: answer,
+          });
+
+          return obj;
+        },
+        {
+          mark: 0,
+          answerDetails: [],
         }
+      );
 
-        obj.answerDetails.push({
-          isCorrect,
-          correctAnswer: exams[index].correctAnswer,
-          studentAnswer: answer,
-        });
+      const markPercentage = Math.floor((answerResult.mark / totalMark) * 100);
 
-        return obj;
-      },
-      {
-        mark: 0,
-        answerDetails: [],
-      }
-    );
+      console.log("answer", answers);
+      console.log("exam", exams);
+      console.log("totalMark", totalMark);
+      console.log("result", answerResult);
+      console.log(markPercentage);
 
-    const markPercentage = Math.floor((answerResult.mark / totalMark) * 100);
+      dispatch(practiceAction.markTestCompleted({ mark: markPercentage }));
 
-    console.log("answer", answers);
-    console.log("exam", exams);
-    console.log("totalMark", totalMark);
-    console.log("result", answerResult);
-    console.log(markPercentage);
-
-    dispatch(practiceAction.markTestCompleted({ mark: markPercentage }));
-
-    await fetch(`/api/course/${id}/test/${testId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ mark: markPercentage }),
-    });
+      await fetch(`/api/course/${id}/test/${testId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ mark: markPercentage }),
+      });
+    } else {
+      return;
+    }
   };
 
   return (
