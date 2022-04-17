@@ -115,6 +115,11 @@ const rootReducer = {
         state.currentTest + 1,
       exams: [],
       answers: [],
+      time: {
+        min: 0,
+        second: 0,
+        totalTime: 0,
+      },
     });
 
     testArr = {
@@ -148,6 +153,28 @@ const rootReducer = {
     const answers =
       state.weekArr[state.currentWeek - 1].test[state.currentTest - 1]?.answers;
     answers.push("");
+  },
+
+  countTotalTime(state) {
+    const min =
+      state.weekArr[state.currentWeek - 1].test[state.currentTest - 1].time.min;
+    const second =
+      state.weekArr[state.currentWeek - 1].test[state.currentTest - 1].time
+        .second;
+    state.weekArr[state.currentWeek - 1].test[
+      state.currentTest - 1
+    ].time.totalTime = min * 60 + second;
+  },
+
+  addMinToTest(state, action) {
+    state.weekArr[state.currentWeek - 1].test[state.currentTest - 1].time.min =
+      action.payload;
+  },
+
+  addSecondToTest(state, action) {
+    state.weekArr[state.currentWeek - 1].test[
+      state.currentTest - 1
+    ].time.second = action.payload;
   },
 
   chooseCorrectAnswer(state, action) {
@@ -282,13 +309,18 @@ const rootReducer = {
       action.payload.answerIndex;
   },
 
-  markLectureCompleted(state, action){
-    state.weekArr[state.currentWeek - 1].practice[state.currentPractice - 1].isFinished = true
+  markLectureCompleted(state, action) {
+    state.weekArr[state.currentWeek - 1].practice[
+      state.currentPractice - 1
+    ].isFinished = true;
   },
-  markTestCompleted(state, action){
-    state.weekArr[state.currentWeek - 1].test[state.currentTest - 1].isFinished = true
-    state.weekArr[state.currentWeek - 1].test[state.currentTest - 1].mark = action.payload.mark
-  }
+  markTestCompleted(state, action) {
+    state.weekArr[state.currentWeek - 1].test[
+      state.currentTest - 1
+    ].isFinished = true;
+    state.weekArr[state.currentWeek - 1].test[state.currentTest - 1].mark =
+      action.payload.mark;
+  },
 };
 
 const practiceSlice = createSlice({

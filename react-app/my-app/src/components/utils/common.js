@@ -62,7 +62,9 @@ export const buildReduxObject = (data) => {
   weekKey.forEach((key) => {
     console.log(index);
     const tests = data.testDtos.filter((test) => test.week === key);
-    const practices = data.lectureDtos.filter((lecture) => lecture.week === key);
+    const practices = data.lectureDtos.filter(
+      (lecture) => lecture.week === key
+    );
 
     weekArr.push({
       numberOfWeek: index + 1,
@@ -80,6 +82,11 @@ export const buildReduxObject = (data) => {
         }),
         isFinished: test.isFinished,
         mark: test.mark,
+        time: {
+          min: Math.floor(test.time / 60),
+          second: test.time % 60,
+          totalTime: test.time,
+        },
         answers: [], // need after check
       })),
       totalPractice: practices.length,
@@ -91,7 +98,7 @@ export const buildReduxObject = (data) => {
           id: practice.id,
           practiceNumber: index + 1,
           description: practiceDescription,
-          isFinished: practice.isFinished
+          isFinished: practice.isFinished,
         };
       }),
       numberOfPractice: tests.length,
@@ -149,7 +156,7 @@ export const getPracticeDescription = (description) => {
       practiceDescriptions.push({
         number: count,
         content: contentInsidePTag,
-        image: []
+        image: [],
       });
       description = deletePTag(description);
       continue;

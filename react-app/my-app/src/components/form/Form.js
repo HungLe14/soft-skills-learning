@@ -16,6 +16,7 @@ import { Content } from "../content/content";
 import { TestModule } from "../test/TestModule";
 import { AddQuestion } from "../add-question/AddQuestion";
 import { PreviewFragment } from "../preview-fragment/PreviewFragment";
+import { InputTiming } from "../input-timing/InputTiming";
 
 export const Form = (props) => {
   const [showTest, setShowTest] = useState(false);
@@ -165,6 +166,7 @@ export const Form = (props) => {
               </React.Fragment>
             ) : (
               <React.Fragment>
+                <InputTiming />
                 {weekArr[currentWeek - 1]?.test[currentTest - 1]?.exams?.map(
                   (e, index) => {
                     return <TestModule questionIndex={index} key={index} />;
