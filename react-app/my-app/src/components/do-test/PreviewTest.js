@@ -12,6 +12,8 @@ export const PreviewTest = (props) => {
   let min = weekArr[currentWeek - 1].test[currentTest - 1].time?.min;
   let second = weekArr[currentWeek - 1].test[currentTest - 1].time?.second;
   const isStart = weekArr[currentWeek - 1].test[currentTest - 1].isStart;
+  const isFinished = weekArr[currentWeek - 1].test[currentTest - 1].isFinished;
+
   const dispatch = useDispatch();
   const [isTimeout, setIsTimeOut] = useState(false);
   const updateAnswer = (examIndex, answerIndex) => {
@@ -26,10 +28,13 @@ export const PreviewTest = (props) => {
     <React.Fragment>
       {!isStart && (
         <button
-          className={classes.startBtn}
+          className={`${classes.startBtn} ${
+            isFinished ? classes.disable : ""
+          } `}
           onClick={() => {
             startingTest();
           }}
+          disabled={isFinished}
         >
           BẮT ĐẦU
         </button>
