@@ -240,6 +240,7 @@ export const Preview = (props) => {
               ? true
               : false
           }
+          style={{ display: "inline-block", width: "auto" }}
         >
           Mark as completed
         </button>

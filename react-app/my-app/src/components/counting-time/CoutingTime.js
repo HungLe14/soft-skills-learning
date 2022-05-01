@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { practiceAction } from "../store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./CountingTime.module.css";
 
 export const CoutingTime = (props) => {
   const dispatch = useDispatch();
+  const weekArr = useSelector((state) => state.weekArr);
+  const currentWeek = useSelector((state) => state.currentWeek);
+  const currentTest = useSelector((state) => state.currentTest);
   let min = props.min;
   let second = props.second;
   const [isTimeOut, setIsTimeOut] = useState(false);
   const [minutes, setMinutes] = useState(min);
   const [seconds, setSeconds] = useState(second);
+  console.log(weekArr[currentWeek - 1].test[currentTest - 1].isFinished);
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (seconds > 0) {
@@ -28,6 +32,7 @@ export const CoutingTime = (props) => {
         props.onSetTimeOut(true);
         setTimeout(() => {
           props.onAutoSubmit();
+          dispatch(practiceAction.addTimeCompletedTest(minutes * 60 + seconds));
         }, 1000);
       }
     }, 1000);
@@ -35,6 +40,10 @@ export const CoutingTime = (props) => {
       clearInterval(myInterval);
     };
   });
+
+  if (weekArr[currentWeek - 1].test[currentTest - 1].isFinished) {
+    dispatch(practiceAction.addTimeCompletedTest(minutes * 60 + seconds));
+  }
 
   return (
     <div className={classes.countingWrapper}>

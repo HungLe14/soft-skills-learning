@@ -120,6 +120,7 @@ const rootReducer = {
         min: 0,
         second: 0,
         totalTime: 0,
+        finishTime: null,
       },
     });
 
@@ -176,6 +177,14 @@ const rootReducer = {
     state.weekArr[state.currentWeek - 1].test[
       state.currentTest - 1
     ].time.second = action.payload;
+  },
+
+  addTimeCompletedTest(state, action) {
+    state.weekArr[state.currentWeek - 1].test[
+      state.currentTest - 1
+    ].time.finishTime =
+      state.weekArr[state.currentWeek - 1].test[state.currentTest - 1].time
+        .totalTime - action.payload;
   },
 
   startTestCheck(state) {

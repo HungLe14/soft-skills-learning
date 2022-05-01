@@ -87,6 +87,7 @@ export const buildReduxObject = (data) => {
           min: Math.floor(test.time / 60),
           second: test.time % 60,
           totalTime: test.time,
+          finishTime: null,
         },
         answers: [], // need after check
       })),
