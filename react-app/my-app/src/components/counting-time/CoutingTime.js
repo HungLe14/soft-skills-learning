@@ -43,7 +43,6 @@ export const CoutingTime = (props) => {
 
   if (weekArr[currentWeek - 1].test[currentTest - 1].isFinished) {
     dispatch(practiceAction.addTimeCompletedTest(minutes * 60 + seconds));
-    return;
   }
 
   return (
