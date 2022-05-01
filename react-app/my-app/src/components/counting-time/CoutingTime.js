@@ -13,7 +13,7 @@ export const CoutingTime = (props) => {
   const [isTimeOut, setIsTimeOut] = useState(false);
   const [minutes, setMinutes] = useState(min);
   const [seconds, setSeconds] = useState(second);
-  console.log(weekArr[currentWeek - 1].test[currentTest - 1].isFinished);
+  
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (seconds > 0) {
