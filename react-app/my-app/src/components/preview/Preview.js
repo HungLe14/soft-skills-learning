@@ -105,7 +105,8 @@ export const Preview = (props) => {
     console.log(e);
     const answers = weekArr[currentWeek - 1].test[currentTest - 1]?.answers;
     const exams = weekArr[currentWeek - 1].test[currentTest - 1]?.exams;
-
+    const finishTime =
+      weekArr[currentWeek - 1].test[currentTest - 1]?.time?.finishTime;
     const url = window.location.href;
     console.log(url);
     const id = url.split("/").at(-1);
@@ -146,14 +147,19 @@ export const Preview = (props) => {
     console.log("result", answerResult);
     console.log(markPercentage);
 
-    dispatch(practiceAction.markTestCompleted({ mark: markPercentage }));
+    dispatch(
+      practiceAction.markTestCompleted({
+        mark: markPercentage,
+        finishTime: finishTime,
+      })
+    );
 
     await fetch(`/api/course/${id}/test/${testId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ mark: markPercentage, }),
+      body: JSON.stringify({ mark: markPercentage }),
     });
 
     dispatch(practiceAction.stopTestCheck());

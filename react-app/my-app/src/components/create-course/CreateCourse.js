@@ -258,7 +258,9 @@ export const CreateCourse = (props) => {
         <button
           type="button"
           className={`${classes["button-node"]} ${classes["cancel"]}`}
-          onClick={(window.location.href = "/app/teacher")}
+          onClick={() => {
+            window.location.href = "/app/teacher";
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
