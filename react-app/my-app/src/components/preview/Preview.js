@@ -153,7 +153,7 @@ export const Preview = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ mark: markPercentage }),
+      body: JSON.stringify({ mark: markPercentage, }),
     });
 
     dispatch(practiceAction.stopTestCheck());
