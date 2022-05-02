@@ -236,6 +236,7 @@ export const CreateCourse = (props) => {
           className={`${classes["button-node"]} ${classes["confirm"]}`}
           onClick={() => {
             props.onCreateCourse(false);
+            window.location.href = `${window.location.hostname}/app/teacher`;
           }}
         >
           <svg
