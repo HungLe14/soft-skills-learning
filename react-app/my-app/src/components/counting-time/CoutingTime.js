@@ -13,8 +13,9 @@ export const CoutingTime = (props) => {
   const [isTimeOut, setIsTimeOut] = useState(false);
   const [minutes, setMinutes] = useState(min);
   const [seconds, setSeconds] = useState(second);
-  
+
   useEffect(() => {
+    dispatch(practiceAction.addTimeCompletedTest(minutes * 60 + seconds));
     let myInterval = setInterval(() => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
@@ -40,10 +41,6 @@ export const CoutingTime = (props) => {
       clearInterval(myInterval);
     };
   });
-
-  if (weekArr[currentWeek - 1].test[currentTest - 1].isFinished) {
-    dispatch(practiceAction.addTimeCompletedTest(minutes * 60 + seconds));
-  }
 
   return (
     <div className={classes.countingWrapper}>
