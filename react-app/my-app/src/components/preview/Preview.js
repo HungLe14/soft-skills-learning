@@ -150,7 +150,6 @@ export const Preview = (props) => {
     dispatch(
       practiceAction.markTestCompleted({
         mark: markPercentage,
-        finishTime: finishTime,
       })
     );
 
@@ -159,7 +158,7 @@ export const Preview = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ mark: markPercentage }),
+      body: JSON.stringify({ mark: markPercentage, finishTime: finishTime }),
     });
 
     dispatch(practiceAction.stopTestCheck());
